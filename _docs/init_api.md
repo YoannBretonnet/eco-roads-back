@@ -2,20 +2,21 @@
 ## MCD
 
 
-![mcd](./images/mcd.png)
+![mcd](./images/MCD_FINAL.png)
 
 
 ## MLD
 
 
-USER ( <u>code_user</u>, __email, password, username, address, car, category, #code_car, #code_category )
-CAR ( <u>code_car</u>, brand, model, network, image, #code_network )
-CATEGORY ( <u>code_category</u>, name )
-USER_LIKE_CATEGORY ( <u>code_user</u>, <u>code_category</u> )
-CHARGING_NETWORK ( <u>code_network</u>, name )
-CHARGING_STATION ( <u>code_station</u>, gps_coordinate, network, #code_network )
-INTERESTING_POINT ( <u>code_interesting_point</u>, name, gps_coordinate, eco_friendly, category, #code_category )
-ROAD ( <u>code_road</u>, genarated_road, favorite, user, #code_user )
+```CAR ( code_car, brand, model, image, network, #code_network )
+NETWORK ( code_network, name )
+USER ( code_user, email, password, username, location, car, category, #code_car )
+LIKE ( #code_user, #code_category )
+CATEGORY ( code_category, name )
+CHARGING_STATION ( code_station, location, network, #code_network )
+ROAD ( code_road, genarated_road, favorite, #code_user )
+INTERESTING_POINT ( code_interesting_point, name, description, location, eco_friendly, #code_category )
+```
 
 
 ## MPD

@@ -51,4 +51,22 @@ Lien vers le MCD/MLD/MPD [ici](./_docs/init_api.md)
 
 ## Le versionning avec Sqitch 
 
+## REGLES NOMENCLATURES
+
+- Langue utilisée l'anglais ( BDD et API )
+
+- Utilisation du camelCase
+
+Pas d'utilisation d'ESLINT mais une même façon de faire entre developpeur 
+
+```javascript
+    "rules": {
+        // enable additional rules
+        "indent": ["error", 4],
+        "linebreak-style": ["error", "unix"],
+        "quotes": ["error", "double"],
+        "semi": ["error", "always"]
+    }
+```
+
 
