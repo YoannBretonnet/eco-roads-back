@@ -12,10 +12,31 @@ import cookieParser from 'cookie-parser';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
-import { router } from './router/index.js';
-import authRouter from './ROUTER/auth-routes.js';
+import { router } from './app/router/index.js';
 
 const app = express();
+
+// If you have your node.js behind a proxy and are using secure: true, you need to set 'trust proxy' in express
+// app.set('trust proxy', 1) // trust first proxy
+
+// ~ *** *** SESSION CONFIG *** *** ~ //
+// ~ ****************************** ~ //
+
+import session from 'express-session';
+
+app.use(session({
+    saveUninitialized: true,
+    resave: true,
+    secret: process.env.SESSION_SECRET,
+    cookie: { 
+        // secure : true,
+        httpOnly : true,
+        sameSite: 'lax', // or 'strict'
+        maxAge: 24 * 60 * 60 * 1000 //24 hours
+        //expires : new Date(Date.now() + 60 * 60 * 1000) //1 hour
+        }
+}));
+
 
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -30,9 +51,7 @@ app.use(cookieParser());
 
 app.use('/', express.static(join(__dirname, 'public')));
 
-// app.use(router)
-app.use('/api/v1/users', usersRouter);
-app.use('/api/v1/auth', authRouter);
+app.use(router)
 
 // ~ *** *** LAUNCHER CONFIG *** *** ~ //
 // ~ ******************************* ~ //

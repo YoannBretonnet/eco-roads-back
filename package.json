@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "projet-12-e-co-roads-back",
   "version": "1.0.0",
   "description": "API for mapping application",
@@ -27,6 +28,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "express-session": "^1.17.3",
     "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.7.3",
