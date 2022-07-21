@@ -1,7 +1,7 @@
 //~ IMPORTATION CAR DATA
 import { findAll, findOne, createData, updateData, deleteData } from "../datamapper/car.js";
 
-class Article {
+class Car {
     static async findAllCars() {
         return findAll();
     }
@@ -23,4 +23,4 @@ class Article {
     }
 }
 
-export { Article };
+export { Car };
