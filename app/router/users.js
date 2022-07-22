@@ -27,8 +27,11 @@ router.post("/user/register", validation.body(userSchema), createUser);
 router.post("/user/login", loginUser);
 
 // profile route
-router.get("/user/profile/:id", authenticateToken, fetchOneUser);
+router.get("/user/profile", authenticateToken, fetchOneUser);
 router.patch("/user/profile/:id", updateUser);
 router.delete("/user/profile/:id", deleteUser);
+
+
+
 
 export { router };

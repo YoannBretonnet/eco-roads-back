@@ -1,6 +1,11 @@
 {
   "type": "module",
   "name": "projet-12-e-co-roads-back",
+  "jest": {
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    }
+  },
   "version": "1.0.0",
   "description": "API for mapping application",
   "main": "index.js",

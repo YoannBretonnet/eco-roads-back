@@ -3,4 +3,4 @@
 ##----------------------------------------------
 ##---------------- USERS -----------------------
 
-GET {{entrypoint}}/api/users
+GET {{entrypoint}}/api/user/login
