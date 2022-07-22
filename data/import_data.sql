@@ -37,12 +37,12 @@ VALUES
     ('Rue de l\'Oradou',164,63000'Clermont-Ferrand',45.769171736746955, 3.1141259695093124);
 
 INSERT INTO "category"("name") VALUES
-("Panoramas"),
-("Culture"),
-("Gastronomie"),
-("Nature"),
-("Sport"),
-("Parcs");
+('Panoramas'),
+('Culture'),
+('Gastronomie'),
+('Nature'),
+('Sport'),
+('Parcs');
 
 INSERT INTO "charging_station"("network_id", "location_id") VALUES
 ('','');
@@ -56,4 +56,4 @@ INSERT INTO "road"("favorite", "generated_road", "user_id") VALUES
 INSERT INTO "user_like_category"("category_id", "user_id") VALUES
 ('','','');
 
-
+COMMIT;
