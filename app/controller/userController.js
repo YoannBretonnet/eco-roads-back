@@ -25,7 +25,8 @@ schema.is().min(4)
 
 //~---------------------------------------FETCH ALL USERS
 
-async function fetchAllUsers() {
+async function fetchAllUsers(req, res) {
+
     try {
         const user = await User.findAllUsers();
 

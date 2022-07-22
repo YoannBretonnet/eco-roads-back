@@ -7,8 +7,8 @@ const userSchema = Joi.object({
     //* TESTING WITH OPTION 4 CHARACTER SET 8 FOR DEPLOY
     password: Joi.string().min(4).max(255).required(),
     username: Joi.string().min(3).required(),
-    location_id: Joi.integer(),
-    car_id: Joi.integer()
+    location_id: Joi.number().integer(),
+    car_id: Joi.number().integer()
 });
 
 export {  userSchema };

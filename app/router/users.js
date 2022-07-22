@@ -1,26 +1,34 @@
 // ~ *** *** ROUTER CONFIG *** *** ~ //
 // ~ ***************************** ~ //
 
-import { Router } from 'express';
+import { Router } from "express";
 const router = Router();
-import{ createUser, fetchOneUser, loginUser, updateUser, deleteUser } from '../controller/userController.js'
-import { authenticateToken } from '../middleware/authorization.js';
+import {
+    createUser,
+    fetchOneUser,
+    loginUser,
+    updateUser,
+    deleteUser,
+    fetchAllUsers,
+} from "../controller/userController.js";
+import { authenticateToken } from "../middleware/authorization.js";
 
 // ~ *** *** SCHEMA CONFIG *** *** ~ //
 // ~ ***************************** ~ //
 
-import { userSchema } from '../schema/user.js';
-import { validation } from '../service/validation.js';
+import { userSchema } from "../schema/user.js";
+import { validation } from "../service/validation.js";
 
+// admin v2
+router.get("/user", fetchAllUsers);
 
-router.post('/register', validation.body(userSchema), createUser);
+// login / register route
+router.post("/user/register", validation.body(userSchema), createUser);
+router.post("/user/login", loginUser);
 
-router.post('/login', loginUser);
-
-router.get('/profile/:id', authenticateToken, fetchOneUser);
-
-router.patch('/profile/:id', updateUser);
-router.delete('/profile/:id', deleteUser);
-
+// profile route
+router.get("/user/profile/:id", authenticateToken, fetchOneUser);
+router.patch("/user/profile/:id", updateUser);
+router.delete("/user/profile/:id", deleteUser);
 
 export { router };

@@ -1,17 +1,14 @@
-const queryOptions = {
-    text: "SELECT * FROM users WHERE email = $1",
-    values: [email],
-};
+
 
 //~ IMPORTATIONS DES MODULES
-import { client } from "../service/dbClient.js";
+import pool from "../service/dbClient.js";
 
 const TABLE_NAME = "user";
 
 // ~ *** *** FIND ALL USERS *** *** ~ //
 // ~ ****************************** ~ //
 async function findAll() {
-    const result = await client.query(`SELECT * FROM "${TABLE_NAME}";`);
+    const result = await pool.query(`SELECT * FROM "${TABLE_NAME}";`);
 
     return result.rows;
 }
@@ -20,7 +17,7 @@ async function findAll() {
 // ~ ***************************** ~ //
 
 async function findOne(email) {
-    const result = await client.query(`SELECT * FROM "${TABLE_NAME}" WHERE "email" = $1;`, [email]);
+    const result = await pool.query(`SELECT * FROM "${TABLE_NAME}" WHERE "email" = $1;`, [email]);
 
     return result.rows[0];
 }
@@ -39,7 +36,7 @@ async function createData(userData) {
         values: [email, password, username, location_id, car_id],
     };
 
-    const result = await client.query(sql);
+    const result = await pool.query(sql);
 
     return result.rowCount;
 }
@@ -63,7 +60,7 @@ async function updateData(userId, userData) {
         values: [email, password, username, location_id, car_id, userId],
     };
 
-    const result = await client.query(sql);
+    const result = await pool.query(sql);
 
     return result.rowCount;
 }
