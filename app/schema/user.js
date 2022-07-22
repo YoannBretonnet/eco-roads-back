@@ -1,6 +1,5 @@
-import joi from "joi";
-const Joi = joi;
-
+import Joi from "joi";
+// const Joi = joi;
 
 const userSchema = Joi.object({
     email: Joi.string().min(5).max(255).required().email(),

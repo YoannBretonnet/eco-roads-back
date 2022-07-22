@@ -11,14 +11,15 @@ import emailValidator from "email-validator";
 import passwordValidator from "password-validator";
 
 const schema = new passwordValidator();
-schema.is().min(6);
+worthPassword = ["Passw0rd", "Password123", "Azerty", "Qwerty", "000000", "123456"];
+schema.is().min(6).is().not().oneOf(worthPassword);
 /* .is().max(100) // Maximum length 100
 .has().uppercase(1) // Must have uppercase letters
 .has().lowercase(1) // Must have lowercase letters
 .has().digits(2) // Must have at least 2 digits
 .has().symbols(1) // Must have at least 1 symbol
 .has().not().spaces() // Should not have spaces
-.is().not().oneOf(['Passw0rd', 'Password123', '123456', 'Azerty', 'Qwerty']) */
+.is().not().oneOf() */
 
 //~ FUNCTIONS
 
@@ -53,22 +54,23 @@ async function loginUser(req, res) {
     try {
         const { email, password } = req.body;
 
+        // Checks if email is valid
         if (!emailValidator.validate(email)) return _500(err, req, res);
 
         const user = await User.findOneUser(email);
         if (user.rows.length === 0)
             return res.status(401).json({ error: "L'email saisi est érroné" });
 
-        //* Password check
+        // Checks password
         const validPassword = await bcrypt.compare(password, user.rows[0].password);
         if (!validPassword) return res.status(401).json({ error: "Mot de passe incorrect" });
 
-        //* JWT
+        // create token JWT
         let accessToken = generateAccessToken(user.rows[0]);
         let refreshToken = generateRefreshToken(user.rows[0]);
 
         res.cookie("refreshToken", refreshToken, { httpOnly: true });
-        res.json({accesToken: accessToken});
+        res.json({ accesToken: accessToken });
     } catch (err) {
         res.status(401).json({ error: error.message });
     }
@@ -81,18 +83,18 @@ async function logoutUser(req, res) {
         if (!token) {
             return res.sendStatus(401);
         }
-    
+
         jwt.verify(token, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
             if (err) {
                 return res.sendStatus(401);
             }
-            
-            //* Checks if the user exists and return json
-            if(!user) return res.status(401).json(`L'utilisateur n'existe pas`);
-    
+
+            // Checks if the user exists and return json
+            if (!user) return res.status(401).json(`L'utilisateur n'existe pas`);
+
             delete user.iat;
             delete user.exp;
-        })
+        });
     } catch (err) {
         res.status(401).json({ error: error.message });
     }
@@ -102,10 +104,10 @@ async function createUser(req, res) {
     try {
         let { email, password, username, location_id, car_id } = req.body;
 
-        //*  Search if the user is already in the database
+        //  Search if the user is already in the database
         const user = await User.findOneUser(email);
 
-        //* Checks if the user already exists and checks with emailValidator and passwordValidator
+        // Checks if the user already exists and checks with emailValidator and passwordValidator
         if (user) throw new Error(`${email} existe déjà`);
         if (!emailValidator.validate(email))
             return res.status(500).json({ message: `${email} invalide !` });
@@ -115,8 +117,8 @@ async function createUser(req, res) {
                 .json({ message: "Le mot de passe doit contenir au moins 6 caractères." });
         if (!username)
             return res.status(500).json({ message: "erci de renseigner un nom d'utilisateur" });
-        
-        //* If validation ok, defined a value null for columns not obligatories
+
+        // If validation ok, defined a value null for columns not obligatories
         location_id === undefined ? (location_id = "") : location_id;
         car_id === undefined ? (car_id = "") : car_id;
 
@@ -177,9 +179,9 @@ async function refreshToken(req, res) {
         if (err) {
             return res.sendStatus(401);
         }
-        
-        //* Checks if the user exists and return json
-        if(!user) return res.status(401).json(`L'utilisateur n'existe pas`);
+
+        // Checks if the user exists and return json
+        if (!user) return res.status(401).json(`L'utilisateur n'existe pas`);
 
         delete user.iat;
         delete user.exp;
