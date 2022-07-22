@@ -19,4 +19,4 @@ sqitch add 01.init -n "create tables"
 #Saisir le mot de passe pour le nouveau rôle : mot de passe pour le nouveau rôle
 #Saisir le mot de passe à nouveau : confirmation du mot de passe pour le nouveau rôle
 #Mot de passe : mot de passe pour la connection PGUSER
-#Mot de passe : mot de passe pour la connection PGUSER
+#Mot de passe : mot de passe pour la connection PGUSER\

@@ -70,3 +70,17 @@ Pas d'utilisation d'ESLINT mais une même façon de faire entre developpeur
 ```
 
 
+## INITIALISATION DU PROJET
+
+On initialise NPM
+```shell
+    npm init
+```
+Installation des modules necessaires
+```shell
+    npm i express joi cookie-parser dotenv cors brcypt jsonwebtoken pg swagger-ui-express swagger-jsdoc
+```
+
+Recommandations modules de developpement
+```shell
+npm i --save-dev nodemon jest debug 
