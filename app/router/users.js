@@ -7,11 +7,17 @@ import {
     createUser,
     fetchOneUser,
     loginUser,
+    logoutUser,
     updateUser,
     deleteUser,
     fetchAllUsers,
+    refreshToken
 } from "../controller/userController.js";
-import { authenticateToken } from "../middleware/authorization.js";
+
+// ~ *** *** IMPORT JWT *** *** ~ //
+// ~ ************************** ~ //
+
+import { authenticateToken } from "../middleware/auth.js";
 
 // ~ *** *** SCHEMA CONFIG *** *** ~ //
 // ~ ***************************** ~ //
@@ -19,18 +25,17 @@ import { authenticateToken } from "../middleware/authorization.js";
 import { userSchema } from "../schema/user.js";
 import { validation } from "../service/validation.js";
 
-// admin v2
-router.get("/user", fetchAllUsers);
-
-// login / register route
+router.get("/users", fetchAllUsers);
 router.post("/user/register", validation.body(userSchema), createUser);
 router.post("/user/login", loginUser);
-
-// profile route
+router.get("/user/logout", logoutUser)
+// profile routes
 router.get("/user/profile", authenticateToken, fetchOneUser);
-router.patch("/user/profile/:id", updateUser);
-router.delete("/user/profile/:id", deleteUser);
+router.patch("/user/profile", updateUser);
+router.delete("/user/profile", deleteUser);
 
+//refreshToken
+router.get('/refresh_token', refreshToken);
 
 
 
