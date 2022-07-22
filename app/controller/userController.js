@@ -21,9 +21,10 @@ schema.is().min(6).is().not().oneOf(worthPassword);
 .has().not().spaces() // Should not have spaces
 .is().not().oneOf() */
 
-//~ FUNCTIONS
+// FUNCTIONS
 
-//~---------------------------------------FETCH ALL USERS
+// ------------------------------------------------------- FETCH ALL USERS
+// ------------------------------------------------------------------------
 
 async function fetchAllUsers(req, res) {
     try {
@@ -36,9 +37,12 @@ async function fetchAllUsers(req, res) {
     }
 }
 
+// ------------------------------------------------------- FETCH ONE USER
+// -----------------------------------------------------------------------
+
 async function fetchOneUser(req, res) {
     try {
-        const userId = +req.params.id;
+        const userId = req.user.id;
         if (isNaN(userId)) return _500(err, req, res);
 
         const user = await User.findOneCar(userId);
@@ -50,9 +54,12 @@ async function fetchOneUser(req, res) {
     }
 }
 
+// ------------------------------------------------------- LOGIN USER 
+// -------------------------------------------------------------------
+
 async function loginUser(req, res) {
     try {
-        const { email, password } = req.body;
+        const { email, password } = +req.body;
 
         // Checks if email is valid
         if (!emailValidator.validate(email)) return _500(err, req, res);
@@ -75,6 +82,9 @@ async function loginUser(req, res) {
         res.status(401).json({ error: error.message });
     }
 }
+
+// ------------------------------------------------------- LOGOUT USER 
+// --------------------------------------------------------------------
 
 async function logoutUser(req, res) {
     try {
@@ -99,6 +109,9 @@ async function logoutUser(req, res) {
         res.status(401).json({ error: error.message });
     }
 }
+
+// ------------------------------------------------------- CREATE USER 
+// -------------------------------------------------------------------
 
 async function createUser(req, res) {
     try {
@@ -140,9 +153,12 @@ async function createUser(req, res) {
     }
 }
 
+// ------------------------------------------------------- UPDATE USER 
+// --------------------------------------------------------------------
+
 async function updateUser(req, res) {
     try {
-        const userId = +req.params.id;
+        const userId = +req.user.id;;
         let userInfo = await User.findOneUser(userId);
 
         for (const key in userInfo) {
@@ -157,9 +173,12 @@ async function updateUser(req, res) {
     }
 }
 
+// ------------------------------------------------------- UPDATE USER 
+// --------------------------------------------------------------------
+
 async function deleteUser(req, res) {
     try {
-        const userId = +req.params.id;
+        const userId = +req.user.id;;
         await User.deleteUser(userId);
 
         return res.status(200).json(`L'utilisateur a bien été supprimé`);
@@ -167,6 +186,9 @@ async function deleteUser(req, res) {
         _500(err, req, res);
     }
 }
+
+// ------------------------------------------------------- REFRESH TOKEN 
+// ----------------------------------------------------------------------
 
 async function refreshToken(req, res) {
     const authHeader = req.headers["authorization"];
@@ -200,5 +222,5 @@ export {
     createUser,
     updateUser,
     deleteUser,
-    refreshToken,
+    refreshToken
 };

@@ -1,6 +1,73 @@
-@entrypoint=http://localhost:5000
+@entrypoint=http://localhost:5000/api/v1
 
-##----------------------------------------------
-##---------------- USERS -----------------------
+##--------------------------------------------------------------- USERS
+## ---------------------------------------------------------------------
 
-GET {{entrypoint}}/api/user/login
+
+
+GET {{entrypoint}}/users
+
+###
+POST {{entrypoint}}/user/register
+Content-Type: application/json
+
+{
+    "username": "test",
+    "email": "test@example.com",
+    "password": "helloo"
+}
+
+###
+POST {{entrypoint}}/user/login
+Content-Type: application/json
+
+{
+    "email": "test@example.com",
+    "password": "helloo"
+}
+
+###
+GET {{entrypoint}}/user/logout
+
+###
+GET {{entrypoint}}/user/profile
+Authorization: Bearer "access_token"
+
+###
+PATCH {{entrypoint}}/user/profile
+
+### 
+DELETE {{entrypoint}}/user/profile
+
+###
+GET {{entrypoint}}/refresh_token
+
+## --------------------------------------------------------------- CARS 
+## ---------------------------------------------------------------------
+
+###
+GET {{entrypoint}}/cars
+
+###
+GET {{entrypoint}}/car/:id
+
+###
+POST {{entrypoint}}/car
+
+###
+PATCH {{entrypoint}}/car/:id
+
+###
+DELETE {{entrypoint}}/car/:id
+
+##--------------------------------------------------------------- CATEGORIES
+## ---------------------------------------------------------------------
+
+##--------------------------------------------------------------- LOCATION
+## ---------------------------------------------------------------------
+
+##--------------------------------------------------------------- NETWORK
+## ---------------------------------------------------------------------
+
+##--------------------------------------------------------------- ROADS
+## ---------------------------------------------------------------------
