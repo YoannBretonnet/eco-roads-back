@@ -6,8 +6,8 @@ class User {
         return findAll();
     }
 
-    static async findOneUser(email) {
-        return findOne(email);
+    static async findOneUser(email, COLUMN_NAME) {
+        return findOne(email, COLUMN_NAME);
     }
 
     static async createUser(userData) {

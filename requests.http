@@ -1,4 +1,4 @@
-@entrypoint=http://localhost:5000/api/v1
+@entrypoint=http://localhost:4567/api/v1
 
 ##--------------------------------------------------------------- USERS
 ## ---------------------------------------------------------------------
@@ -12,9 +12,11 @@ POST {{entrypoint}}/user/register
 Content-Type: application/json
 
 {
-    "username": "test",
     "email": "test@example.com",
-    "password": "helloo"
+    "password": "helloo",
+    "username": "test",
+    "location_id": 1,
+    "car_id": 1
 }
 
 ###
@@ -31,7 +33,7 @@ GET {{entrypoint}}/user/logout
 
 ###
 GET {{entrypoint}}/user/profile
-Authorization: Bearer "access_token"
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjcwMThmZjcyLWViYWEtNDc0Mi04Y2RmLWFhYzAzNjA3YWEyYiIsImVtYWlsIjoidGVzdEBleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJDcvdmtJbGFxcGNrcE1ObGZRdmU3aS4vaEU3ZVcyMm90anNBZWd4TjBGZS9DYnhuNHE2dERDIiwidXNlcm5hbWUiOiJ0ZXN0IiwibG9jYXRpb25faWQiOjEsImNhcl9pZCI6MSwiY3JlYXRlZF9hdCI6IjIwMjItMDctMjJUMTY6MDM6MDAuODUzWiIsInVwZGF0ZWRfYXQiOm51bGwsImlhdCI6MTY1ODUwODkyOCwiZXhwIjoxNjU4NTEwNzI4fQ.RxS8vHvvwYDXOdIJTihKBWzDp0mbV-L6bPSIYhyC7TM
 
 ###
 PATCH {{entrypoint}}/user/profile
