@@ -45,7 +45,6 @@ async function fetchOneUser(req, res) {
 
     try {
         const userId = req.user.id;
-        console.log("🚀 ~ fetchOneUser ~ userId", userId)
         if (!userId) return res.status(401).json({error: "Autorisation refusée"})
 
         const user = await User.findOneUser(userId, "id");
@@ -65,7 +64,7 @@ async function loginUser(req, res) {
         const { email, password } = req.body;
         //~ Checks if email is valid
 
-        if (!emailValidator.validate(email)) return res.status(401).json({error: "Email is incorrect"});
+        if (!emailValidator.validate(email)) return res.status(401).json({error: "L'email est incorrect"});
 
         const user = await User.findOneUser(email, "email");
 

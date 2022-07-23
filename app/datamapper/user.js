@@ -8,7 +8,6 @@ const TABLE_NAME = "user";
 // ~ *** *** FIND ALL USERS *** *** ~ //
 // ~ ****************************** ~ //
 async function findAll() {
-    console.log("je suis dans le findAll datamapper");
     const result = await pool.query(`SELECT * FROM "${TABLE_NAME}";`);
 
     return result.rows;
@@ -20,8 +19,6 @@ async function findAll() {
 async function findOne(email, COLUMN_NAME) {
 
     const result = await pool.query(`SELECT * FROM "${TABLE_NAME}" WHERE ${COLUMN_NAME} = $1;`, [email]);
-    console.log("🚀 ~ file: user.js ~ line 23 ~ findOne ~ result", result)
-
 
     return result;
 }
