@@ -19,6 +19,7 @@ const app = express();
 // If you have your node.js behind a proxy and are using secure: true, you need to set 'trust proxy' in express
 app.set("trust proxy", 1); // trust first proxy
 
+
 // ~ *** *** SESSION CONFIG *** *** ~ //
 // ~ ****************************** ~ //
 

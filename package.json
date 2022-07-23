@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "projet-12-e-co-roads-back",
   "version": "1.0.0",
   "description": "API for mapping application",
