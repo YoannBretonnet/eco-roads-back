@@ -25,6 +25,9 @@ import { authenticateToken } from "../middleware/auth.js";
 import { userSchema } from "../schema/user.js";
 import { validation } from "../service/validation.js";
 
+// ~ *** *** ROUTE *** *** ~ //
+// ~ ********************* ~ //
+
 router.get("/users", fetchAllUsers);
 // connection
 router.post("/user/register",  createUser);
@@ -38,6 +41,5 @@ router.delete("/user/profile", deleteUser);
 //refreshToken
 router.get('/refresh_token', refreshToken);
 
-
-
 export { router };
+
