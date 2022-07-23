@@ -46,10 +46,17 @@ const corsOptions = { credentials:true, origin: process.env.URL || '*'};
 
 
 app.use(cors(corsOptions));
-app.use(json());
+// ~ *** *** PARSER CONFIG *** *** ~ //
+// ~ ***************************** ~ //
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 app.use(cookieParser());
 
+
 app.use('/', express.static(join(__dirname, 'public')));
+
 
 app.use(router)
 
