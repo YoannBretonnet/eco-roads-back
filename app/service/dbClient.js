@@ -13,11 +13,13 @@ const localPoolConfig = {
     database: 'ecoroads'
 };
 
-const poolConfig = process.env.DATABASE_URL ? { connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } } : localPoolConfig; 
+// const poolConfig = process.env.DATABASE_URL ? { connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } } : localPoolConfig; 
 
-const pool = new Pool(poolConfig);
+// const pool = new Pool(poolConfig);
 
-// pool.connect()
+const pool = new Pool({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } })
+
+pool.connect()
 // .then( () => logger('DB connection is live.'))
 // .catch((err) => logger('DB connection failed.', err));
 

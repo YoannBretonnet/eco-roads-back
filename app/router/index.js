@@ -5,7 +5,7 @@ router.get("/", (req, res) => {
     res.send("Welcome");
 });
 
-USER ROUTE
+// USER ROUTE
 import { router as userRouter } from "./users.js";
 router.use("/api/v1", userRouter);
 
