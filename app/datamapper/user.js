@@ -45,7 +45,9 @@ async function createData(userData) {
 // ~ *** *** UPDATE USER *** *** ~ //
 // ~ *************************** ~ //
 
+
 async function updateData(userId, userData) {
+    
     const { email, password, username, location_id, car_id } = userData;
 
     const sql = {
