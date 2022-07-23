@@ -6,7 +6,7 @@ import 'dotenv/config';
 // ~ *** *** EXPRESS CONFIG *** *** ~ //
 // ~ ****************************** ~ //
 
-import express, {json} from 'express';
+import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import { dirname, join } from 'path';
@@ -41,7 +41,7 @@ app.use(session({
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const PORT = process.env.PORT ?? 5000;
+const PORT = process.env.PORT || 5000;
 const corsOptions = { credentials:true, origin: process.env.URL || '*'};
 
 
