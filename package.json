@@ -24,7 +24,6 @@
   },
   "homepage": "https://github.com/O-clock-Cassini/projet-12-e-co-roads-back#readme",
   "dependencies": {
-    "bcrypt": "^5.0.1",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",

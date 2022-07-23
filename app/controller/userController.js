@@ -89,8 +89,7 @@ async function loginUser(req, res) {
 
 // ------------------------------------------------------- LOGOUT USER
 // --------------------------------------------------------------------
-// 
-//tester.logout
+
 async function logoutUser(req, res) {
     try {
         const authHeader = req.headers["authorization"];
