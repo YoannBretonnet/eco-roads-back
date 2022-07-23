@@ -1,6 +1,7 @@
 {
   "type": "module",
   "name": "projet-12-e-co-roads-back",
+
   "jest": {
     "transform": {
       "^.+\\.(ts|tsx)$": "ts-jest"

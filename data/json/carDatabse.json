@@ -1,0 +1,98 @@
+[
+    {
+        "brand": "Renault",
+        "model": "Zoé",
+        "image": "",
+        "network_id": 3
+    },
+    {
+        "brand": "Renault",
+        "model": "Twingo",
+        "image": "",
+        "network_id": 3
+    },
+    {
+        "brand": "Renault",
+        "model": "Megane",
+        "image": "",
+        "network_id": 3
+    },
+    {
+        "brand": "Peugeot",
+        "model": "e-208",
+        "image": "",
+        "network_id": 3
+    },
+    {
+        "brand": "Peugeot",
+        "model": "e-2008",
+        "image": "",
+        "network_id": 3
+    },
+    {
+        "brand": "Hyundai",
+        "model": "Kona",
+        "image": "",
+        "network_id": 4
+    },
+    {
+        "brand": "Hyundai",
+        "model": "Ioniq",
+        "image": "",
+        "network_id": 4
+    },
+    {
+        "brand": "Audi",
+        "model": "e-tron S",
+        "image": "",
+        "network_id": 2
+    },
+    {
+        "brand": "Audi",
+        "model": "e-tron GT Quattro",
+        "image": "",
+        "network_id": 2
+    },
+    {
+        "brand": "Audi",
+        "model": "Q4 e-tron",
+        "image": "",
+        "network_id": 2
+    },
+    {
+        "brand": "Tesla",
+        "model": "Model S",
+        "image": "",
+        "network_id": 1
+    },
+    {
+        "brand": "Tesla",
+        "model": "Model X",
+        "image": "",
+        "network_id": 1
+    },
+    {
+        "brand": "Tesla",
+        "model": "Model Y",
+        "image": "",
+        "network_id": 1
+    },
+    {
+        "brand": "Volkswagen",
+        "model": "TD.3",
+        "image": "",
+        "network_id": 3
+    },
+    {
+        "brand": "Volkswagen",
+        "model": "ID.4",
+        "image": "",
+        "network_id": 3
+    },
+    {
+        "brand": "Volkswagen",
+        "model": "ID.Buzz",
+        "image": "",
+        "network_id": 3
+    }
+]

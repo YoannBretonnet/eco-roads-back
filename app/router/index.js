@@ -1,16 +1,17 @@
 import { Router } from "express";
 const router = Router();
 
-import { router as userRouter } from "./users.js";
-
-import { router as carRouter } from "./car.js";
-
 router.get("/", (req, res) => {
     res.send("Welcome");
 });
 
-
+USER ROUTE
+import { router as userRouter } from "./users.js";
 router.use("/api/v1", userRouter);
+
+// CAR ROUTE
+import { router as carRouter } from "./car.js";
 router.use("/api/v1", carRouter);
 
 export { router };
+
