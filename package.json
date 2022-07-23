@@ -1,11 +1,9 @@
 {
-  "type": "module",
   "name": "projet-12-e-co-roads-back",
   "version": "1.0.0",
   "description": "API for mapping application",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
@@ -15,15 +13,16 @@
   },
   "keywords": [
     "API",
-    "mapping"
+    "MAPPING"
   ],
-  "author": "AlexandreHumbert, Océane Vignot (Incitis), GaetanSantucci",
+  "author": "AlexandreHumbert, Océane Vignot (Incitis)",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/O-clock-Cassini/projet-12-e-co-roads-back/issues"
   },
   "homepage": "https://github.com/O-clock-Cassini/projet-12-e-co-roads-back#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
@@ -38,7 +37,6 @@
     "swagger-ui-express": "^4.5.0"
   },
   "devDependencies": {
-    "debug": "^4.3.4",
-    "jest": "^28.1.3"
+    "debug": "^4.3.4"
   }
 }
