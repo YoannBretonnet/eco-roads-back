@@ -16,6 +16,13 @@ import { router } from "./app/router/index.js";
 
 const app = express();
 
+// ~ *** *** SWAGGER CONFIG *** *** ~ //
+// ~ ****************************** ~ //
+
+import { specs, serve, setup, cssOptions} from './app/swaggerDocs/swaggerDocs.js';
+
+app.use('/api-docs', serve, setup(specs, cssOptions));
+
 // If you have your node.js behind a proxy and are using secure: true, you need to set 'trust proxy' in express
 app.set("trust proxy", 1); // trust first proxy
 
