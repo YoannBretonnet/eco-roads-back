@@ -43,10 +43,6 @@ const options = {
                 description: "API v1/users",
             },
             {
-                url: "https://eco-roads.herokuapp.com/api/v1/brands",
-                description: "API v1/brands",
-            },
-            {
                 url: "https://eco-roads.herokuapp.com/api/v1/cars",
                 description: "API v1/cars",
             },
