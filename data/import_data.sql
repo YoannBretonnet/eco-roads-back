@@ -15,24 +15,33 @@ VALUES
     ('Ionity'),
     ('Totalenergies');
 
+INSERT INTO "brand"("name")
+VALUES
+    ('Renault'),
+    ('Peugeot'),
+    ('Hyundai'),
+    ('Audi'),
+    ('Tesla'),
+    ('Volkswagen'),
+
 INSERT INTO "car"("brand", "model", "image","network_id")
 VALUES
-    ('Renault','Zoé','renault-zoe-2-medium.png',3),
-    ('Renault','Twingo','renault_twingo.png',3),
-    ('Renault','Mégane','renault_megane.png',3),
-    ('Peugeot','e-208','peugeot-e-208-1.png',3),
-    ('Peugeot','e-2008','peugeot-e-2008.png',3),
-    ('Hyundai','Kona','Hyundai_Kona_remove.png',4),
-    ('Hyundai','Ioniq','hyundai-ioniq_w.png',4),
-    ('Audi','e-tron S','Audi_E-tron_S_remove.png',2),
-    ('Audi','e-tron GT Quattro','Audi_E-tron_GT_Quattro_remove.png',2),
-    ('Audi','Q4 e-tron','Audi_Q4_E-tron_remove.png',2),
-    ('Tesla','Model S','tesla_model_s.png',1),
-    ('Tesla','Model X','Tesla_Model_X2_remove.png',1),
-    ('Tesla','Model Y','Tesla_Model_Y2_remove.png',1),
-    ('Volkswagen','ID.3','volkswagen-id3-medium.png',3),
-    ('Volkswagen','ID.4','Volkswagen_ID.4_remove.png',3),
-    ('Volkswagen','ID.Buzz','Volkswagen_ID.Buzz_remove.png',3);
+    (1,'Zoé','renault-zoe-2-medium.png',3),
+    (1,'Twingo','renault_twingo.png',3),
+    (1,'Mégane','renault_megane.png',3),
+    (2,'e-208','peugeot-e-208-1.png',3),
+    (2,'e-2008','peugeot-e-2008.png',3),
+    (3,'Kona','Hyundai_Kona_remove.png',4),
+    (3,'Ioniq','hyundai-ioniq_w.png',4),
+    (4,'e-tron S','Audi_E-tron_S_remove.png',2),
+    (4,'e-tron GT Quattro','Audi_E-tron_GT_Quattro_remove.png',2),
+    (4,'Q4 e-tron','Audi_Q4_E-tron_remove.png',2),
+    (5,'Model S','tesla_model_s.png',1),
+    (5,'Model X','Tesla_Model_X2_remove.png',1),
+    (5,'Model Y','Tesla_Model_Y2_remove.png',1),
+    (6,'ID.3','volkswagen-id3-medium.png',3),
+    (6,'ID.4','Volkswagen_ID.4_remove.png',3),
+    (6,'ID.Buzz','Volkswagen_ID.Buzz_remove.png',3);
 
 INSERT INTO "location"("address", "street_number", "zipcode", "city" "lat", "lon")
 VALUES

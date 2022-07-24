@@ -5,14 +5,15 @@ createuser -l -P ecoroads
 # #revient a faire CREATE USER ecoRoads WITH PASSWORD ecoRoads;
 
 # #* 2 - Création d'une BDD ainsi que le propriétaire
-createdb -O ecoroads ecoroads
+#createdb -O ecoroads ecoroads
 # #revient a faire CREATE DATABASE OWNER ecoRoads;
 
 # #* 3 - Initialiser Sqitch
-sqitch init ecoroads --engine pg
+#sqitch init ecoroads --engine pg
 
 #* 4 - Création d'une version 1 pour la BDD
-sqitch add 01.init -n "create tables"
+#sqitch add 01.init -n "create tables"
+sqitch add 02.add_table_brand -n "modification table car and add table brand"
 
 #* 5 - Initialiser Sqitch dans le terminal
 #sh init.sh

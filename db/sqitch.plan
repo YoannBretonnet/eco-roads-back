@@ -2,3 +2,4 @@
 %project=ecoroads
 
 01.init 2022-07-21T11:55:02Z Etudiant O'clock <student@teleporter> # create tables
+02.add_table_brand 2022-07-24T16:09:01Z gtn83 <gtn83@TDGarden> # modification table car and add table brand

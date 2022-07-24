@@ -2,6 +2,12 @@
 
 BEGIN;
 
--- XXX Add verifications here.
+SELECT * FROM "user";
+
+SELECT * FROM "brand";
+
+SELECT * FROM "car";
+
+SELECT * FROM "location";
 
 ROLLBACK;

@@ -8,8 +8,9 @@ import { fetchAllCars, fetchOneCar, createCar, updateCar, deleteCar } from '../c
 // ROUTES CAR
 
 router.get('/cars', fetchAllCars);
-router.get('/car/:id', fetchOneCar);
 router.post('/cars', createCar);
+
+router.get('/car/:id', fetchOneCar);
 router.patch('/car/:id', updateCar);
 router.delete('/car/:id', deleteCar);
 
