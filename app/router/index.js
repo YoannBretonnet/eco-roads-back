@@ -19,27 +19,28 @@ router.use("/api/v1", userRouter);
 import { router as carRouter } from "./car.js";
 router.use("/api/v1", carRouter);
 
-// // NETWORK ROUTES
+// CHECK a decommenter au fur et a mesure de l'implementation des routes
+// NETWORK ROUTES
 // import { router as networkRouter } from "./network.js";
 // router.use("/api/v1", networkRouter);
 
-// // CHARGING_STATION ROUTES
+// CHARGING_STATION ROUTES
 // import { router as stationRoute } from "./station.js";
 // router.use("/api/v1", stationRoute);
 
-// // CATEGORY ROUTES
+// CATEGORY ROUTES
 // import { router as categoryRouter } from "./category.js";
 // router.use("/api/v1", categoryRouter);
 
-// // INTERESTING_POINTS ROUTES
+// INTERESTING_POINTS ROUTES
 // import { router as interestingRouter } from "./interesting.js";
 // router.use("/api/v1", interestingRouter);
 
-// // LOCATION ROUTES
+// LOCATION ROUTES
 // import { router as locationRouter } from "./location.js";
 // router.use("/api/v1", locationRouter);
 
-// // ROAD ROUTES
+// ROAD ROUTES
 // import { router as roadRouter } from "./road.js";
 // router.use("/api/v1", roadRouter);
 
