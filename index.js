@@ -16,7 +16,7 @@ const app = express();
 
 // ~ *** *** SWAGGER CONFIG *** *** ~ //
 // ~ ****************************** ~ //
-import { specs, serve, setup, cssOptions} from './app/swaggerDocs/swaggerDocs.js';
+import { specs, serve, setup, cssOptions} from './swaggerDocs/swaggerDocs.js';
 app.use('/api-docs', serve, setup(specs, cssOptions));
 
 

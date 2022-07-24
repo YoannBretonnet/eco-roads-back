@@ -11,11 +11,11 @@ import { networks, networkId } from './network.js';
 import { stations, stationId } from './station.js';
 import { locations, locationId } from './location.js';
 import { interestings, interestingId } from './interesting.js';
-import{ categories, categoryId } from './categories.js';
+import { categories, categoryId } from './category.js';
 import { roads, roadId } from './road.js';
+import { loginId } from './login.js';
 
 import { components } from './swagger-utils/swaggerComponents.js';
-import { brands } from './brand.js';
 
 const options = {
 
@@ -43,10 +43,6 @@ const options = {
             {
                 url: 'https://eco-roads.herokuapp.com/api/v1',
                 description: 'API v1'
-            },
-            {
-                url: 'https://eco-roads.herokuapp.com/api/v2',
-                description: 'API v2'
             }
         ],
     
@@ -55,7 +51,9 @@ const options = {
 
             //~ ------------- USERS
             '/users' : users,
-            '/users/{id}' : userId,
+            '/user/profile' : userId,
+            '/user/login' : loginId,
+
             
             //~ ------------- BRANDS
             '/brands' : brands,
@@ -80,6 +78,7 @@ const options = {
             //~ ------------- LOCATIONS
             '/locations' : locations,
             '/location/{id}' : locationId,
+
             //~ ------------- CATEGORIES
             '/categories' : categories,
             '/category/{id}' : categoryId,
@@ -111,7 +110,7 @@ const options = {
 const specs = swaggerJSDoc(options);
 
 const cssOptions = {
-    customCss :swaggerDarkCss,
+    customCss : swaggerDarkCss,
     customSiteTitle: "API_ECO-ROADS"
 }
 

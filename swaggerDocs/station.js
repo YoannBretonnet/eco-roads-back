@@ -1,5 +1,5 @@
 //~ ------------------------------ IMPORTATIONS EXAMPLES / STATUS CODES
-import { stationProperties, stationExample } from './swagger-utils/ecoExample.js';
+import { StationProperties, StationExample } from './swagger-utils/ecoExample.js';
 import { error400, error404 } from './swagger-utils/swaggerStatus.js';
 
 
@@ -15,8 +15,8 @@ const stations = {
                     'application/json': {
                         schema: {
                             type: 'object',
-                            properties: stationProperties,
-                            example: stationExample
+                            properties: StationProperties,
+                            example: StationExample
                         }
                     }
                 }
@@ -36,8 +36,8 @@ const stations = {
                     'application/json': {
                         schema: {
                             type: 'object',
-                            properties: stationProperties,
-                            example: stationExample
+                            properties: StationProperties,
+                            example: StationExample
                         }
                     }
                 }
@@ -70,8 +70,8 @@ const stationId = {
                     'application/json': {
                         schema: {
                             type: 'object',
-                            properties: stationProperties,
-                            example: stationExample
+                            properties: StationProperties,
+                            example: StationExample
                         }
                     }
                 },

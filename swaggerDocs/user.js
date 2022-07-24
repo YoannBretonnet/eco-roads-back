@@ -23,34 +23,14 @@ const users = {
             },
             404: error404
         }
-    },
-
-    //~ --------------------------------------------- CREATE USER
-    post: {
-        tags: ['Users'],
-        summary: `Creation of a new user`,
-        responses: {
-            201: {
-                description: 'Successful requestessful request and user created',
-                content: {
-                    'application/json': {
-                        schema: {
-                            type: 'object',
-                            properties: UserProperties,
-                            example: UserExample
-                        }
-                    }
-                }
-            },
-            400: error400
-        }
     }
+
 };
 
 const userId = {
     //~ --------------------------------------------- FETCH ONE USER
     get: {
-        tags: ['Users'],
+        tags: ['User'],
         summary: `Retrieve the user by his Id`,
         parameters: [
             {
@@ -58,10 +38,10 @@ const userId = {
                 in: 'params',
                 required: true,
                 schema: {
-                    type: 'integer',
-                    example: 1
+                    type: 'uuid',
+                    example: '63d7ff14-698c-4e20-b5a3-9563b4855929'
                 },
-                description: 'Id to retrieve a user'
+                description: 'UUID to retrieve a user'
             }
         ],
         responses: {
@@ -83,9 +63,31 @@ const userId = {
         }
     },
 
+    
+    //~ --------------------------------------------- CREATE USER
+    post: {
+        tags: ['User'],
+        summary: `Creation of a new user`,
+        responses: {
+            201: {
+                description: 'Successful requestessful request and user created',
+                content: {
+                    'application/json': {
+                        schema: {
+                            type: 'object',
+                            properties: UserProperties,
+                            example: UserExample
+                        }
+                    }
+                }
+            },
+            400: error400
+        }
+    },
+
     //~ ------------------------------------------------------------------- UPDATE USER
     patch: {
-        tags: ['Users'],
+        tags: ['User'],
         summary: `Updating user Information`,
         parameters: [
             {
@@ -93,10 +95,10 @@ const userId = {
                 in: 'params',
                 required: true,
                 schema: {
-                    type: 'integer',
-                    example: 1
+                    type: 'uuid',
+                    example: '63d7ff14-698c-4e20-b5a3-9563b4855929'
                 },
-                description: 'Id to update a user'
+                description: 'UUID to update a user'
             }
         ],
         responses: {
@@ -121,7 +123,7 @@ const userId = {
 
     //~ --------------------------------------------- DELETE USER
     delete: {
-        tags: ['Users'],
+        tags: ['User'],
         summary: `Deleting a user`,
         parameters: [
             {
@@ -129,10 +131,10 @@ const userId = {
                 in: 'params',
                 required: true,
                 schema: {
-                    type: 'integer',
-                    example: 1
+                    type: 'uuid',
+                    example: '63d7ff14-698c-4e20-b5a3-9563b4855929'
                 },
-                description: 'Id to delete a user'
+                description: 'UUID to delete a user'
             }
         ],
         responses: {

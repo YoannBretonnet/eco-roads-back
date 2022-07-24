@@ -28,9 +28,10 @@ import { validation } from "../service/validation.js";
 // ~ *** *** ROUTE *** *** ~ //
 // ~ ********************* ~ //
 
-router.get("/users", fetchAllUsers);
+router.get("/users", validation.body(userSchema) ,fetchAllUsers);
 // connection
 router.post("/user/register",  createUser);
+
 router.post("/user/login", loginUser);
 router.get("/user/logout", logoutUser)
 // profile routes

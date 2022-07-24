@@ -1,6 +1,6 @@
 //~ ------------------------------ IMPORTATIONS EXAMPLES / STATUS CODES
 import { CarProperties, CarExample } from './swagger-utils/ecoExample.js';
-import { error400, error404 } from './swagger-utils/swaggerStatus.js';
+import { error400, error401, error404 } from './swagger-utils/swaggerStatus.js';
 
 
 const cars = {
@@ -42,7 +42,7 @@ const cars = {
                     }
                 }
             },
-            400: error400
+            401: error401
         }
     }
 };

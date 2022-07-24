@@ -52,7 +52,7 @@ async function fetchOneUser(req, res) {
         if (user) res.status(200).json(user.rows[0]);
         else throw new Error(`L'utilisateur n'existe pas`);
     } catch (err) {
-        _500(err, req, res);
+        return _500(err, req, res);
     }
 }
 
@@ -81,9 +81,7 @@ async function loginUser(req, res) {
         res.cookie("refreshToken", refreshToken, { httpOnly: true });
         res.json({ accesToken: accessToken });
     } catch (err) {
-        console.error(err)
-        return;
-        // res.status(401).json({ error: err.message });
+        return _500(err, req, res);
     }
 }
 

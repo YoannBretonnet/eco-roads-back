@@ -9,7 +9,7 @@ import { fetchAllCars, fetchOneCar, createCar, updateCar, deleteCar } from '../c
 
 router.get('/cars', fetchAllCars);
 router.get('/car/:id', fetchOneCar);
-router.post('/car', createCar);
+router.post('/cars', createCar);
 router.patch('/car/:id', updateCar);
 router.delete('/car/:id', deleteCar);
 
