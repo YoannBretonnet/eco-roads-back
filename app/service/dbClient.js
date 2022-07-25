@@ -14,14 +14,14 @@ const localPoolConfig = {
 
 // const poolConfig = process.env.DATABASE_URL ? { connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } } : localPoolConfig;
 
-// const pool = new Pool(poolConfig);
+const pool = new Pool(localPoolConfig);
 
-const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
-    ssl: { rejectUnauthorized: false },
-});
+// const pool = new Pool({
+//     connectionString: process.env.DATABASE_URL,
+//     ssl: { rejectUnauthorized: false },
+// });
 
-pool.connect();
+// pool.connect();
 // .then( () => logger('DB connection is live.'))
 // .catch((err) => logger('DB connection failed.', err));
 

@@ -1,6 +1,4 @@
-
 import pool from "../service/dbClient.js";
-
 
 const TABLE_NAME = "car";
 
@@ -15,9 +13,12 @@ async function findAll() {
 //~---------------------------------------------------------------------FIND ONE CAR
 
 async function findOne(carId) {
-
     const result = await pool.query(`SELECT * FROM "${TABLE_NAME}" WHERE "id" = $1;`, [carId]);
-
+    //const testCar = await pool.query(
+    //    `SELECT brand.name, car.model FROM brand INNER JOIN car ON car.brand_id = brand.id WHERE "brand_id" = $1;`,
+    //    [carId],
+    //);
+    //return testCar.rows[0];
     return result.rows[0];
 }
 
@@ -70,7 +71,6 @@ async function updateData(carId, carData) {
 //~----------------------------------------------------------DELETE CAR
 
 async function deleteData(carId) {
-
     const result = await pool.query(`DELETE FROM "${TABLE_NAME}" WHERE "id" = $1;`, [carId]);
 
     return result.rowCount;

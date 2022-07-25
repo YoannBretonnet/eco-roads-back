@@ -126,13 +126,12 @@ async function logoutUser(req, res) {
 async function createUser(req, res) {
     try {
         let { email, password, username } = req.body;
-        // let { email, password, username, departSelected, car, category } = req.body;
 
         //  Search if the user is already in the database
-        const user = await User.findOneUser(email);
+        const user = await User.findOneUser(email, "email");
 
         // Checks if the user already exists and checks with emailValidator and passwordValidator
-        if (user) throw new Error(`${email} existe déjà`);
+        if (user.rowCount !== 0) throw new Error(`${email} existe déjà`);
         if (!emailValidator.validate(email))
             return res.status(500).json({ message: `${email} invalide !` });
         if (!schema.validate(password))
@@ -141,10 +140,6 @@ async function createUser(req, res) {
                 .json({ message: "Le mot de passe doit contenir au moins 6 caractères." });
         if (!username)
             return res.status(500).json({ message: "Merci de renseigner un nom d'utilisateur" });
-
-        // If validation ok, defined a value null for columns not obligatories
-        // location_id === undefined ? (location_id = 1 ) : location_id;
-        // car_id === undefined ? (car_id = 1) : car_id;
 
         const hashPassword = await bcrypt.hash(password, 10);
 
@@ -174,6 +169,7 @@ async function createUser(req, res) {
 
         res.status(200).json({ message: "L'utilisateur a bien été créé" });
     } catch (err) {
+        console.log(" ERROR CONTROLLER");
         _500(err, req, res);
     }
 }
@@ -183,17 +179,43 @@ async function createUser(req, res) {
 
 async function updateUser(req, res) {
     try {
-        const userId = +req.user.id;
-        let userInfo = await User.findOneUser(userId);
+        const userId = req.user.id;
+        let userInfo = await User.findOneUser(userId, "id");
+        
 
-        for (const key in userInfo) {
-            req.body[key] ? req.body[key] : (req.body[key] = userInfo[key]);
+        for (const key in userInfo.rows[0]) {
+        console.log("🚀 ~ file: userController.js ~ line 187 ~ updateUser ~ userInfo", userInfo)
+            
+            req.user[key] ? req.user[key] : (req.user[key] = userInfo[key]);
+            console.log("🚀 ~ file: userController.js ~ line 190 ~ updateUser ~ req.body[key]", req.body[key])
         }
+
+        // if (userInfo.rowCount !== 0) throw new Error(`${email} existe déjà`);
+        // if (!emailValidator.validate(email))
+        //     return res.status(500).json({ message: `${email} invalide !` });
+        // if (!schema.validate(password))
+        //     return res
+        //         .status(500)
+        //         .json({ message: "Le mot de passe doit contenir au moins 6 caractères." });
+        // if (!username)
+        //     return res.status(500).json({ message: "Merci de renseigner un nom d'utilisateur" });
+
+        // const hashPassword = await bcrypt.hash(password, 10);
+
+        // const updatedUser = {
+        //     email: 
+        //     password: hashPassword,
+        //     username,
+
+        //     // address,
+        //     // car,
+        //     // category
+        // };
 
         await User.updateUser(userId, userInfo);
 
         res.status(200).json({ message: "L'utilisateur a bien été mis à jour" });
-    } catch (error) {
+    } catch (err) {
         _500(err, req, res);
     }
 }

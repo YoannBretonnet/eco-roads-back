@@ -1,4 +1,4 @@
-@entrypoint=https://eco-roads.herokuapp.com/api/v1
+@entrypoint=http://localhost:4100/api/v1
 
 ##--------------------------------------------------------------- USERS
 ## ---------------------------------------------------------------------
@@ -12,9 +12,11 @@ POST {{entrypoint}}/user/register
 Content-Type: application/json
 
 {
-    "email": "test@example.com",
+    "email": "newtest@example.com",
     "password": "helloo",
-    "username": "test"
+    "username": "WTFSSSSS",
+    "location_id": "12",
+    "car_id": "74"
 }
 
 ###
@@ -22,19 +24,30 @@ POST {{entrypoint}}/user/login
 Content-Type: application/json
 
 {
-    "email": "aymen@gmail.com",
+    "email": "newtest@example.com",
     "password": "helloo"
 }
 
 ###
 GET {{entrypoint}}/user/logout
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRiYzYxOTU4LTliY2ItNDQwYS1hZmFmLTM0ZjlmNjg4ODU1ZSIsImVtYWlsIjoiZ2FldGFuQGV4YW1wbGUuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkV0pDZURFWWtJYXNFNDBwbXpBVGIydUFuTU0wQm4xam5zTWlvRGlrOVRuYWhvRDB3Tk9yMm0iLCJ1c2VybmFtZSI6ImdhZXRhbiIsImxvY2F0aW9uX2lkIjpudWxsLCJjYXJfaWQiOm51bGwsImNyZWF0ZWRfYXQiOiIyMDIyLTA3LTI1VDE1OjIzOjU0LjA2NVoiLCJ1cGRhdGVkX2F0IjpudWxsLCJpYXQiOjE2NTg3NjUzNTksImV4cCI6MTY1ODc2NzE1OX0.HhmssguzMVV6lgDoU1z2T0aSkUW9hw0mgrOh71IO1cY
 
 ###
 GET {{entrypoint}}/user/profile
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjcwMThmZjcyLWViYWEtNDc0Mi04Y2RmLWFhYzAzNjA3YWEyYiIsImVtYWlsIjoidGVzdEBleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJDcvdmtJbGFxcGNrcE1ObGZRdmU3aS4vaEU3ZVcyMm90anNBZWd4TjBGZS9DYnhuNHE2dERDIiwidXNlcm5hbWUiOiJ0ZXN0IiwibG9jYXRpb25faWQiOjEsImNhcl9pZCI6MSwiY3JlYXRlZF9hdCI6IjIwMjItMDctMjJUMTY6MDM6MDAuODUzWiIsInVwZGF0ZWRfYXQiOm51bGwsImlhdCI6MTY1ODUwODkyOCwiZXhwIjoxNjU4NTEwNzI4fQ.RxS8vHvvwYDXOdIJTihKBWzDp0mbV-L6bPSIYhyC7TM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRiYzYxOTU4LTliY2ItNDQwYS1hZmFmLTM0ZjlmNjg4ODU1ZSIsImVtYWlsIjoiZ2FldGFuQGV4YW1wbGUuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkV0pDZURFWWtJYXNFNDBwbXpBVGIydUFuTU0wQm4xam5zTWlvRGlrOVRuYWhvRDB3Tk9yMm0iLCJ1c2VybmFtZSI6ImdhZXRhbiIsImxvY2F0aW9uX2lkIjpudWxsLCJjYXJfaWQiOm51bGwsImNyZWF0ZWRfYXQiOiIyMDIyLTA3LTI1VDE1OjIzOjU0LjA2NVoiLCJ1cGRhdGVkX2F0IjpudWxsLCJpYXQiOjE2NTg3NjUzNTksImV4cCI6MTY1ODc2NzE1OX0.HhmssguzMVV6lgDoU1z2T0aSkUW9hw0mgrOh71IO1cY
 
 ###
 PATCH {{entrypoint}}/user/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRiYzYxOTU4LTliY2ItNDQwYS1hZmFmLTM0ZjlmNjg4ODU1ZSIsImVtYWlsIjoiZ2FldGFuQGV4YW1wbGUuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkV0pDZURFWWtJYXNFNDBwbXpBVGIydUFuTU0wQm4xam5zTWlvRGlrOVRuYWhvRDB3Tk9yMm0iLCJ1c2VybmFtZSI6ImdhZXRhbiIsImxvY2F0aW9uX2lkIjpudWxsLCJjYXJfaWQiOm51bGwsImNyZWF0ZWRfYXQiOiIyMDIyLTA3LTI1VDE1OjIzOjU0LjA2NVoiLCJ1cGRhdGVkX2F0IjpudWxsLCJpYXQiOjE2NTg3NjQxNDYsImV4cCI6MTY1ODc2NTk0Nn0.ii5kJbFAsfNxuLbBIgi0YI4miy9dNJMEfoiWTUN7Uz8
+Content-Type: application/json
+
+{
+    "email": "gaetan@example.com",
+    "password": "helloo",
+    "username": "Volcano63",
+    "location_id": "14",
+    "car_id": "65"
+}
 
 ### 
 DELETE {{entrypoint}}/user/profile
@@ -49,7 +62,7 @@ GET {{entrypoint}}/refresh_token
 GET {{entrypoint}}/cars
 
 ###
-GET {{entrypoint}}/car/:id
+GET {{entrypoint}}/car/80
 
 ###
 POST {{entrypoint}}/cars

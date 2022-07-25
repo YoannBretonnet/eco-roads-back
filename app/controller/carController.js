@@ -22,7 +22,7 @@ async function fetchAllCars(req, res) {
 
 async function fetchOneCar(req, res) {
     try {
-        const carId = +req.params.id;
+        const carId = req.params.id;
 
         const car = await Car.findOneCar(carId);
 
