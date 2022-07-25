@@ -24,8 +24,8 @@ async function findAll() {
 async function findOne(carId) {
     // const result = await pool.query(`SELECT * FROM "${TABLE_NAME}" WHERE "id" = $1;`, [carId]);
     const brand = await pool.query(
-       `SELECT brand.name, car.model FROM brand INNER JOIN car ON car.brand_id = brand.id WHERE "brand_id" = $1;`,
-       [carId]);
+        `SELECT brand.name, car.model FROM brand INNER JOIN car ON car.brand_id = brand.id WHERE "brand_id" = $1;`,
+        [carId]);
     return testCar.rows[0];
     // return result.rows[0];
 }
