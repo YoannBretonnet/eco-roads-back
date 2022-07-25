@@ -62,16 +62,21 @@ async function fetchOneUser(req, res) {
 async function loginUser(req, res) {
     try {
         const { email, password } = req.body;
+        console.log("🚀 ~~ password", password)
+        console.log("🚀  ~ loginUser ~ email", email)
         //~ Checks if email is valid
 
         if (!emailValidator.validate(email)) return res.status(401).json({error: "L'email est incorrect"});
 
         const user = await User.findOneUser(email, "email");
+        console.log("🚀 ~ file: userController.js ~ line 70 ~ loginUser ~ user", user.rows[0].password)
 
         if (user.rowCount === 0) return res.status(401).json({ error: "L'email saisi est érroné" });
 
         //~ Checks password
         const validPassword = await bcrypt.compare(password, user.rows[0].password);
+        console.log("🚀 line 78 ~ loginUser ~ validPassword", validPassword)
+        
         if (!validPassword) return res.status(401).json({ error: "Mot de passe incorrect" });
 
         // create token JWT
