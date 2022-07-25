@@ -6,6 +6,7 @@ import { User } from "../model/user.js";
 import { generateAccessToken, generateRefreshToken } from "../utils/jwtToken.js";
 
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 import emailValidator from "email-validator";
 import passwordValidator from "password-validator";
@@ -83,12 +84,8 @@ async function loginUser(req, res) {
         let refreshToken = generateRefreshToken(user.rows[0]);
 
         res.cookie("refreshToken", refreshToken, { httpOnly: true })
-            .cookie("accessToken", accessToken, { httpOnly: true })
-            .send()
+        .cookie("accessToken", accessToken, { httpOnly: true }).send();
 
-        // CHECK VOIR SI POSSIBILITES DE METTRE L ACCESS TOKEN DANS UN COOKIE
-        // res.cookie("accessToken", accessToken, { httpOnly: true });
-        // res.json({ accesToken: accessToken });
     } catch (err) {
         return _500(err, req, res);
     }
@@ -148,23 +145,8 @@ async function createUser(req, res) {
             email,
             password: hashPassword,
             username,
-            // address,
-            // car,
-            // category
         };
 
-        // const userAddress = {
-        //     address: departSelected.adress,
-        //     street_number: departSelected.street_number,
-        //     zipcode: departSelected.zipcode,
-        //     city: departSelected.city,
-        //     lat: departSelected.lat,
-        //     lon: departSelected.lon
-        // };
-
-        // const userCar = {
-        //     car_id: car.
-        // }
 
         await User.createUser(createdUser);
 
@@ -244,8 +226,8 @@ async function deleteUser(req, res) {
 // ----------------------------------------------------------------------
 
 async function refreshToken(req, res) {
-    const authHeader = req.headers["authorization"];
-    const token = authHeader && authHeader.split(" ")[1];
+    // const authHeader = req.headers["authorization"];
+    const token = req.cookies.refreshToken
     if (!token) {
         return res.sendStatus(401);
     }
@@ -260,10 +242,8 @@ async function refreshToken(req, res) {
 
         delete user.iat;
         delete user.exp;
-        const refreshedToken = generateAccessToken(user);
-        res.json({
-            accessToken: refreshedToken,
-        });
+        const refreshedAccessToken = generateAccessToken(user);
+        res.cookie("accessToken", refreshedAccessToken, { httpOnly: true }).send();
     });
 }
 
