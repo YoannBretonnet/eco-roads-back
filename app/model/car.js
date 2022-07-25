@@ -24,3 +24,4 @@ class Car {
 }
 
 export { Car };
+
