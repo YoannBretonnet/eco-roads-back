@@ -61,36 +61,32 @@ async function fetchOneUser(req, res) {
 async function loginUser(req, res) {
     try {
         const { email, password } = req.body;
-        console.log("🚀 ~~ password", password);
-        console.log("🚀  ~ loginUser ~ email", email);
-        //~ Checks if email is valid
 
+        //~ verify if the email exists
+        if (!email)
+            return res.status(400).json({ error: "Merci de bien vouloir renseigner l'email" });
+        //~ Checks if email is valid
         if (!emailValidator.validate(email))
             return res.status(401).json({ error: "L'email est incorrect" });
 
         const user = await User.findOneUser(email, "email");
-        console.log(
-            "🚀 ~ file: userController.js ~ line 70 ~ loginUser ~ user",
-            user.rows[0].password,
-        );
 
         if (user.rowCount === 0) return res.status(401).json({ error: "L'email saisi est érroné" });
 
         //~ Checks password
         const validPassword = await bcrypt.compare(password, user.rows[0].password);
-        console.log("🚀 line 78 ~ loginUser ~ validPassword", validPassword);
 
         if (!validPassword) return res.status(401).json({ error: "Mot de passe incorrect" });
 
-        // create token JWT
+        //~ Create token JWT
         let accessToken = generateAccessToken(user.rows[0]);
         let refreshToken = generateRefreshToken(user.rows[0]);
 
         res.cookie("refreshToken", refreshToken, { httpOnly: true });
 
         // CHECK VOIR SI POSSIBILITES DE METTRE L ACCESS TOKEN DANS UN COOKIE
-        // res.cookie("accessToken", accessToken, { httpOnly: true });
-        res.json({ accesToken: accessToken });
+        res.cookie("accessToken", accessToken, { httpOnly: true });
+        // res.json({ accesToken: accessToken });
     } catch (err) {
         return _500(err, req, res);
     }
@@ -184,13 +180,18 @@ async function updateUser(req, res) {
     try {
         const userId = req.user.id;
         let userInfo = await User.findOneUser(userId, "id");
-        
 
         for (const key in userInfo.rows[0]) {
-        console.log("🚀 ~ file: userController.js ~ line 187 ~ updateUser ~ userInfo", userInfo)
-            
+            console.log(
+                "🚀 ~ file: userController.js ~ line 187 ~ updateUser ~ userInfo",
+                userInfo,
+            );
+
             req.user[key] ? req.user[key] : (req.user[key] = userInfo[key]);
-            console.log("🚀 ~ file: userController.js ~ line 190 ~ updateUser ~ req.body[key]", req.body[key])
+            console.log(
+                "🚀 ~ file: userController.js ~ line 190 ~ updateUser ~ req.body[key]",
+                req.body[key],
+            );
         }
 
         // if (userInfo.rowCount !== 0) throw new Error(`${email} existe déjà`);
@@ -206,7 +207,7 @@ async function updateUser(req, res) {
         // const hashPassword = await bcrypt.hash(password, 10);
 
         // const updatedUser = {
-        //     email: 
+        //     email:
         //     password: hashPassword,
         //     username,
 
