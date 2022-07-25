@@ -42,10 +42,9 @@ async function fetchAllUsers(req, res) {
 // -----------------------------------------------------------------------
 
 async function fetchOneUser(req, res) {
-
     try {
         const userId = req.user.id;
-        if (!userId) return res.status(401).json({error: "Autorisation refusée"})
+        if (!userId) return res.status(401).json({ error: "Autorisation refusée" });
 
         const user = await User.findOneUser(userId, "id");
 
@@ -62,21 +61,25 @@ async function fetchOneUser(req, res) {
 async function loginUser(req, res) {
     try {
         const { email, password } = req.body;
-        console.log("🚀 ~~ password", password)
-        console.log("🚀  ~ loginUser ~ email", email)
+        console.log("🚀 ~~ password", password);
+        console.log("🚀  ~ loginUser ~ email", email);
         //~ Checks if email is valid
 
-        if (!emailValidator.validate(email)) return res.status(401).json({error: "L'email est incorrect"});
+        if (!emailValidator.validate(email))
+            return res.status(401).json({ error: "L'email est incorrect" });
 
         const user = await User.findOneUser(email, "email");
-        console.log("🚀 ~ file: userController.js ~ line 70 ~ loginUser ~ user", user.rows[0].password)
+        console.log(
+            "🚀 ~ file: userController.js ~ line 70 ~ loginUser ~ user",
+            user.rows[0].password,
+        );
 
         if (user.rowCount === 0) return res.status(401).json({ error: "L'email saisi est érroné" });
 
         //~ Checks password
         const validPassword = await bcrypt.compare(password, user.rows[0].password);
-        console.log("🚀 line 78 ~ loginUser ~ validPassword", validPassword)
-        
+        console.log("🚀 line 78 ~ loginUser ~ validPassword", validPassword);
+
         if (!validPassword) return res.status(401).json({ error: "Mot de passe incorrect" });
 
         // create token JWT
@@ -122,7 +125,7 @@ async function logoutUser(req, res) {
 
 async function createUser(req, res) {
     try {
-        let { email, password, username  } = req.body;
+        let { email, password, username } = req.body;
         // let { email, password, username, departSelected, car, category } = req.body;
 
         //  Search if the user is already in the database
@@ -149,11 +152,11 @@ async function createUser(req, res) {
             email,
             password: hashPassword,
             username,
-            address,
-            car,
-            category
+            // address,
+            // car,
+            // category
         };
-        
+
         // const userAddress = {
         //     address: departSelected.adress,
         //     street_number: departSelected.street_number,
@@ -163,7 +166,7 @@ async function createUser(req, res) {
         //     lon: departSelected.lon
         // };
 
-        // const userCar = { 
+        // const userCar = {
         //     car_id: car.
         // }
 

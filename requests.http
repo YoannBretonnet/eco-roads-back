@@ -14,7 +14,7 @@ Content-Type: application/json
 {
     "email": "test@example.com",
     "password": "helloo",
-    "username": "test",
+    "username": "test"
 }
 
 ###
@@ -22,7 +22,7 @@ POST {{entrypoint}}/user/login
 Content-Type: application/json
 
 {
-    "email": "gaetan@gmail.com",
+    "email": "aymen@gmail.com",
     "password": "helloo"
 }
 
