@@ -1,4 +1,4 @@
-@entrypoint=http://localhost:4100/api/v1
+@entrypoint=https://eco-roads.herokuapp.com/api/v1
 
 ##--------------------------------------------------------------- USERS
 ## ---------------------------------------------------------------------
@@ -12,9 +12,9 @@ POST {{entrypoint}}/user/register
 Content-Type: application/json
 
 {
-    "email": "newtest@example.com",
+    "email": "POURQUOICAMARCHEPASt@example.com",
     "password": "helloo",
-    "username": "WTFSSSSS",
+    "username": "whydoesntwork",
     "location_id": "12",
     "car_id": "74"
 }
@@ -24,7 +24,7 @@ POST {{entrypoint}}/user/login
 Content-Type: application/json
 
 {
-    "email": "newtest@example.com",
+    "email": "POURQUOICAMARCHEPASt@example.com",
     "password": "helloo"
 }
 
@@ -62,7 +62,8 @@ GET {{entrypoint}}/refresh_token
 GET {{entrypoint}}/cars
 
 ###
-GET {{entrypoint}}/car/80
+GET {{entrypoint}}/car/17
+
 
 ###
 POST {{entrypoint}}/cars
