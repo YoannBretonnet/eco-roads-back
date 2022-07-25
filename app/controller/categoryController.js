@@ -79,4 +79,4 @@ async function fetchOneCategory(req, res) {
 //     }
 // }
 
-export { fetchAllCategories, fetchOneCategory, createCategory, updateCategory, deleteCategory };
+export { fetchAllCategories, fetchOneCategory };
