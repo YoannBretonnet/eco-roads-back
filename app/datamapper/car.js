@@ -7,7 +7,7 @@ const TABLE_NAME = "car";
 //~ ------------------------------------------------------------------- FIND ALL CARS
 
 async function findAll() {
-    const result = await pool.query(`SELECT * FROM "${TABLE_NAME}";`);
+    const result = await pool.query(`SELECT car.id, car.model, car.image FROM "${TABLE_NAME}";`);
 
     return result.rows;
 }

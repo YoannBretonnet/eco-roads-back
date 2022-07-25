@@ -2,7 +2,7 @@
 
 import { _400, _404, _500 } from "./errorController.js";
 import { Car } from "../model/car.js";
-import { Brand } from "../model/brand.js"
+import { Brand } from "../model/brand.js";
 
 //~ FUNCTIONS
 
@@ -11,12 +11,13 @@ import { Brand } from "../model/brand.js"
 async function fetchAllCars(req, res) {
     try {
         const brands = await Brand.findAllBrands();
+        console.log("🚀 ~ file: carController.js ~ line 14 ~ fetchAllCars ~ brands", brands);
 
         const cars = await Car.findAllCars();
+        console.log("🚀 ~ file: carController.js ~ line 17 ~ fetchAllCar s ~ cars", cars);
 
-        if (cars && brands ) res.status(200).json(brands, cars);
+        if (cars && brands) res.status(200).json({brands, cars});
         else throw new Error(`Aucune voiture n'a été trouvé`);
-
     } catch (err) {
         _500(err, req, res);
     }

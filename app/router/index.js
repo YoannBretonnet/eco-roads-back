@@ -23,7 +23,6 @@ router.use("/api/v1", carRouter);
 import { router as brandRouter } from "./brand.js";
 router.use("/api/v1", brandRouter);
 
-export { router };
 
 // CHARGING_STATION ROUTES
 // import { router as stationRoute } from "./station.js";
