@@ -46,7 +46,7 @@ app.use(
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const PORT = process.env.PORT || 5000;
-const corsOptions = { credentials: true, origin: "https://dev--e-co-roads.netlify.app/" };
+const corsOptions = { credentials: true, origin: "https://dev--e-co-roads.netlify.app" };
 
 app.use(cors(corsOptions));
 
