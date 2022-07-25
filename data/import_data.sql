@@ -3,9 +3,9 @@ BEGIN;
 INSERT INTO "user"("email","password", "username", "location_id", "car_id")
 VALUES
     ('alex@gmail.com', '123456', 'Noa', 1, 11),
-    ('gaetan@gmail.com', '123456', 'Gaetan', 2, 8);
-    ('aymen@gmail.com', '123456', 'Gaetan', 2, 8);
-    ('yoann@gmail.com', '123456', 'Gaetan', 2, 8);
+    ('gaetan@gmail.com', '123456', 'Gaetan', 2, 8),
+    ('aymen@gmail.com', '123456', 'Gaetan', 2, 8),
+    ('yoann@gmail.com', '123456', 'Gaetan', 2, 8),
     ('incitis@gmail.com', '123456', 'Océane', 2, 8);
 
 INSERT INTO "network"("name")
