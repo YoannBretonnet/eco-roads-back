@@ -87,6 +87,9 @@ async function loginUser(req, res) {
         let refreshToken = generateRefreshToken(user.rows[0]);
 
         res.cookie("refreshToken", refreshToken, { httpOnly: true });
+
+        // CHECK VOIR SI POSSIBILITES DE METTRE L ACCESS TOKEN DANS UN COOKIE
+        // res.cookie("accessToken", accessToken, { httpOnly: true });
         res.json({ accesToken: accessToken });
     } catch (err) {
         return _500(err, req, res);

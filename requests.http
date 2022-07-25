@@ -71,7 +71,7 @@ GET {{entrypoint}}/car/17
 GET {{entrypoint}}/categories
 
 ###
-GET {{entrypoint}}/category/7
+GET {{entrypoint}}/category/1
 
 
 ###
