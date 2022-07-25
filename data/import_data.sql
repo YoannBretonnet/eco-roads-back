@@ -6,7 +6,7 @@ VALUES
     ('gaetan@gmail.com', '123456', 'Gaetan', 2, 8);
     ('aymen@gmail.com', '123456', 'Gaetan', 2, 8);
     ('yoann@gmail.com', '123456', 'Gaetan', 2, 8);
-    ('incitis@gmail.com', '123456', 'Gaetan', 2, 8);
+    ('incitis@gmail.com', '123456', 'Océane', 2, 8);
 
 INSERT INTO "network"("name")
 VALUES
@@ -43,10 +43,18 @@ VALUES
     (6,'ID.4','Volkswagen_ID.4_remove.png',3),
     (6,'ID.Buzz','Volkswagen_ID.Buzz_remove.png',3);
 
-INSERT INTO "location"("address", "street_number", "zipcode", "city" "lat", "lon")
+INSERT INTO "location"("address", "street_number", "zipcode", "city", "lat", "lon")
 VALUES
     ('Rue Belleville',108,33000,'Bordeaux',44.83428425452483, -0.584988886449385),
-    ('Rue de l\'Oradou',164,63000,'Clermont-Ferrand',45.769171736746955, 3.1141259695093124);
+    ('Rue de l\''Oradou',164,63000,'Clermont-Ferrand',45.769171736746955, 3.1141259695093124),
+    ('Rue des Frères Bertrand', 14, 69200,'Vénissieux', 45.717880267459044, 4.868813584657051),
+    ('Rue Roger Salengro', 51, 69200, 'Vénissieux', 45.719462781387115, 4.871710326986711),
+    ('Rue Roger Salengro', 51, 69200, 'Vénissieux', 45.719462781387115, 4.871710326986711),
+    ('Rue du Progrès', 37, 69800, 'Saint-Priest', 45.71569711869236, 4.957882482810688),
+    ('Avenue du Driève', 118, 38090, 'VilleFontaine',45.61702927814482, 5.146465013489738),
+    ('Unnamed road', 0, 73100, 'Brison-Saint-Innocent', 45.723,5.9341),
+    ('Unnamed road', 0, 01350, 'Ceyzérieu', 45.7377,5.7993),
+    ('Route de la Corneille', 1380, 38630, 'Les Avenières Veyrins-Thuellin', 45.619094,5.5707808);
 
 INSERT INTO "category"("name") VALUES
 ('Panoramas'),
@@ -57,15 +65,23 @@ INSERT INTO "category"("name") VALUES
 ('Parcs');
 
 INSERT INTO "charging_station"("network_id", "location_id") VALUES
-('','');
+(1,3),
+(2,4),
+(3,5),
+(4,6),
+(1,7),
 
 INSERT INTO "interesting_point"("name", "description", "eco_friendly", "category_id", "location_id") VALUES
-('','','','','');
+('Lac du Bourget','La ballade le long du lac près des ports d/''Aix est vraiment superbe. Belles vues, calme et marinas qui font vraiment vacances. Nombreux loisirs possibles également (location bateaux, guinguettes,... )','false',1,8),
+('Réserve naturelle nationale du marais de Lavours','Une réserve naturelle à découvrir avec un sentier agréable sur pilotis dans le marais. Le parcours est bien conçu : accessible aux personnes à mobilité réduite.', 'false', 4, 9),
+('Walibi Rhône-Alpes', 'Excellent parc pour s/''amuser entre amis et en famille.', 'false', 6, 10);
 
 INSERT INTO "road"("favorite", "generated_road", "user_id") VALUES
 ('false','','');
 
 INSERT INTO "user_like_category"("category_id", "user_id") VALUES
-('','','');
+(1,1),
+(4,1),
+(6,1);
 
 COMMIT;
