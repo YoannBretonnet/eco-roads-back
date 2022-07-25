@@ -1,4 +1,4 @@
-@entrypoint=http://localhost:4567/api/v1
+@entrypoint=https://eco-roads.herokuapp.com/api/v1
 
 ##--------------------------------------------------------------- USERS
 ## ---------------------------------------------------------------------
@@ -15,8 +15,6 @@ Content-Type: application/json
     "email": "test@example.com",
     "password": "helloo",
     "username": "test",
-    "location_id": 1,
-    "car_id": 1
 }
 
 ###
@@ -25,7 +23,7 @@ Content-Type: application/json
 
 {
     "email": "gaetan@gmail.com",
-    "password": "123456"
+    "password": "helloo"
 }
 
 ###

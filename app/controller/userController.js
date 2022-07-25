@@ -117,7 +117,8 @@ async function logoutUser(req, res) {
 
 async function createUser(req, res) {
     try {
-        let { email, password, username, departSelected, car, category } = req.body;
+        let { email, password, username  } = req.body;
+        // let { email, password, username, departSelected, car, category } = req.body;
 
         //  Search if the user is already in the database
         const user = await User.findOneUser(email);
@@ -148,18 +149,18 @@ async function createUser(req, res) {
             category
         };
         
-        const userAddress = {
-            address: departSelected.adress,
-            street_number: departSelected.street_number,
-            zipcode: departSelected.zipcode,
-            city: departSelected.city,
-            lat: departSelected.lat,
-            lon: departSelected.lon
-        };
+        // const userAddress = {
+        //     address: departSelected.adress,
+        //     street_number: departSelected.street_number,
+        //     zipcode: departSelected.zipcode,
+        //     city: departSelected.city,
+        //     lat: departSelected.lat,
+        //     lon: departSelected.lon
+        // };
 
-        const userCar = { 
-            car_id: car.
-        }
+        // const userCar = { 
+        //     car_id: car.
+        // }
 
         await User.createUser(createdUser);
 
