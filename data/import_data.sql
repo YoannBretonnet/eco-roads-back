@@ -24,7 +24,7 @@ VALUES
     ('Tesla'),
     ('Volkswagen'),
 
-INSERT INTO "car"("brand", "model", "image","network_id")
+INSERT INTO "car"("brand_id", "model", "image","network_id")
 VALUES
     (1,'Zoé','renault-zoe-2-medium.png',3),
     (1,'Twingo','renault_twingo.png',3),
@@ -80,8 +80,8 @@ INSERT INTO "road"("favorite", "generated_road", "user_id") VALUES
 ('false','','');
 
 INSERT INTO "user_like_category"("category_id", "user_id") VALUES
-(1,1),
-(4,1),
-(6,1);
+(1,30a19740-1f11-453e-9392-e8c4b1fd5ae9),
+(4,30a19740-1f11-453e-9392-e8c4b1fd5ae9),
+(6,30a19740-1f11-453e-9392-e8c4b1fd5ae9);
 
 COMMIT;
