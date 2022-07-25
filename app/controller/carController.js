@@ -2,6 +2,7 @@
 
 import { _400, _404, _500 } from "./errorController.js";
 import { Car } from "../model/car.js";
+import { Brand } from "../model/brand.js"
 
 //~ FUNCTIONS
 
@@ -9,10 +10,13 @@ import { Car } from "../model/car.js";
 
 async function fetchAllCars(req, res) {
     try {
+        const brands = await Brand.findAllBrands();
+
         const cars = await Car.findAllCars();
-        
-        if (cars) res.status(200).json(cars);
+
+        if (cars && brands ) res.status(200).json(brands, cars);
         else throw new Error(`Aucune voiture n'a été trouvé`);
+
     } catch (err) {
         _500(err, req, res);
     }
