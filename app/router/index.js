@@ -28,9 +28,9 @@ router.use("/api/v1", carRouter);
 // import { router as stationRoute } from "./station.js";
 // router.use("/api/v1", stationRoute);
 
-// CATEGORY ROUTES
-// import { router as categoryRouter } from "./category.js";
-// router.use("/api/v1", categoryRouter);
+//CATEGORY ROUTES
+import { router as categoryRouter } from "./category.js";
+router.use("/api/v1", categoryRouter);
 
 // INTERESTING_POINTS ROUTES
 // import { router as interestingRouter } from "./interesting.js";

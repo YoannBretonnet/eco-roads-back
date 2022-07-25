@@ -10,7 +10,7 @@ import { Car } from "../model/car.js";
 async function fetchAllCars(req, res) {
     try {
         const cars = await Car.findAllCars();
-
+        
         if (cars) res.status(200).json(cars);
         else throw new Error(`Aucune voiture n'a été trouvé`);
     } catch (err) {
