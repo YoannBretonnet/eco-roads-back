@@ -1,33 +1,24 @@
-import { json } from "express";
+
 import pool from "../service/dbClient.js";
+
 
 const TABLE_NAME = "car";
 
 //~ ------------------------------------------------------------------- FIND ALL CARS
 
 async function findAll() {
-    // const result = await pool.query(`SELECT * FROM "${TABLE_NAME}";`);
+    const result = await pool.query(`SELECT * FROM "${TABLE_NAME}";`);
 
-    const brands = await pool.query(`SELECT brand.name FROM brand;`);
-    // console.log("🚀 ~ file: car.js ~ line 12 ~ findAll ~ brands", brands)
-    const cars = await pool.query(`SELECT * FROM car;`); 
-    // console.log("🚀 ~ file: car.js ~ line 14 ~ findAll ~ cars", cars)
-
-    const test = json({brands: brands.rows, cars: cars.rows})
-    console.log("🚀 ~ file: car.js ~ line 15 ~ findAll ~ test", test)
-    return json(test)
     return result.rows;
 }
 
 //~---------------------------------------------------------------------FIND ONE CAR
 
 async function findOne(carId) {
-    // const result = await pool.query(`SELECT * FROM "${TABLE_NAME}" WHERE "id" = $1;`, [carId]);
-    const brand = await pool.query(
-        `SELECT brand.name, car.model FROM brand INNER JOIN car ON car.brand_id = brand.id WHERE "brand_id" = $1;`,
-        [carId]);
-    return testCar.rows[0];
-    // return result.rows[0];
+
+    const result = await pool.query(`SELECT * FROM "${TABLE_NAME}" WHERE "id" = $1;`, [carId]);
+
+    return result.rows[0];
 }
 
 //~---------------------------------------------------------------------CREATE CAR
@@ -79,6 +70,7 @@ async function updateData(carId, carData) {
 //~----------------------------------------------------------DELETE CAR
 
 async function deleteData(carId) {
+
     const result = await pool.query(`DELETE FROM "${TABLE_NAME}" WHERE "id" = $1;`, [carId]);
 
     return result.rowCount;
