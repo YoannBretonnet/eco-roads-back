@@ -15,7 +15,7 @@ async function findAll() {
 
     const test = json({brands: brands.rows, cars: cars.rows})
     console.log("🚀 ~ file: car.js ~ line 15 ~ findAll ~ test", test)
-    return test
+    return json(test)
     return result.rows;
 }
 
