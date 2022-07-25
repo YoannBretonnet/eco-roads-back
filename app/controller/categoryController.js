@@ -9,7 +9,7 @@ import { Category } from "../model/category.js";
 
 async function fetchAllCategories(req, res) {
     try {
-        const category = await Category.findAllCategory();
+        const category = await Category.findAllCategories();
         
         if (category) res.status(200).json(category);
         else throw new Error(`Aucune categorie n'a été trouvé`);
@@ -24,7 +24,7 @@ async function fetchOneCategory(req, res) {
     try {
         const categoryId = +req.params.id;
 
-        const category = await Category.findOneCar(categoryId);
+        const category = await Category.findOneCategory(categoryId);
 
         if (category) res.status(200).json(category);
         else throw new Error(`La catégorie n'existe pas`);
