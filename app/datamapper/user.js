@@ -39,6 +39,9 @@ async function createData(userData) {
 
     const result = await pool.query(sql);
 
+    //* Recuperer user creer et y inserer toutes les donnees associes dans chaque table
+    //* Car, Adresse dans Location et Category
+
     return result.rowCount;
 }
 

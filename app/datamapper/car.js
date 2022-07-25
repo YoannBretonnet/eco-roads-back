@@ -47,13 +47,13 @@ async function updateData(carId, carData) {
 
     const sql = {
         text: `
-          UPDATE "${TABLE_NAME}"
-              SET
-              "brand_id" = $1,
-              "model" = $2,
-              "image" = $3,
-              "network_id" = $4
-          WHERE "id" = $5;`,
+            UPDATE "${TABLE_NAME}"
+                SET
+                "brand_id" = $1,
+                "model" = $2,
+                "image" = $3,
+                "network_id" = $4
+            WHERE "id" = $5;`,
         values: [brand_id, model, image, network_id, carId],
         //Autre manière de faire si on créée une fonction
         //dans la DB et on aura juste à faire

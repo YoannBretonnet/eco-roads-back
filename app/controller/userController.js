@@ -117,7 +117,7 @@ async function logoutUser(req, res) {
 
 async function createUser(req, res) {
     try {
-        let { email, password, username, location_id, car_id } = req.body;
+        let { email, password, username, departSelected, car, category } = req.body;
 
         //  Search if the user is already in the database
         const user = await User.findOneUser(email);
@@ -131,7 +131,7 @@ async function createUser(req, res) {
                 .status(500)
                 .json({ message: "Le mot de passe doit contenir au moins 6 caractères." });
         if (!username)
-            return res.status(500).json({ message: "erci de renseigner un nom d'utilisateur" });
+            return res.status(500).json({ message: "Merci de renseigner un nom d'utilisateur" });
 
         // If validation ok, defined a value null for columns not obligatories
         // location_id === undefined ? (location_id = 1 ) : location_id;
@@ -143,9 +143,23 @@ async function createUser(req, res) {
             email,
             password: hashPassword,
             username,
-            location_id,
-            car_id,
+            address,
+            car,
+            category
         };
+        
+        const userAddress = {
+            address: departSelected.adress,
+            street_number: departSelected.street_number,
+            zipcode: departSelected.zipcode,
+            city: departSelected.city,
+            lat: departSelected.lat,
+            lon: departSelected.lon
+        };
+
+        const userCar = { 
+            car_id: car.
+        }
 
         await User.createUser(createdUser);
 

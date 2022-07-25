@@ -33,7 +33,7 @@ router.get("/users", validation.body(userSchema) ,fetchAllUsers);
 router.post("/user/register",  createUser);
 
 router.post("/user/login", loginUser);
-router.get("/user/logout", logoutUser)
+router.get("/user/logout", logoutUser);
 // profile routes
 router.get("/user/profile", authenticateToken, fetchOneUser);
 router.patch("/user/profile", updateUser);

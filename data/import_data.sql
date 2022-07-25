@@ -45,7 +45,7 @@ VALUES
 
 INSERT INTO "location"("address", "street_number", "zipcode", "city" "lat", "lon")
 VALUES
-    ('Rue Belleville',108,33000,'Bordeaux',44.83428425452483, -0.584988886449385),
+    ( 'Rue Belleville',108,33000,'Bordeaux', 44.83428425452483, -0.584988886449385),
     ('Rue de l\'Oradou',164,63000,'Clermont-Ferrand',45.769171736746955, 3.1141259695093124);
 
 INSERT INTO "category"("name") VALUES
@@ -66,6 +66,6 @@ INSERT INTO "road"("favorite", "generated_road", "user_id") VALUES
 ('false','','');
 
 INSERT INTO "user_like_category"("category_id", "user_id") VALUES
-('','','');
+('','');
 
 COMMIT;
