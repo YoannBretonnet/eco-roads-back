@@ -7,7 +7,7 @@ router.get("/", (req, res) => {
     );
 });
 
-// USER ROUTES
+// USER ROUTE
 import { router as userRouter } from "./users.js";
 router.use("/api/v1", userRouter);
 
@@ -19,10 +19,11 @@ router.use("/api/v1", userRouter);
 import { router as carRouter } from "./car.js";
 router.use("/api/v1", carRouter);
 
-// CHECK a decommenter au fur et a mesure de l'implementation des routes
-// NETWORK ROUTES
-// import { router as networkRouter } from "./network.js";
-// router.use("/api/v1", networkRouter);
+//BRAND ROUTER
+import { router as brandRouter } from "./brand.js";
+router.use("/api/v1", brandRouter);
+
+export { router };
 
 // CHARGING_STATION ROUTES
 // import { router as stationRoute } from "./station.js";
