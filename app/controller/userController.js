@@ -82,14 +82,13 @@ async function loginUser(req, res) {
         let accessToken = generateAccessToken(user.rows[0]);
         let refreshToken = generateRefreshToken(user.rows[0]);
 
-        const headers = { 
-            Cookie: 'refreshedToken=refreshToken; accessToken=accessToken'
-        }
-        res.cookie(headers, { httpOnly: true });
+        res.cookie("refreshToken", refreshToken, { httpOnly: true })
+            .cookie("accessToken", accessToken, { httpOnly: true })
+            .send()
 
         // CHECK VOIR SI POSSIBILITES DE METTRE L ACCESS TOKEN DANS UN COOKIE
         // res.cookie("accessToken", accessToken, { httpOnly: true });
-        res.json({ accesToken: accessToken });
+        // res.json({ accesToken: accessToken });
     } catch (err) {
         return _500(err, req, res);
     }
