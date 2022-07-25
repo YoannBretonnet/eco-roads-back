@@ -1,14 +1,20 @@
 [
     {
-        "name": "Superchargeur"
+        "name": "Panoramas"
     },
     {
-        "name": "E-tron"
+        "name": "Culture"
     },
     {
-        "name": "Ionity"
+        "name": "Gastronomie"
     },
     {
-        "name": "Totalenergies"
+        "name": "Nature"
+    },
+    {
+        "name": "Sport"
+    },
+    {
+        "name": "Parcs"
     }
 ]
