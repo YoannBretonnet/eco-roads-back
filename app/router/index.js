@@ -1,12 +1,21 @@
-import { Router } from 'express'
+import { Router } from "express";
 const router = Router();
 
-import { router as userRouter} from './users.js';
+router.get("/", (req, res) => {
+    res.send("Welcome");
+});
 
-import { router as carRouter } from './car.js';
+// USER ROUTE
+import { router as userRouter } from "./users.js";
+router.use("/api/v1", userRouter);
 
-router.use('/api/v1/user', userRouter);
-router.use('/api/v1/car', carRouter);
+// CAR ROUTE
+import { router as carRouter } from "./car.js";
+router.use("/api/v1", carRouter);
 
+//BRAND ROUTER
+import { router as brandRouter } from "./brand.js";
+router.use("/api/v1", brandRouter);
 
 export { router };
+

@@ -1,11 +1,13 @@
-//~ IMPORTATIONS DES MODULES
-import { client } from "../service/dbClient.js";
+
+import pool from "../service/dbClient.js";
+
 
 const TABLE_NAME = "car";
 
 //~ ------------------------------------------------------------------- FIND ALL CARS
+
 async function findAll() {
-    const result = await client.query(`SELECT * FROM "${TABLE_NAME}";`);
+    const result = await pool.query(`SELECT * FROM "${TABLE_NAME}";`);
 
     return result.rows;
 }
@@ -13,7 +15,8 @@ async function findAll() {
 //~---------------------------------------------------------------------FIND ONE CAR
 
 async function findOne(carId) {
-    const result = await client.query(`SELECT * FROM "${TABLE_NAME}" WHERE "id" = $1;`, [carId]);
+
+    const result = await pool.query(`SELECT * FROM "${TABLE_NAME}" WHERE "id" = $1;`, [carId]);
 
     return result.rows[0];
 }
@@ -25,13 +28,14 @@ async function createData(carData) {
 
     const sql = {
         text: `INSERT INTO "${TABLE_NAME}"
+
               ("brand","model","image" "network_id")
           VALUES
               ($1,$2,$3,$4);`,
         values: [brand, model, image, network_id],
     };
 
-    const result = await client.query(sql);
+    const result = await pool.query(sql);
 
     return result.rowCount;
 }
@@ -58,7 +62,7 @@ async function updateData(carId, carData) {
         //values: [carId, carData]
     };
 
-    const result = await client.query(sql);
+    const result = await pool.query(sql);
 
     return result.rowCount;
 }
@@ -66,7 +70,8 @@ async function updateData(carId, carData) {
 //~----------------------------------------------------------DELETE CAR
 
 async function deleteData(carId) {
-    const result = await client.query(`DELETE FROM "${TABLE_NAME}" WHERE "id" = $1;`, [carId]);
+
+    const result = await pool.query(`DELETE FROM "${TABLE_NAME}" WHERE "id" = $1;`, [carId]);
 
     return result.rowCount;
 }
