@@ -22,7 +22,7 @@ VALUES
     ('Hyundai'),
     ('Audi'),
     ('Tesla'),
-    ('Volkswagen'),
+    ('Volkswagen');
 
 INSERT INTO "car"("brand_id", "model", "image","network_id")
 VALUES
@@ -69,7 +69,7 @@ INSERT INTO "charging_station"("network_id", "location_id") VALUES
 (2,4),
 (3,5),
 (4,6),
-(1,7),
+(1,7);
 
 INSERT INTO "interesting_point"("name", "description", "eco_friendly", "category_id", "location_id") VALUES
 ('Lac du Bourget','La ballade le long du lac près des ports d/''Aix est vraiment superbe. Belles vues, calme et marinas qui font vraiment vacances. Nombreux loisirs possibles également (location bateaux, guinguettes,... )','false',1,8),
