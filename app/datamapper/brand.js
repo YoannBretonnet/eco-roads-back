@@ -6,7 +6,7 @@ const TABLE_NAME = "brand";
 //~ ------------------------------------------------------------------- FIND ALL BRANDS
 
 async function findAll() {
-    const result = await pool.query(`SELECT * FROM "${TABLE_NAME}";`);
+    const result = await pool.query(`SELECT brand.id, brand.name FROM "${TABLE_NAME}";`);
 
     return result.rows;
 }
