@@ -11,10 +11,8 @@ import { Brand } from "../model/brand.js";
 async function fetchAllCars(req, res) {
     try {
         const brands = await Brand.findAllBrands();
-        console.log("🚀 ~ file: carController.js ~ line 14 ~ fetchAllCars ~ brands", brands);
 
         const cars = await Car.findAllCars();
-        console.log("🚀 ~ file: carController.js ~ line 17 ~ fetchAllCar s ~ cars", cars);
 
         if (cars && brands) res.status(200).json({brands, cars});
         else throw new Error(`Aucune voiture n'a été trouvé`);
