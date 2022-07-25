@@ -1,7 +1,7 @@
 //~ IMPORTATION ERROR
 
 import { _400, _404, _500 } from "./errorController.js";
-import { Category } from "../model/car.js";
+import { Category } from "../model/category.js";
 
 //~ FUNCTIONS
 
