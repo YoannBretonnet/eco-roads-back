@@ -1,5 +1,4 @@
 @entrypoint=https://eco-roads.herokuapp.com/api/v1
-
 @localhost=http://localhost:4100/api/v1
 
 ##--------------------------------------------------------------- USERS
@@ -14,9 +13,11 @@ POST {{entrypoint}}/user/register
 Content-Type: application/json
 
 {
-    "email": "aymen@gmail.com",
+
+    "email": "alex@gmail.com",
     "password": "cassini",
-    "username": "aymen",
+    "username": "alex",
+
     "location_id": "",
     "car_id": ""
 }

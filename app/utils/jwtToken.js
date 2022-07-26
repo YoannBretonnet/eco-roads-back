@@ -7,7 +7,7 @@ function generateAccessToken(user) {
     //     email: user.email,
     //     username: user.username
     // }
-    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "1800s" });
+    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "20s" });
 }
 
 function generateRefreshToken(user) {
