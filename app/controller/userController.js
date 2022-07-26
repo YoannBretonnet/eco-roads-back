@@ -229,7 +229,7 @@ async function refreshToken(req, res) {
         delete user.iat;
         delete user.exp;
         const refreshedAccessToken = generateAccessToken(user);
-        res.cookie("accessToken", refreshedAccessToken, { httpOnly: true }).send();
+        res.cookie("accessToken", refreshedAccessToken, { httpOnly: true, sameSite: 'none', secure: true }).send();
     });
 }
 
