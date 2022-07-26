@@ -20,6 +20,8 @@ function _404(req, res) {
 }
 
 function _500(err, req, res) {
+    console.log("je passe par la fonction _500 ");
+    console.log("verifie le dossier LOGS normalement une ligne y sera pour la journee");
     errorLoggerHandling(err, req, res);
     res.status(500).json({ error: err.message });
 }
