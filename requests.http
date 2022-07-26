@@ -14,9 +14,9 @@ POST {{entrypoint}}/user/register
 Content-Type: application/json
 
 {
-    "email": "aymen@gmail.com",
+    "email": "alex@gmail.com",
     "password": "cassini",
-    "username": "aymen",
+    "username": "alex",
     "location_id": "",
     "car_id": ""
 }
@@ -26,7 +26,7 @@ POST {{entrypoint}}/user/login
 Content-Type: application/json
 
 {
-    "email": "aymen@gmail.com",
+    "email": "alex@gmail.com",
     "password": "cassini"
 }
 
