@@ -2,18 +2,22 @@
 // ~ ************************************* ~ //
 
 import pg from "pg";
-const { Pool } = pg;
 
-const localPoolConfig = {
-    user: "ecoroads",
-    password: "ecoroads",
-    host: "localhost",
-    port: 5432,
-    database: "ecoroads",
-};
+const pool = new pg.Pool({
+    connectionString: process.env.DATABASE_URL,
+    ssl: { rejectUnauthorized: false }
+})
 
-const poolConfig = process.env.DATABASE_URL ? { connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } } : localPoolConfig;
+// Configuration pour utiliser la BDD en locale, mettre les variables dans le .env
+// PGHOST=localhost
+// PGDATABASE=
+// PGUSER=
+// PGPASSWORD=
+// PGPORT=port
 
-const pool = new Pool(poolConfig);
+// const pool = new pg.Pool();
+// client.connect()
+//     .then( () => logger('DB connected') )
+//     .catch((err) => logger('DB connection failed', err));
 
 export default pool;

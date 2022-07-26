@@ -1,12 +1,13 @@
 @entrypoint=https://eco-roads.herokuapp.com/api/v1
-@localhost=http://localhost:4100/api/v1
+@entrypoint=http://localhost:4100/api/v1
+
 
 ##--------------------------------------------------------------- USERS
 ## ---------------------------------------------------------------------
 
-
-
 GET {{entrypoint}}/users
+
+
 
 ###
 POST {{entrypoint}}/user/register
