@@ -111,7 +111,7 @@ async function logoutUser(req, res) {
             delete user.exp;
         });
     } catch (err) {
-        res.status(401).json({ error: err.message });
+        _500(err, req, res);
     }
 }
 
@@ -148,7 +148,6 @@ async function createUser(req, res) {
 
         res.status(200).json({ error: "L'utilisateur a bien été créé" });
     } catch (err) {
-        console.log(" ERROR CONTROLLER");
         _500(err, req, res);
     }
 }
