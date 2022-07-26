@@ -14,11 +14,11 @@ POST {{entrypoint}}/user/register
 Content-Type: application/json
 
 {
-    "email": "motherfuck@gmail.com",
-    "password": "helloo",
-    "username": "motherfuck",
-    "location_id": "12",
-    "car_id": "74"
+    "email": "gaetan@gmail.com",
+    "password": "cassini",
+    "username": "gaetan",
+    "location_id": "",
+    "car_id": ""
 }
 
 ###
@@ -26,8 +26,8 @@ POST {{entrypoint}}/user/login
 Content-Type: application/json
 
 {
-    "email": "motherfuck@gmail.com",
-    "password": "helloo"
+    "email": "gaetan@gmail.com",
+    "password": "cassini"
 }
 
 ###
