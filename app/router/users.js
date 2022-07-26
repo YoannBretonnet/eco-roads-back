@@ -11,7 +11,7 @@ import {
     updateUser,
     deleteUser,
     fetchAllUsers,
-    refreshToken
+    refreshToken,
 } from "../controller/userController.js";
 
 // ~ *** *** IMPORT JWT *** *** ~ //
@@ -28,19 +28,18 @@ import { validation } from "../service/validation.js";
 // ~ *** *** ROUTE *** *** ~ //
 // ~ ********************* ~ //
 
-router.get("/users", validation.body(userSchema) ,fetchAllUsers);
+router.get("/users", fetchAllUsers);
 // connection
-router.post("/user/register",  createUser);
+router.post("/user/register", createUser);
 
 router.post("/user/login", loginUser);
-router.get("/user/logout", logoutUser)
+router.get("/user/logout", logoutUser);
 // profile routes
 router.get("/user/profile", authenticateToken, fetchOneUser);
-router.patch("/user/profile", updateUser);
+router.patch("/user/profile",authenticateToken, updateUser);
 router.delete("/user/profile", deleteUser);
 
 //refreshToken
-router.get('/refresh_token', refreshToken);
+router.get("/refresh_token", refreshToken);
 
 export { router };
-

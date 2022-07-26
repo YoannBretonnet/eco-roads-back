@@ -19,7 +19,7 @@ res.status(404).json('Page Not Found');
 };
 
 function _500(err, req, res) { 
-res.status(500).json({message : err.message});
+res.status(500).json({error : err.message});
 };
 
 export { _400,_401, _403,_404,_500 };

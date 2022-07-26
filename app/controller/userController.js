@@ -6,6 +6,7 @@ import { User } from "../model/user.js";
 import { generateAccessToken, generateRefreshToken } from "../utils/jwtToken.js";
 
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 import emailValidator from "email-validator";
 import passwordValidator from "password-validator";
@@ -42,10 +43,9 @@ async function fetchAllUsers(req, res) {
 // -----------------------------------------------------------------------
 
 async function fetchOneUser(req, res) {
-
     try {
         const userId = req.user.id;
-        if (!userId) return res.status(401).json({error: "Autorisation refusée"})
+        if (!userId) return res.status(401).json({ error: "Autorisation refusée" });
 
         const user = await User.findOneUser(userId, "id");
 
@@ -62,9 +62,13 @@ async function fetchOneUser(req, res) {
 async function loginUser(req, res) {
     try {
         const { email, password } = req.body;
-        //~ Checks if email is valid
 
-        if (!emailValidator.validate(email)) return res.status(401).json({error: "L'email est incorrect"});
+        //~ verify if the email exists
+        if (!email)
+            return res.status(400).json({ error: "Merci de bien vouloir renseigner l'email" });
+        //~ Checks if email is valid
+        if (!emailValidator.validate(email))
+            return res.status(401).json({ error: "L'email est incorrect" });
 
         const user = await User.findOneUser(email, "email");
 
@@ -72,14 +76,16 @@ async function loginUser(req, res) {
 
         //~ Checks password
         const validPassword = await bcrypt.compare(password, user.rows[0].password);
+
         if (!validPassword) return res.status(401).json({ error: "Mot de passe incorrect" });
 
-        // create token JWT
+        //~ Create token JWT
         let accessToken = generateAccessToken(user.rows[0]);
         let refreshToken = generateRefreshToken(user.rows[0]);
 
-        res.cookie("refreshToken", refreshToken, { httpOnly: true });
-        res.json({ accesToken: accessToken });
+        res.cookie("refreshToken", refreshToken, { httpOnly: true, sameSite: 'none', secure: true })
+        .cookie("accessToken", accessToken, { httpOnly: true, sameSite: 'none', secure: true }).send();
+
     } catch (err) {
         return _500(err, req, res);
     }
@@ -117,13 +123,12 @@ async function logoutUser(req, res) {
 
 async function createUser(req, res) {
     try {
-        let { email, password, username, location_id, car_id } = req.body;
+        let { email, password, username } = req.body;
 
         //  Search if the user is already in the database
-        const user = await User.findOneUser(email);
+        const user = await User.findOneUser(email, "email");
 
-        // Checks if the user already exists and checks with emailValidator and passwordValidator
-        if (user) throw new Error(`${email} existe déjà`);
+        if (user.rowCount !== 0) throw new Error(`${email} existe déjà`);
         if (!emailValidator.validate(email))
             return res.status(500).json({ message: `${email} invalide !` });
         if (!schema.validate(password))
@@ -131,11 +136,7 @@ async function createUser(req, res) {
                 .status(500)
                 .json({ message: "Le mot de passe doit contenir au moins 6 caractères." });
         if (!username)
-            return res.status(500).json({ message: "erci de renseigner un nom d'utilisateur" });
-
-        // If validation ok, defined a value null for columns not obligatories
-        // location_id === undefined ? (location_id = 1 ) : location_id;
-        // car_id === undefined ? (car_id = 1) : car_id;
+            return res.status(500).json({ message: "Merci de renseigner un nom d'utilisateur" });
 
         const hashPassword = await bcrypt.hash(password, 10);
 
@@ -143,14 +144,14 @@ async function createUser(req, res) {
             email,
             password: hashPassword,
             username,
-            location_id,
-            car_id,
         };
+
 
         await User.createUser(createdUser);
 
         res.status(200).json({ message: "L'utilisateur a bien été créé" });
     } catch (err) {
+        console.log(" ERROR CONTROLLER");
         _500(err, req, res);
     }
 }
@@ -160,17 +161,35 @@ async function createUser(req, res) {
 
 async function updateUser(req, res) {
     try {
-        const userId = +req.user.id;
-        let userInfo = await User.findOneUser(userId);
+        const userId = req.user.id;
+        let userInfo = await User.findOneUser(userId, "id");
 
-        for (const key in userInfo) {
-            req.body[key] ? req.body[key] : (req.body[key] = userInfo[key]);
+        for (const key in userInfo.rows[0]) {
+            req.user[key] ? req.user[key] : (req.user[key] = userInfo[key]);
         }
 
-        await User.updateUser(userId, userInfo);
+        if (userInfo.rowCount !== 0) throw new Error(`${email} existe déjà`);
+        if (!emailValidator.validate(email))
+            return res.status(500).json({ message: `${email} invalide !` });
+        if (!schema.validate(password))
+            return res
+                .status(500)
+                .json({ message: "Le mot de passe doit contenir au moins 6 caractères." });
+        if (!username)
+            return res.status(500).json({ message: "Merci de renseigner un nom d'utilisateur" });
+
+        const hashPassword = await bcrypt.hash(password, 10);
+
+        const updatedUser = {
+            email,
+            password: hashPassword,
+            username,
+        };
+
+        await User.updateUser(userId, updatedUser);
 
         res.status(200).json({ message: "L'utilisateur a bien été mis à jour" });
-    } catch (error) {
+    } catch (err) {
         _500(err, req, res);
     }
 }
@@ -193,8 +212,8 @@ async function deleteUser(req, res) {
 // ----------------------------------------------------------------------
 
 async function refreshToken(req, res) {
-    const authHeader = req.headers["authorization"];
-    const token = authHeader && authHeader.split(" ")[1];
+    // const authHeader = req.headers["authorization"];
+    const token = req.cookies.refreshToken
     if (!token) {
         return res.sendStatus(401);
     }
@@ -209,10 +228,8 @@ async function refreshToken(req, res) {
 
         delete user.iat;
         delete user.exp;
-        const refreshedToken = generateAccessToken(user);
-        res.json({
-            accessToken: refreshedToken,
-        });
+        const refreshedAccessToken = generateAccessToken(user);
+        res.cookie("accessToken", refreshedAccessToken, { httpOnly: true, sameSite: 'none', secure: true }).send();
     });
 }
 

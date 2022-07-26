@@ -1,18 +1,18 @@
-import jwt from 'jsonwebtoken';
+import jwt from "jsonwebtoken";
 
-function authenticateToken(req,res,next){
-    const authHeader = req.headers['authorization']; //Bearer TOKEN
+function authenticateToken(req, res, next) {
+    const accessToken = req.cookies.accessToken;
 
-    const token = authHeader && authHeader.split(' ')[1];
-    
-    if (token == null) return res.status(401).json({error: "Token nul"});
-    
-    jwt.verify(token,process.env.ACCESS_TOKEN_SECRET, (error,user) =>{
-    
-        if(error) return res.status(403).json({error:error.message});
+    // const authHeader = req.headers['authorization']; //Bearer TOKEN
+    // const token = authHeader && authHeader.split(' ')[1];
+
+    if (accessToken == null) return res.status(401).json({ error: "Token nul" });
+
+    jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET, (error, user) => {
+        if (error) return res.status(403).json({ error: error.message });
         req.user = user;
         next();
-    })
+    });
 }
 
 export { authenticateToken };

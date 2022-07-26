@@ -52,8 +52,8 @@ VALUES
     ('Rue Roger Salengro', 51, 69200, 'Vénissieux', 45.719462781387115, 4.871710326986711),
     ('Rue du Progrès', 37, 69800, 'Saint-Priest', 45.71569711869236, 4.957882482810688),
     ('Avenue du Driève', 118, 38090, 'VilleFontaine',45.61702927814482, 5.146465013489738),
-    ('Unnamed road', 0, 73100, 'Brison-Saint-Innocent', 45.723,5.9341),
-    ('Unnamed road', 0, 01350, 'Ceyzérieu', 45.7377,5.7993),
+    ('', '', 73100, 'Brison-Saint-Innocent', 45.723,5.9341),
+    ('', '', 01350, 'Ceyzérieu', 45.7377,5.7993),
     ('Route de la Corneille', 1380, 38630, 'Les Avenières Veyrins-Thuellin', 45.619094,5.5707808);
 
 INSERT INTO "category"("name") VALUES
@@ -80,8 +80,8 @@ INSERT INTO "road"("favorite", "generated_road", "user_id") VALUES
 ('false','','');
 
 INSERT INTO "user_like_category"("category_id", "user_id") VALUES
-(1,30a19740-1f11-453e-9392-e8c4b1fd5ae9),
-(4,30a19740-1f11-453e-9392-e8c4b1fd5ae9),
-(6,30a19740-1f11-453e-9392-e8c4b1fd5ae9);
+(1,'30a19740-1f11-453e-9392-e8c4b1fd5ae9'),
+(4,'30a19740-1f11-453e-9392-e8c4b1fd5ae9'),
+(6,'30a19740-1f11-453e-9392-e8c4b1fd5ae9');
 
 COMMIT;

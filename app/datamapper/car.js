@@ -1,13 +1,13 @@
-
 import pool from "../service/dbClient.js";
-
 
 const TABLE_NAME = "car";
 
 //~ ------------------------------------------------------------------- FIND ALL CARS
 
 async function findAll() {
-    const result = await pool.query(`SELECT * FROM "${TABLE_NAME}";`);
+    const result = await pool.query(
+        `SELECT car.id, car.model, car.image, network.name FROM ${TABLE_NAME} JOIN network ON network.id = car.network_id;`,
+    );
 
     return result.rows;
 }
@@ -15,8 +15,10 @@ async function findAll() {
 //~---------------------------------------------------------------------FIND ONE CAR
 
 async function findOne(carId) {
-
-    const result = await pool.query(`SELECT * FROM "${TABLE_NAME}" WHERE "id" = $1;`, [carId]);
+    const result = await pool.query(
+        `SELECT car.id, car.model, car.image, network.name FROM ${TABLE_NAME} JOIN network ON network.id = car.network_id WHERE "id" = $1;`,
+        [carId],
+    );
 
     return result.rows[0];
 }
@@ -47,13 +49,13 @@ async function updateData(carId, carData) {
 
     const sql = {
         text: `
-          UPDATE "${TABLE_NAME}"
-              SET
-              "brand_id" = $1,
-              "model" = $2,
-              "image" = $3,
-              "network_id" = $4
-          WHERE "id" = $5;`,
+            UPDATE "${TABLE_NAME}"
+                SET
+                "brand_id" = $1,
+                "model" = $2,
+                "image" = $3,
+                "network_id" = $4
+            WHERE "id" = $5;`,
         values: [brand_id, model, image, network_id, carId],
         //Autre manière de faire si on créée une fonction
         //dans la DB et on aura juste à faire
@@ -70,7 +72,6 @@ async function updateData(carId, carData) {
 //~----------------------------------------------------------DELETE CAR
 
 async function deleteData(carId) {
-
     const result = await pool.query(`DELETE FROM "${TABLE_NAME}" WHERE "id" = $1;`, [carId]);
 
     return result.rowCount;

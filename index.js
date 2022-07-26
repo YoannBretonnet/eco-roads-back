@@ -16,13 +16,11 @@ const app = express();
 
 // ~ *** *** SWAGGER CONFIG *** *** ~ //
 // ~ ****************************** ~ //
-import { specs, serve, setup, cssOptions} from './swaggerDocs/swaggerDocs.js';
-app.use('/api-docs', serve, setup(specs, cssOptions));
-
+import { specs, serve, setup, cssOptions } from "./swaggerDocs/swaggerDocs.js";
+app.use("/api-docs", serve, setup(specs, cssOptions));
 
 // If you have your node.js behind a proxy and are using secure: true, you need to set 'trust proxy' in express
 app.set("trust proxy", 1); // trust first proxy
-
 
 // ~ *** *** SESSION CONFIG *** *** ~ //
 // ~ ****************************** ~ //
@@ -46,9 +44,17 @@ app.use(
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const PORT = process.env.PORT || 5000;
-const corsOptions = { credentials: true, origin: process.env.URL || "*" };
+// const corsOptions = { credentials: true, origin: "https://e-co-roads.netlify.app" };
 
-app.use(cors(corsOptions));
+app.use(function (req, res, next) {
+    res.setHeader("Access-Control-Allow-Origin", "https://e-co-roads.netlify.app");
+    res.setHeader("Access-Control-Allow-Methods", "*");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+    res.setHeader("Access-Control-Allow-Credentials", "true");
+    next();
+});
+
+// app.use(cors(corsOptions));
 
 // ~ *** *** PARSER CONFIG *** *** ~ //
 // ~ ***************************** ~ //
@@ -57,7 +63,6 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use("/", express.static(join(__dirname, "public")));
-
 
 // ~ *** *** LAUNCHER CONFIG *** *** ~ //
 // ~ ******************************* ~ //

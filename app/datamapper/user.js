@@ -1,5 +1,3 @@
-
-
 //~ IMPORTATIONS DES MODULES
 import pool from "../service/dbClient.js";
 
@@ -16,9 +14,9 @@ async function findAll() {
 // ~ *** *** FIND ONE USER *** *** ~ //
 // ~ ***************************** ~ //
 
-async function findOne(email, COLUMN_NAME) {
-
-    const result = await pool.query(`SELECT * FROM "${TABLE_NAME}" WHERE ${COLUMN_NAME} = $1;`, [email]);
+async function findOne(email, columnName) {
+    const result = await pool.query(`SELECT * FROM "${TABLE_NAME}" WHERE "${columnName}" = $1;`, 
+    [email]);
 
     return result;
 }
@@ -39,16 +37,19 @@ async function createData(userData) {
 
     const result = await pool.query(sql);
 
+    //* Recuperer user creer et y inserer toutes les donnees associes dans chaque table
+    //* Car, Adresse dans Location et Category
+
     return result.rowCount;
 }
 
 // ~ *** *** UPDATE USER *** *** ~ //
 // ~ *************************** ~ //
 
-
 async function updateData(userId, userData) {
-    
     const { email, password, username, location_id, car_id } = userData;
+
+    //CHECK Creer les conditions pour controller
 
     const sql = {
         text: `
