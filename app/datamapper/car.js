@@ -6,7 +6,7 @@ const TABLE_NAME = "car";
 
 async function findAll() {
     const result = await pool.query(
-        `SELECT car.id, car.model, car.image, network.name FROM ${TABLE_NAME} JOIN network ON network.id = car.network_id;`,
+        `SELECT car.id, car.model, car.image, brand_id, network.name FROM ${TABLE_NAME} JOIN network ON network.id = car.network_id;`,
     );
 
     return result.rows;
