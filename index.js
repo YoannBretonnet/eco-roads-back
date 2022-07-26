@@ -48,7 +48,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(function (req, res, next) {
     res.setHeader("Access-Control-Allow-Origin", "https://e-co-roads.netlify.app");
-    res.setHeader("Access-Control-Allow-Methods", "*");
+    res.setHeader("Access-Control-Allow-Methods", "Content-Type");
     res.setHeader("Access-Control-Allow-Headers", "*");
     res.setHeader("Access-Control-Allow-Credentials", "true");
     next();
