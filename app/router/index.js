@@ -11,6 +11,10 @@ router.get("/", (req, res) => {
 import { router as userRouter } from "./users.js";
 router.use("/api/v1", userRouter);
 
+// BRAND ROUTES
+// import { router as brandRouter } from "./brand.js";
+// router.use("/api/v1", brandRouter);
+
 // CAR ROUTES
 import { router as carRouter } from "./car.js";
 router.use("/api/v1", carRouter);
@@ -20,9 +24,21 @@ import { router as brandRouter } from "./brand.js";
 router.use("/api/v1", brandRouter);
 
 
+// CHARGING_STATION ROUTES
+// import { router as stationRoute } from "./station.js";
+// router.use("/api/v1", stationRoute);
+
 //CATEGORY ROUTES
 import { router as categoryRouter } from "./category.js";
 router.use("/api/v1", categoryRouter);
+
+// INTERESTING_POINTS ROUTES
+// import { router as interestingRouter } from "./interesting.js";
+// router.use("/api/v1", interestingRouter);
+
+// LOCATION ROUTES
+// import { router as locationRouter } from "./location.js";
+// router.use("/api/v1", locationRouter);
 
 // ROAD ROUTES
 // import { router as roadRouter } from "./road.js";

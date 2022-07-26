@@ -28,11 +28,12 @@ schema.is().min(6).is().not().oneOf(worthPassword);
 // ------------------------------------------------------------------------
 
 async function fetchAllUsers(req, res) {
+    console.log("hello world");
     try {
         const user = await User.findAllUsers();
 
         if (user) res.status(200).json(user);
-        else throw new Error({ error: "Aucun utilisateur trouvé"});
+        else throw new Error("Aucun utilisateur trouvé");
     } catch (err) {
         _500(err, req, res);
     }
@@ -49,7 +50,7 @@ async function fetchOneUser(req, res) {
         const user = await User.findOneUser(userId, "id");
 
         if (user) res.status(200).json(user.rows[0]);
-        else throw new Error({ error: "L'utilisateur n'existe pas" });
+        else throw new Error(`L'utilisateur n'existe pas`);
     } catch (err) {
         return _500(err, req, res);
     }
@@ -95,9 +96,11 @@ async function loginUser(req, res) {
 
 async function logoutUser(req, res) {
     try {
-        const token = req.cookies.refreshToken
-
-        if (!token) return res.status(401).json({ error: "Token invalide"});
+        const authHeader = req.headers["authorization"];
+        const token = authHeader && authHeader.split(" ")[1];
+        if (!token) {
+            return res.sendStatus(401);
+        }
 
         jwt.verify(token, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
             if (err) {
@@ -105,7 +108,7 @@ async function logoutUser(req, res) {
             }
 
             // Checks if the user exists and return json
-            if (!user) return res.status(401).json({ error: "L'utilisateur n'existe pas"});
+            if (!user) return res.status(401).json(`L'utilisateur n'existe pas`);
 
             delete user.iat;
             delete user.exp;
@@ -127,13 +130,13 @@ async function createUser(req, res) {
 
         if (user.rowCount !== 0) throw new Error(`${email} existe déjà`);
         if (!emailValidator.validate(email))
-            return res.status(500).json({ error: `${email} invalide !` });
+            return res.status(500).json({ message: `${email} invalide !` });
         if (!schema.validate(password))
             return res
                 .status(500)
-                .json({ error: "Le mot de passe doit contenir au moins 6 caractères." });
+                .json({ message: "Le mot de passe doit contenir au moins 6 caractères." });
         if (!username)
-            return res.status(500).json({ error: "Merci de renseigner un nom d'utilisateur" });
+            return res.status(500).json({ message: "Merci de renseigner un nom d'utilisateur" });
 
         const hashPassword = await bcrypt.hash(password, 10);
 
@@ -146,7 +149,7 @@ async function createUser(req, res) {
 
         await User.createUser(createdUser);
 
-        res.status(200).json({ error: "L'utilisateur a bien été créé" });
+        res.status(200).json({ message: "L'utilisateur a bien été créé" });
     } catch (err) {
         console.log(" ERROR CONTROLLER");
         _500(err, req, res);
@@ -167,13 +170,13 @@ async function updateUser(req, res) {
 
         if (userInfo.rowCount !== 0) throw new Error(`${email} existe déjà`);
         if (!emailValidator.validate(email))
-            return res.status(500).json({ error: `${email} invalide !` });
+            return res.status(500).json({ message: `${email} invalide !` });
         if (!schema.validate(password))
             return res
                 .status(500)
-                .json({ error: "Le mot de passe doit contenir au moins 6 caractères." });
+                .json({ message: "Le mot de passe doit contenir au moins 6 caractères." });
         if (!username)
-            return res.status(500).json({ error: "Merci de renseigner un nom d'utilisateur" });
+            return res.status(500).json({ message: "Merci de renseigner un nom d'utilisateur" });
 
         const hashPassword = await bcrypt.hash(password, 10);
 
@@ -185,7 +188,7 @@ async function updateUser(req, res) {
 
         await User.updateUser(userId, updatedUser);
 
-        res.status(200).json({ error: "L'utilisateur a bien été mis à jour" });
+        res.status(200).json({ message: "L'utilisateur a bien été mis à jour" });
     } catch (err) {
         _500(err, req, res);
     }
@@ -211,7 +214,6 @@ async function deleteUser(req, res) {
 async function refreshToken(req, res) {
     // const authHeader = req.headers["authorization"];
     const token = req.cookies.refreshToken
-    console.log("🚀 ~ file: userController.js ~ line 214 ~ refreshToken ~ token", token)
     if (!token) {
         return res.sendStatus(401);
     }

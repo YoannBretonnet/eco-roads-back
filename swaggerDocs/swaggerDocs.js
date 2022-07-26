@@ -7,13 +7,13 @@ import { swaggerDarkCss } from "./swagger-utils/swaggerDark.js";
 import { users, userId } from "./user.js";
 import { brands, brandId } from "./brand.js";
 import { cars, carId } from "./car.js";
+import { networks, networkId } from "./network.js";
+import { stations, stationId } from "./station.js";
+import { locations, locationId } from "./location.js";
+import { interestings, interestingId } from "./interesting.js";
 import { categories, categoryId } from "./category.js";
+import { roads, roadId } from "./road.js";
 import { loginId } from "./login.js";
-// import { networks, networkId } from "./network.js";
-// import { stations, stationId } from "./station.js";
-// import { locations, locationId } from "./location.js";
-// import { interestings, interestingId } from "./interesting.js";
-// import { roads, roadId } from "./road.js";
 
 import { components } from "./swagger-utils/swaggerComponents.js";
 
@@ -63,30 +63,29 @@ const options = {
             "/cars": cars,
             "/car/{id}": carId,
 
+            //~ ------------- NETWORKS
+            "/networks": networks,
+            "/network/{id}": networkId,
+
+            //~ ------------- STATIONS
+            "/stations": stations,
+            "/station/{id}": stationId,
+
+            //~ ------------- INTERESTING_POINTS
+            "/interesting": interestings,
+            "/interesting/{id}": interestingId,
+
+            //~ ------------- LOCATIONS
+            "/locations": locations,
+            "/location/{id}": locationId,
+
             //~ ------------- CATEGORIES
             "/categories": categories,
             "/category/{id}": categoryId,
 
-            // //~ ------------- NETWORKS
-            // "/networks": networks,
-            // "/network/{id}": networkId,
-
-            // //~ ------------- STATIONS
-            // "/stations": stations,
-            // "/station/{id}": stationId,
-
-            // //~ ------------- INTERESTING_POINTS
-            // "/interesting": interestings,
-            // "/interesting/{id}": interestingId,
-
-            // //~ ------------- LOCATIONS
-            // "/locations": locations,
-            // "/location/{id}": locationId,
-
-
-            // //~ ------------- ROADS
-            // "/roads": roads,
-            // "/road/{id}": roadId,
+            //~ ------------- ROADS
+            "/roads": roads,
+            "/road/{id}": roadId,
         },
         // Tous les schemas
         components,
