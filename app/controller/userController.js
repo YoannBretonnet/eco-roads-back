@@ -83,8 +83,8 @@ async function loginUser(req, res) {
         let accessToken = generateAccessToken(user.rows[0]);
         let refreshToken = generateRefreshToken(user.rows[0]);
 
-        res.cookie("refreshToken", refreshToken, { httpOnly: true })
-        .cookie("accessToken", accessToken, { httpOnly: true }).send();
+        res.cookie("refreshToken", refreshToken, { httpOnly: true, sameSite: 'none', secure: true })
+        .cookie("accessToken", accessToken, { httpOnly: true, sameSite: 'none', secure: true }).send();
 
     } catch (err) {
         return _500(err, req, res);
