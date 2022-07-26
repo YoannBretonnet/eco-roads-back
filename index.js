@@ -5,7 +5,7 @@ import "dotenv/config";
 // ~ *** *** EXPRESS CONFIG *** *** ~ //
 // ~ ****************************** ~ //
 import express from "express";
-import cors from "cors";
+// import cors from "cors";
 import cookieParser from "cookie-parser";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
