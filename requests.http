@@ -1,6 +1,6 @@
 @entrypoint=https://eco-roads.herokuapp.com/api/v1
 
-//@localhost=http://localhost:4100/api/v1
+@localhost=http://localhost:4100/api/v1
 
 ##--------------------------------------------------------------- USERS
 ## ---------------------------------------------------------------------
@@ -14,9 +14,9 @@ POST {{entrypoint}}/user/register
 Content-Type: application/json
 
 {
-    "email": "gaetan@gmail.com",
+    "email": "aymen@gmail.com",
     "password": "cassini",
-    "username": "gaetan",
+    "username": "aymen",
     "location_id": "",
     "car_id": ""
 }
@@ -26,7 +26,7 @@ POST {{entrypoint}}/user/login
 Content-Type: application/json
 
 {
-    "email": "gaetan@gmail.com",
+    "email": "aymen@gmail.com",
     "password": "cassini"
 }
 
@@ -58,35 +58,6 @@ Content-Type: application/json
 DELETE {{entrypoint}}/user/profile
 
 ###
-POST {{localhost}}/user/register
-{
-    "email": "putindetoken@example.com",
-    "password": "helloo",
-    "username": "Volcano63",
-
-}
-
-###
-POST {{localhost}}/user/login
-Content-Type: application/json
-
-{
-    "email": "POURQUOICAMARCHEPASt@example.com",
-    "password": "helloo"
-}
-###
-GET {{localhost}}/user/profile
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRiYzYxOTU4LTliY2ItNDQwYS1hZmFmLTM0ZjlmNjg4ODU1ZSIsImVtYWlsIjoiZ2FldGFuQGV4YW1wbGUuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkV0pDZURFWWtJYXNFNDBwbXpBVGIydUFuTU0wQm4xam5zTWlvRGlrOVRuYWhvRDB3Tk9yMm0iLCJ1c2VybmFtZSI6ImdhZXRhbiIsImxvY2F0aW9uX2lkIjpudWxsLCJjYXJfaWQiOm51bGwsImNyZWF0ZWRfYXQiOiIyMDIyLTA3LTI1VDE1OjIzOjU0LjA2NVoiLCJ1cGRhdGVkX2F0IjpudWxsLCJpYXQiOjE2NTg3ODU0MDksImV4cCI6MTY1ODc4NzIwOX0.5qq_RZE_HnhFgYfxmkZtXfOYE2QqlJWDXxs4d2Xn2V0
-
-
-###
-GET {{localhost}}/refresh_token
-//Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRiYzYxOTU4LTliY2ItNDQwYS1hZmFmLTM0ZjlmNjg4ODU1ZSIsImVtYWlsIjoiZ2FldGFuQGV4YW1wbGUuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkV0pDZURFWWtJYXNFNDBwbXpBVGIydUFuTU0wQm4xam5zTWlvRGlrOVRuYWhvRDB3Tk9yMm0iLCJ1c2VybmFtZSI6ImdhZXRhbiIsImxvY2F0aW9uX2lkIjpudWxsLCJjYXJfaWQiOm51bGwsImNyZWF0ZWRfYXQiOiIyMDIyLTA3LTI1VDE1OjIzOjU0LjA2NVoiLCJ1cGRhdGVkX2F0IjpudWxsLCJpYXQiOjE2NTg3ODUwMzIsImV4cCI6MTY1ODc4NjgzMn0.7g_yvgOqf_S39w505D-bMxu1x2sLUvwbjKipNuTnM70
-
-## --------------------------------------------------------------- CARS 
-## ---------------------------------------------------------------------
-
-###
 GET {{entrypoint}}/cars
 
 ###
@@ -100,6 +71,7 @@ GET {{entrypoint}}/categories
 
 ###
 GET {{entrypoint}}/category/1
+
 
 
 ###
