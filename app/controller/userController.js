@@ -83,7 +83,7 @@ async function loginUser(req, res) {
         let accessToken = generateAccessToken(user.rows[0]);
         let refreshToken = generateRefreshToken(user.rows[0]);
 
-        res.cookie("refreshToken", refreshToken, { httpOnly: true, sameSite: 'none', secure: true, maxAge : "360000s"})
+        res.cookie("refreshToken", refreshToken, { httpOnly: true, sameSite: 'none', secure: true, maxAge: 360000})
 
         res.status(200).json({accesToken: accessToken});
         }catch (err) {
