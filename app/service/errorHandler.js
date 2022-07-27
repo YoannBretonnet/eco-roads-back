@@ -18,7 +18,7 @@ function errorLoggerHandling(err, req, res) {
 
     // create a log and write it in your file
     fs.appendFile(join(__dirname, `../../logs/${fileName}`), logMessage, (error) => {
-        if (error) logger(error);
+        if (error) console.log(error);
     });
 }
 
