@@ -57,7 +57,7 @@ async function fetchOneUser(req, res) {
         const userId = req.user.id;
         if (!userId) return res.status(401).json({ error: "Autorisation refusée" });
 
-        const user = await User.findOneUser(userId, "id");
+        const user = await User.findOneUser(userId);
 
         if (user) res.status(200).json(user.rows[0]);
         else throw new Error({ error: "L'utilisateur n'existe pas" });

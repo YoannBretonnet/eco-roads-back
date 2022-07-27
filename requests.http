@@ -8,7 +8,6 @@
 ## ---------------------------------------------------------------------
 
 
-
 GET {{entrypoint}}/users
 
 ###
@@ -16,14 +15,14 @@ POST {{entrypoint}}/user/register
 Content-Type: application/json
 
 {
-    "email": "test23@gmail.com",
+    "email": "OMG@gmail.com",
     "password": "ChicagoBulls96!",
     "username": "HisAirness",
     "location": {
         "label": "test",
         "street_number": 55,
         "address": "5th avenue",
-        "zip_code": "55555",
+        "zipcode": "55555",
         "city": "Chicago",
         "Lat": 23.45874489489498,
         "Long": 5.45788949984654654
@@ -37,8 +36,8 @@ POST {{entrypoint}}/user/login
 Content-Type: application/json
 
 {
-    "email": "test4@gmail.com",
-    "password": "cassini"
+    "email": "OMG@gmail.com",
+    "password": "ChicagoBulls96!"
 }
 
 ###
