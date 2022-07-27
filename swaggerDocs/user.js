@@ -31,7 +31,7 @@ const userId = {
     //~ --------------------------------------------- FETCH ONE USER
     get: {
         tags: ['User'],
-        summary: `Retrieve the user by his Id`,
+        summary: `Retrieve the user by his email`,
         parameters: [
             {
                 name: 'id',
@@ -39,9 +39,9 @@ const userId = {
                 required: true,
                 schema: {
                     type: 'uuid',
-                    example: '63d7ff14-698c-4e20-b5a3-9563b4855929'
+                    example: 'test@gmail.com'
                 },
-                description: 'UUID to retrieve a user'
+                description: 'Email to retrieve a user'
             }
         ],
         responses: {
