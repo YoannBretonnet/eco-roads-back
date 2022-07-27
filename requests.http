@@ -1,6 +1,9 @@
 #@entrypoint=https://eco-roads.herokuapp.com/api/v1
 @entrypoint=http://localhost:4100/api/v1
 
+@accessToken=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1ODQyMGUxLWI0NTQtNGYyNS04ZGViLWY3NDBiZmFiNjNmZiIsImVtYWlsIjoidGVzdEBnbWFpbC5jb20iLCJ1c2VybmFtZSI6InRlc3QiLCJpYXQiOjE2NTg5Mjc0NTUsImV4cCI6MTY1ODkyOTI1NX0.wi35qwac7CuF2q_9LcP8SigV0wj2ZX79ajr6LSnb8PM
+@refreshToken=Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1ODQyMGUxLWI0NTQtNGYyNS04ZGViLWY3NDBiZmFiNjNmZiIsImVtYWlsIjoidGVzdEBnbWFpbC5jb20iLCJ1c2VybmFtZSI6InRlc3QiLCJpYXQiOjE2NTg5Mjc0NTUsImV4cCI6MTY1ODk2MzQ1NX0.RUj20rm30i3Vtg-7jeR9y2zVTNPyqFksewka8SYJWtk
+
 ##--------------------------------------------------------------- USERS
 ## ---------------------------------------------------------------------
 
@@ -13,13 +16,11 @@ POST {{entrypoint}}/user/register
 Content-Type: application/json
 
 {
-
-    "email": "alex@gmail.com",
+    "email": "test1@gmail.com",
     "password": "cassini",
-    "username": "alex",
-
-    "location_id": "",
-    "car_id": ""
+    "username": "test",
+    "location_id": "1",
+    "car_id": "70"
 }
 
 ###
@@ -27,19 +28,16 @@ POST {{entrypoint}}/user/login
 Content-Type: application/json
 
 {
-    "email": "aymen@gmail.com",
-    "password": "helloo"
+    "email": "test@gmail.com",
+    "password": "cassini"
 }
 
 ###
 GET {{entrypoint}}/user/profile
-
-
+{{accessToken}}
 ###
 GET {{entrypoint}}/user/refresh_token
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRiYzYxOTU4LTliY2ItNDQwYS1hZmFmLTM0ZjlmNjg4ODU1ZSIsImVtYWlsIjoiZ2FldGFuQGV4YW1wbGUuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkV0pDZURFWWtJYXNFNDBwbXpBVGIydUFuTU0wQm4xam5zTWlvRGlrOVRuYWhvRDB3Tk9yMm0iLCJ1c2VybmFtZSI6ImdhZXRhbiIsImxvY2F0aW9uX2lkIjpudWxsLCJjYXJfaWQiOm51bGwsImNyZWF0ZWRfYXQiOiIyMDIyLTA3LTI1VDE1OjIzOjU0LjA2NVoiLCJ1cGRhdGVkX2F0IjpudWxsLCJpYXQiOjE2NTg3NjUzNTksImV4cCI6MTY1ODc2NzE1OX0.HhmssguzMVV6lgDoU1z2T0aSkUW9hw0mgrOh71IO1cY
-
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc3MTRlNzkzLTQ0YTAtNGQyNi05ZjE5LThlYTI2ODAyNDg0MSIsImVtYWlsIjoiUE9VUlFVT0lDQU1BUkNIRVBBU3RAZXhhbXBsZS5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRNZW1lQ2IwdzRvNjdKMmwyTnEzVjQuWGNHMVVSM2NURFk4UktaUHZPLkhQYndXY1FkMk9udSIsInVzZXJuYW1lIjoid2h5ZG9lc250d29yayIsImxvY2F0aW9uX2lkIjpudWxsLCJjYXJfaWQiOm51bGwsImNyZWF0ZWRfYXQiOiIyMDIyLTA3LTI1VDE2OjUzOjMxLjE4NVoiLCJ1cGRhdGVkX2F0IjpudWxsLCJpYXQiOjE2NTg3ODQyNzMsImV4cCI6MTY1ODc4NjA3M30.8Y-II5n2tu5M9kthp5jRFOAmmxixVZT6Cu22ib_E0A4
+{{refreshToken}}
 
 
 ###
@@ -48,8 +46,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRiYzYxOTU4L
 Content-Type: application/json
 
 {
-    "email": "gaetan@example.com",
-    "password": "helloo",
+    "email": "test@ggmail.com",
+    "password": "cassini",
     "username": "Volcano63",
     "location_id": "14",
     "car_id": "65"
