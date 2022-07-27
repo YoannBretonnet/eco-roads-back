@@ -32,7 +32,7 @@ async function fetchAllUsers(req, res) {
         const user = await User.findAllUsers();
 
         if (user) res.status(200).json(user);
-        else throw new Error({ error: "Aucun utilisateur trouvé"});
+        else throw new Error({ error: "Aucun utilisateur trouvé" });
     } catch (err) {
         _500(err, req, res);
     }
@@ -75,16 +75,21 @@ async function loginUser(req, res) {
 
         //~ Checks password
         const validPassword = await bcrypt.compare(password, user.rows[0].password);
-
         if (!validPassword) return res.status(401).json({ error: "Mot de passe incorrect" });
+
+        console.log("Le user dans le controller c est :", user.rows[0]);
 
         //~ Create token JWT
         let accessToken = generateAccessToken(user.rows[0]);
         let refreshToken = generateRefreshToken(user.rows[0]);
 
-        res.cookie("refreshToken", refreshToken, { httpOnly: true, sameSite: 'none', secure: true })
-        .cookie("accessToken", accessToken, { httpOnly: true, sameSite: 'none', secure: true }).send();
+        res.cookie("refreshToken", refreshToken, {
+            httpOnly: true,
+            sameSite: "none",
+            secure: true,
+        });
 
+        res.status(200).json({ accessToken: accessToken });
     } catch (err) {
         return _500(err, req, res);
     }
@@ -95,9 +100,9 @@ async function loginUser(req, res) {
 
 async function logoutUser(req, res) {
     try {
-        const token = req.cookies.refreshToken
+        // const token = req.cookies.refreshToken
 
-        if (!token) return res.status(401).json({ error: "Token invalide"});
+        if (!token) return res.status(401).json({ error: "Token invalide" });
 
         jwt.verify(token, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
             if (err) {
@@ -105,7 +110,7 @@ async function logoutUser(req, res) {
             }
 
             // Checks if the user exists and return json
-            if (!user) return res.status(401).json({ error: "L'utilisateur n'existe pas"});
+            if (!user) return res.status(401).json({ error: "L'utilisateur n'existe pas" });
 
             delete user.iat;
             delete user.exp;
@@ -142,7 +147,6 @@ async function createUser(req, res) {
             password: hashPassword,
             username,
         };
-
 
         await User.createUser(createdUser);
 
@@ -208,25 +212,22 @@ async function deleteUser(req, res) {
 // ----------------------------------------------------------------------
 
 async function refreshToken(req, res) {
-    // const authHeader = req.headers["authorization"];
-    const token = req.cookies.refreshToken
-    console.log("🚀 ~ file: userController.js ~ line 214 ~ refreshToken ~ token", token)
-    if (!token) {
+    const authHeader = req.headers["authorization"];
+    const token = authHeader && authHeader.split(" ")[1];
+    
+    if (!token) {   
         return res.sendStatus(401);
     }
-
     jwt.verify(token, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
         if (err) {
-            return res.sendStatus(401);
+            return res.sendStatus(401).json(`L'utilisateur n'existe pas`);
         }
-
-        // Checks if the user exists and return json
-        if (!user) return res.status(401).json(`L'utilisateur n'existe pas`);
 
         delete user.iat;
         delete user.exp;
         const refreshedAccessToken = generateAccessToken(user);
-        res.cookie("accessToken", refreshedAccessToken, { httpOnly: true, sameSite: 'none', secure: true }).send();
+
+        res.status(200).json({refreshedAccessToken: refreshedAccessToken});
     });
 }
 

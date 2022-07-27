@@ -72,8 +72,9 @@ async function updateData(userId, userData) {
 //~----------------------------------------------------------DELETE CAR
 
 async function deleteData(userId) {
-    const result = await client.query(`DELETE FROM "${TABLE_NAME}" WHERE "id" = $1;`, [userId]);
-
+    //const result = await client.query(`DELETE FROM "${TABLE_NAME}" WHERE "id" = $1;`, [userId]);
+    const result = await client.query(`DELETE FROM "${TABLE_NAME}" WHERE "id" = "7a793611-e188-4b2a-a981-7803f0bd1265";`);
+    
     return result.rowCount;
 }
 
