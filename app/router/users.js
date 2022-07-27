@@ -36,10 +36,10 @@ router.post("/user/login", loginUser);
 router.get("/user/logout", logoutUser);
 // profile routes
 router.get("/user/profile", authenticateToken, fetchOneUser);
-router.patch("/user/profile",authenticateToken, updateUser);
+router.patch("/user/profile", authenticateToken, updateUser);
 router.delete("/user/profile", deleteUser);
 
 //refreshToken
-router.get("/user/refresh_token", refreshToken);
+router.get("/refresh_token", refreshToken);
 
 export { router };

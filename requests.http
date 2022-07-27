@@ -17,20 +17,12 @@ POST {{entrypoint}}/user/register
 Content-Type: application/json
 
 {
-<<<<<<< HEAD
 
     "email": "test10@gmail.com",
     "password": "cassini",
     "username": "test10",
     "location_id": "",
     "car_id": ""
-=======
-    "email": "test1@gmail.com",
-    "password": "cassini",
-    "username": "test",
-    "location_id": "1",
-    "car_id": "70"
->>>>>>> b0482415da46447a0360b74b6bf194d425f6107c
 }
 
 ###
@@ -38,31 +30,20 @@ POST {{entrypoint}}/user/login
 Content-Type: application/json
 
 {
-<<<<<<< HEAD
     "email": "fredo@gmail.com",
-=======
-    "email": "test@gmail.com",
->>>>>>> b0482415da46447a0360b74b6bf194d425f6107c
     "password": "cassini"
 }
 
 ###
 GET {{entrypoint}}/user/profile
-<<<<<<< HEAD
 Content-Type: application/json
 {{autorisationBearer}}
 
 
 ###
-GET {{entrypoint}}/user/refresh_token
+GET {{entrypoint}}/refresh_token
 Content-Type: application/json
 {{autorisationBearer}}
-=======
-{{accessToken}}
-###
-GET {{entrypoint}}/user/refresh_token
-{{refreshToken}}
->>>>>>> b0482415da46447a0360b74b6bf194d425f6107c
 
 
 ###
