@@ -15,8 +15,9 @@ async function findAll() {
 // ~ ***************************** ~ //
 
 async function findOne(email, columnName) {
-    const result = await pool.query(`SELECT * FROM "${TABLE_NAME}" WHERE "${columnName}" = $1;`, 
-    [email]);
+    const result = await pool.query(`SELECT * FROM "${TABLE_NAME}" WHERE "${columnName}" = $1;`, [
+        email,
+    ]);
 
     return result;
 }
@@ -36,9 +37,6 @@ async function createData(userData) {
     };
 
     const result = await pool.query(sql);
-
-    //* Recuperer user creer et y inserer toutes les donnees associes dans chaque table
-    //* Car, Adresse dans Location et Category
 
     return result.rowCount;
 }
@@ -72,9 +70,8 @@ async function updateData(userId, userData) {
 //~----------------------------------------------------------DELETE CAR
 
 async function deleteData(userId) {
-    //const result = await client.query(`DELETE FROM "${TABLE_NAME}" WHERE "id" = $1;`, [userId]);
-    const result = await client.query(`DELETE FROM "${TABLE_NAME}" WHERE "id" = "7a793611-e188-4b2a-a981-7803f0bd1265";`);
-    
+    const result = await client.query(`DELETE FROM "${TABLE_NAME}" WHERE "id" = $1;`, [userId]);
+
     return result.rowCount;
 }
 
