@@ -16,7 +16,7 @@ const pool = new pg.Pool({
 // PGPORT=port
 
 // const pool = new pg.Pool();
-// client.connect()
+// pool.connect()
 //     .then( () => logger('DB connected') )
 //     .catch((err) => logger('DB connection failed', err));
 

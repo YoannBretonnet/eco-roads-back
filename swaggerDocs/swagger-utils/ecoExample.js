@@ -5,11 +5,6 @@ const UserExample = {
     email: 'string',
     password: 'string',
     username: 'string',
-    location_id: 'integer',
-    car_id: 'integer',
-    category_id: 'integer',
-    created_at: 'string',
-    updated_at: 'string'
 };
 
 const UserProperties = {

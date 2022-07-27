@@ -57,7 +57,8 @@ Content-Type: application/json
 }
 
 ### 
-DELETE {{entrypoint}}/user/profile
+DELETE {{entrypoint}}/user/profile/
+Content-Type: application/json
 
 ###
 GET {{entrypoint}}/cars
