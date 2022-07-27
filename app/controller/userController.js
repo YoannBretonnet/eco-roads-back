@@ -78,6 +78,12 @@ async function loginUser(req, res) {
 
         if (!validPassword) return res.status(401).json({ error: "Mot de passe incorrect" });
 
+        // user = {
+        //     id: user.id,
+        //     email: user.email,
+        //     username: user.username
+        // }
+        // console.log("🚀 ~ file: userController.js ~ line 82 ~ loginUser ~ user", user)
         //~ Create token JWT
         let accessToken = generateAccessToken(user.rows[0]);
         let refreshToken = generateRefreshToken(user.rows[0]);
@@ -85,6 +91,7 @@ async function loginUser(req, res) {
         res.cookie("refreshToken", refreshToken, { httpOnly: true, sameSite: 'none', secure: true })
         .cookie("accessToken", accessToken, { httpOnly: true, sameSite: 'none', secure: true }).send();
 
+        // res.status(200).json(...user, accessToken,refreshToken);
     } catch (err) {
         return _500(err, req, res);
     }
