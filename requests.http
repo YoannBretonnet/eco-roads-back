@@ -4,6 +4,9 @@
 @autorisationBearer=Authorization: Bearer 
 
 
+@accessToken=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1ODQyMGUxLWI0NTQtNGYyNS04ZGViLWY3NDBiZmFiNjNmZiIsImVtYWlsIjoidGVzdEBnbWFpbC5jb20iLCJ1c2VybmFtZSI6InRlc3QiLCJpYXQiOjE2NTg5Mjc0NTUsImV4cCI6MTY1ODkyOTI1NX0.wi35qwac7CuF2q_9LcP8SigV0wj2ZX79ajr6LSnb8PM
+@refreshToken=Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1ODQyMGUxLWI0NTQtNGYyNS04ZGViLWY3NDBiZmFiNjNmZiIsImVtYWlsIjoidGVzdEBnbWFpbC5jb20iLCJ1c2VybmFtZSI6InRlc3QiLCJpYXQiOjE2NTg5Mjc0NTUsImV4cCI6MTY1ODk2MzQ1NX0.RUj20rm30i3Vtg-7jeR9y2zVTNPyqFksewka8SYJWtk
+
 ##--------------------------------------------------------------- USERS
 ## ---------------------------------------------------------------------
 
@@ -14,12 +17,20 @@ POST {{entrypoint}}/user/register
 Content-Type: application/json
 
 {
+<<<<<<< HEAD
 
     "email": "test10@gmail.com",
     "password": "cassini",
     "username": "test10",
     "location_id": "",
     "car_id": ""
+=======
+    "email": "test1@gmail.com",
+    "password": "cassini",
+    "username": "test",
+    "location_id": "1",
+    "car_id": "70"
+>>>>>>> b0482415da46447a0360b74b6bf194d425f6107c
 }
 
 ###
@@ -27,12 +38,17 @@ POST {{entrypoint}}/user/login
 Content-Type: application/json
 
 {
+<<<<<<< HEAD
     "email": "fredo@gmail.com",
+=======
+    "email": "test@gmail.com",
+>>>>>>> b0482415da46447a0360b74b6bf194d425f6107c
     "password": "cassini"
 }
 
 ###
 GET {{entrypoint}}/user/profile
+<<<<<<< HEAD
 Content-Type: application/json
 {{autorisationBearer}}
 
@@ -41,6 +57,12 @@ Content-Type: application/json
 GET {{entrypoint}}/user/refresh_token
 Content-Type: application/json
 {{autorisationBearer}}
+=======
+{{accessToken}}
+###
+GET {{entrypoint}}/user/refresh_token
+{{refreshToken}}
+>>>>>>> b0482415da46447a0360b74b6bf194d425f6107c
 
 
 ###
@@ -49,8 +71,8 @@ PATCH {{entrypoint}}/user/profile
 Content-Type: application/json
 
 {
-    "email": "gaetan@example.com",
-    "password": "helloo",
+    "email": "test@ggmail.com",
+    "password": "cassini",
     "username": "Volcano63",
     "location_id": "14",
     "car_id": "65"
