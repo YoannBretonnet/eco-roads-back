@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 
 function generateAccessToken(user) {
     let payload = { id: user.id, email: user.email, username: user.username };
-    return jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "1800s" });
+    return jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "36000s" });
 }
 
 function generateRefreshToken(user) {

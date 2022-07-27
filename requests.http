@@ -1,9 +1,9 @@
 #@entrypoint=https://eco-roads.herokuapp.com/api/v1
 @entrypoint=http://localhost:4100/api/v1
 
-@accessToken=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1ODQyMGUxLWI0NTQtNGYyNS04ZGViLWY3NDBiZmFiNjNmZiIsImVtYWlsIjoidGVzdEBnbWFpbC5jb20iLCJ1c2VybmFtZSI6InRlc3QiLCJpYXQiOjE2NTg5Mjc0NTUsImV4cCI6MTY1ODkyOTI1NX0.wi35qwac7CuF2q_9LcP8SigV0wj2ZX79ajr6LSnb8PM
-@refreshToken=Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1ODQyMGUxLWI0NTQtNGYyNS04ZGViLWY3NDBiZmFiNjNmZiIsImVtYWlsIjoidGVzdEBnbWFpbC5jb20iLCJ1c2VybmFtZSI6InRlc3QiLCJpYXQiOjE2NTg5Mjc0NTUsImV4cCI6MTY1ODk2MzQ1NX0.RUj20rm30i3Vtg-7jeR9y2zVTNPyqFksewka8SYJWtk
-
+@accessToken=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImViMGZkMmEzLTdjZGYtNDg5MS04YzU2LWQyYTJhNjRjZGU2ZSIsImVtYWlsIjoidGVzdDRAZ21haWwuY29tIiwidXNlcm5hbWUiOiJ0ZXN0IiwiaWF0IjoxNjU4OTM4NTY2LCJleHAiOjE2NTg5NzQ1NjZ9.sda-BAEo7HYoEG5qV_qUPq5dc_oVAmZ1GxStAf52Wy8
+@refreshToken=Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImViMGZkMmEzLTdjZGYtNDg5MS04YzU2LWQyYTJhNjRjZGU2ZSIsImVtYWlsIjoidGVzdDRAZ21haWwuY29tIiwidXNlcm5hbWUiOiJ0ZXN0IiwiaWF0IjoxNjU4OTM4NTY2LCJleHAiOjE2NTg5NzQ1NjZ9.3QYMNplU0Yk_xMdjpOMA7-AO6plyiYLLW-Utbg52u6U
+@refreshedAccessToken= Authorization:  Bearer 
 ##--------------------------------------------------------------- USERS
 ## ---------------------------------------------------------------------
 
@@ -16,11 +16,20 @@ POST {{entrypoint}}/user/register
 Content-Type: application/json
 
 {
-    "email": "test1@gmail.com",
-    "password": "cassini",
-    "username": "test",
-    "location_id": "1",
-    "car_id": "70"
+    "email": "test23@gmail.com",
+    "password": "ChicagoBulls96!",
+    "username": "HisAirness",
+    "location": {
+        "label": "test",
+        "street_number": 55,
+        "address": "5th avenue",
+        "zip_code": "55555",
+        "city": "Chicago",
+        "Lat": 23.45874489489498,
+        "Long": 5.45788949984654654
+    },
+    "car_id": "68",
+    "categories": [1,2,3]
 }
 
 ###
@@ -28,7 +37,7 @@ POST {{entrypoint}}/user/login
 Content-Type: application/json
 
 {
-    "email": "test@gmail.com",
+    "email": "test4@gmail.com",
     "password": "cassini"
 }
 
@@ -42,15 +51,16 @@ GET {{entrypoint}}/user/refresh_token
 
 ###
 PATCH {{entrypoint}}/user/profile
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRiYzYxOTU4LTliY2ItNDQwYS1hZmFmLTM0ZjlmNjg4ODU1ZSIsImVtYWlsIjoiZ2FldGFuQGV4YW1wbGUuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkV0pDZURFWWtJYXNFNDBwbXpBVGIydUFuTU0wQm4xam5zTWlvRGlrOVRuYWhvRDB3Tk9yMm0iLCJ1c2VybmFtZSI6ImdhZXRhbiIsImxvY2F0aW9uX2lkIjpudWxsLCJjYXJfaWQiOm51bGwsImNyZWF0ZWRfYXQiOiIyMDIyLTA3LTI1VDE1OjIzOjU0LjA2NVoiLCJ1cGRhdGVkX2F0IjpudWxsLCJpYXQiOjE2NTg3NjQxNDYsImV4cCI6MTY1ODc2NTk0Nn0.ii5kJbFAsfNxuLbBIgi0YI4miy9dNJMEfoiWTUN7Uz8
+{{accessToken}}
 Content-Type: application/json
 
 {
-    "email": "test@ggmail.com",
-    "password": "cassini",
-    "username": "Volcano63",
-    "location_id": "14",
-    "car_id": "65"
+    "email": "test4@gmail.com",
+    "password": "Cassini1!",
+    "username": "Testasse",
+    "location": 11,
+    "car_id": "65",
+    "categories": [3,1,6]
 }
 
 ### 
