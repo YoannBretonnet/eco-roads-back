@@ -79,19 +79,13 @@ async function loginUser(req, res) {
 
         if (!validPassword) return res.status(401).json({ error: "Mot de passe incorrect" });
 
-        // user = {
-        //     id: user.id,
-        //     email: user.email,
-        //     username: user.username
-        // }
-        // console.log("🚀 ~ file: userController.js ~ line 82 ~ loginUser ~ user", user)
         //~ Create token JWT
         let accessToken = generateAccessToken(user.rows[0]);
         let refreshToken = generateRefreshToken(user.rows[0]);
 
-        res.cookie("refreshToken", refreshToken, { httpOnly: true, sameSite: 'none', secure: true })
+        res.cookie("refreshToken", refreshToken, { httpOnly: true, sameSite: 'none', secure: true, maxAge : "360000s"})
 
-        res.status(200).json(accessToken);
+        res.status(200).json({accesToken: accessToken});
         }catch (err) {
         return _500(err, req, res);
     }
