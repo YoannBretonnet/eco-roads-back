@@ -1,5 +1,5 @@
-@entrypoint=https://eco-roads.herokuapp.com/api/v1
-@localhost=http://localhost:4100/api/v1
+#@entrypoint=https://eco-roads.herokuapp.com/api/v1
+@entrypoint=http://localhost:4100/api/v1
 
 ##--------------------------------------------------------------- USERS
 ## ---------------------------------------------------------------------
@@ -28,7 +28,7 @@ Content-Type: application/json
 
 {
     "email": "aymen@gmail.com",
-    "password": "cassini"
+    "password": "helloo"
 }
 
 ###
@@ -56,7 +56,8 @@ Content-Type: application/json
 }
 
 ### 
-DELETE {{entrypoint}}/user/profile
+DELETE {{entrypoint}}/user/profile/
+Content-Type: application/json
 
 ###
 GET {{entrypoint}}/cars

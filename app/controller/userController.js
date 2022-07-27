@@ -32,6 +32,7 @@ async function fetchAllUsers(req, res) {
         const user = await User.findAllUsers();
 
         if (user) res.status(200).json(user);
+
         else throw new Error({ error: "Aucun utilisateur trouvé"});
     } catch (err) {
         _500(err, req, res);
@@ -83,9 +84,9 @@ async function loginUser(req, res) {
         let refreshToken = generateRefreshToken(user.rows[0]);
 
         res.cookie("refreshToken", refreshToken, { httpOnly: true, sameSite: 'none', secure: true })
-        .cookie("accessToken", accessToken, { httpOnly: true, sameSite: 'none', secure: true }).send();
 
-    } catch (err) {
+        res.status(200).json(accessToken);
+        }catch (err) {
         return _500(err, req, res);
     }
 }
@@ -95,7 +96,7 @@ async function loginUser(req, res) {
 
 async function logoutUser(req, res) {
     try {
-        const token = req.cookies.refreshToken
+        // const token = req.cookies.refreshToken
 
         if (!token) return res.status(401).json({ error: "Token invalide"});
 

@@ -16,8 +16,8 @@ import pg from "pg";
 // PGPORT=port
 
 const pool = new pg.Pool();
-client.connect()
-    .then( () => logger('DB connected') )
-    .catch((err) => logger('DB connection failed', err));
+pool.connect()
+    .then( () => console.log('DB connected Localhost') )
+    .catch((err) => console.log('DB connection failed', err));
 
 export default pool;

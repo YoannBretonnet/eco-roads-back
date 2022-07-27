@@ -7,6 +7,8 @@ const TABLE_NAME = "category";
 //~ ------------------------------------------------------------------- FIND ALL CATEGORIES
 
 async function findAll() {
+
+
     const result = await pool.query(`SELECT category.id, category.name FROM "${TABLE_NAME}";`);
 
     return result.rows;
@@ -20,5 +22,6 @@ async function findOne(categoryId) {
 
     return result.rows[0];
 }
+
 
 export { findAll, findOne}
