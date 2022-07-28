@@ -57,7 +57,8 @@ async function fetchOneUser(req, res) {
         const userId = req.user.id;
         if (!userId) return res.status(401).json({ error: "Autorisation refusée" });
 
-        const user = await User.findOneUser(userId);
+        // const user = await User.findOneUser(userId);
+        const user = await User.findOneProfile(userId);
 
         if (user) res.status(200).json(user.rows[0]);
         else throw new Error({ error: "L'utilisateur n'existe pas" });
@@ -137,9 +138,10 @@ async function logoutUser(req, res) {
 async function createUser(req, res) {
     try {
         let { email, password, username, location, car_id, categories } = req.body;
+        console.log("🚀 ~ file: userController.js ~ line 140 ~ createUser ~ email", email)
 
         const locationExist = await pool.query(
-            `SELECT * FROM location WHERE lat = ${location.Lat} AND lon = ${location.Long}`
+            `SELECT * FROM location WHERE lat = ${location.Lat} AND lon = ${location.Long}`,
         );
 
         if (locationExist.rowCount !== 0) location = locationExist.rows[0].id;
@@ -184,7 +186,7 @@ async function updateUser(req, res) {
         const userId = req.user.id;
         let { email, username, password, location, car_id, categories } = req.body;
 
-        let user = await User.findOneUser(userId, "id");
+        let user = await User.findOneUser(userId, "uuid");
 
         if (!user) return res.status(401).json({ error: "L'utilisateur n'existe pas" });
 
@@ -223,7 +225,7 @@ async function updateUser(req, res) {
 
 async function deleteUser(req, res) {
     try {
-        const userId = +req.user.id;
+        const userId = req.user.id;
         await User.deleteUser(userId);
 
         return res.status(200).json(`L'utilisateur a bien été supprimé`);
