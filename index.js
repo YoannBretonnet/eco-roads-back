@@ -8,10 +8,12 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
+import helmet from "helmet";
 
 import { router } from "./app/router/index.js";
 
 const app = express();
+app.use(helmet());
 
 // ~ *** *** SWAGGER CONFIG *** *** ~ //
 // ~ ****************************** ~ //
@@ -29,7 +31,10 @@ const PORT = process.env.PORT || 5000;
 app.use(function (req, res, next) {
     res.setHeader("Access-Control-Allow-Origin", "https://e-co-roads.netlify.app");
     res.setHeader("Access-Control-Allow-Methods", "*");
-    res.setHeader("Access-Control-Allow-Headers", "Authorization, Origin, X-Requested-With, Content-Type, Accept");
+    res.setHeader(
+        "Access-Control-Allow-Headers",
+        "Authorization, Origin, X-Requested-With, Content-Type, Accept",
+    );
     res.setHeader("Access-Control-Allow-Credentials", "true");
     next();
 });

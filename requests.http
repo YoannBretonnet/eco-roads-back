@@ -4,12 +4,16 @@
 @autorisationBearer=Authorization: Bearer 
 
 
-@accessToken=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImViMGZkMmEzLTdjZGYtNDg5MS04YzU2LWQyYTJhNjRjZGU2ZSIsImVtYWlsIjoidGVzdDRAZ21haWwuY29tIiwidXNlcm5hbWUiOiJ0ZXN0IiwiaWF0IjoxNjU4OTM4NTY2LCJleHAiOjE2NTg5NzQ1NjZ9.sda-BAEo7HYoEG5qV_qUPq5dc_oVAmZ1GxStAf52Wy8
+@accessToken=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhiMjAxY2FjLTJhOWItNGU0Yi05OGE0LTA1MjA2YzNmNWUwZiIsImVtYWlsIjoiYWxleGlhQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoiTXJEb29kbGUiLCJpYXQiOjE2NTkwMzg4ODAsImV4cCI6MTY1OTA3NDg4MH0.b8JuLkcRR2Z29oP_ep3F0SlIHKtYDQDtkIGIJ58lVX4
 @refreshToken=Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImViMGZkMmEzLTdjZGYtNDg5MS04YzU2LWQyYTJhNjRjZGU2ZSIsImVtYWlsIjoidGVzdDRAZ21haWwuY29tIiwidXNlcm5hbWUiOiJ0ZXN0IiwiaWF0IjoxNjU4OTM4NTY2LCJleHAiOjE2NTg5NzQ1NjZ9.3QYMNplU0Yk_xMdjpOMA7-AO6plyiYLLW-Utbg52u6U
 @refreshedAccessToken= Authorization:  Bearer 
 ##--------------------------------------------------------------- USERS
 ## ---------------------------------------------------------------------
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 15fde05bc69ed6b288593bd7488921bdbe761e94
 GET {{entrypoint}}/users
 
 ###
@@ -17,20 +21,20 @@ POST {{entrypoint}}/user/register
 Content-Type: application/json
 
 {
-    "email": "test23@gmail.com",
-    "password": "ChicagoBulls96!",
-    "username": "HisAirness",
+    "email": "alexia@gmail.com",
+    "password": "Cassini1!",
+    "username": "MrDoodle",
     "location": {
-        "label": "test",
-        "street_number": 55,
-        "address": "5th avenue",
-        "zip_code": "55555",
-        "city": "Chicago",
-        "Lat": 23.45874489489498,
-        "Long": 5.45788949984654654
+        "label": "",
+        "street_number": 112,
+        "address": "rue de l'ecole",
+        "zipcode": 75000,
+        "city": "Paris",
+        "Lat": 47.4587448998,
+        "Long": 2.45788949465
     },
-    "car_id": "68",
-    "categories": [1,2,3]
+    "car_id": 68,
+    "categories": [7,8,9]
 }
 
 ###
@@ -38,8 +42,8 @@ POST {{entrypoint}}/user/login
 Content-Type: application/json
 
 {
-    "email": "test4@gmail.com",
-    "password": "cassini"
+    "email": "alexia@gmail.com",
+    "password": "Cassini1!"
 }
 
 ###

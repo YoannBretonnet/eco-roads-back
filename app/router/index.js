@@ -19,7 +19,6 @@ router.use("/api/v1", carRouter);
 import { router as brandRouter } from "./brand.js";
 router.use("/api/v1", brandRouter);
 
-
 //CATEGORY ROUTES
 import { router as categoryRouter } from "./category.js";
 router.use("/api/v1", categoryRouter);

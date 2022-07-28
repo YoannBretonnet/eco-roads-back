@@ -1,9 +1,13 @@
 //~ IMPORTATION User DATA
-import { findAll, findOne, createData, updateData, deleteData } from "../datamapper/user.js";
+import { findAll, findOneUserProfile, findOne, createData, updateData, deleteData } from "../datamapper/user.js";
 
 class User {
     static async findAllUsers() {
         return findAll();
+    }
+
+    static async findOneProfile(user) {
+        return findOneUserProfile(user);
     }
 
     static async findOneUser(email, columnName) {

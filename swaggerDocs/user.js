@@ -34,11 +34,11 @@ const userId = {
         summary: `Retrieve the user by his email`,
         parameters: [
             {
-                name: 'id',
+                name: 'email',
                 in: 'params',
                 required: true,
                 schema: {
-                    type: 'uuid',
+                    type: 'email',
                     example: 'test@gmail.com'
                 },
                 description: 'Email to retrieve a user'

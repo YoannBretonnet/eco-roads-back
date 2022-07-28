@@ -12,7 +12,7 @@ const UserProperties = {
     email: { type: 'string' },
     password: { type: 'string' },
     username: { type: 'string' },
-    location_id: { type: 'integer' },
+    location_id: { type: 'json' },
     car_id: { type: 'integer' },
     category_id: { type: 'integer' },
     created_at: { type: 'string' },
@@ -22,13 +22,11 @@ const UserProperties = {
 //~ ------------------------------ LOGIN
 
 const LoginExample = {
-    id: 'integer',
     email: 'string',
     password: 'string'
 }; 
 
 const LoginProperties = {
-    id: { type: 'integer' },
     email: { type: 'string' },
     password: { type: 'string' }
 };
