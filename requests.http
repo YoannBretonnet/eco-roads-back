@@ -4,9 +4,9 @@
 @autorisationBearer=Authorization: Bearer 
 
 
-@accessToken=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1ODQyMGUxLWI0NTQtNGYyNS04ZGViLWY3NDBiZmFiNjNmZiIsImVtYWlsIjoidGVzdEBnbWFpbC5jb20iLCJ1c2VybmFtZSI6InRlc3QiLCJpYXQiOjE2NTg5Mjc0NTUsImV4cCI6MTY1ODkyOTI1NX0.wi35qwac7CuF2q_9LcP8SigV0wj2ZX79ajr6LSnb8PM
-@refreshToken=Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1ODQyMGUxLWI0NTQtNGYyNS04ZGViLWY3NDBiZmFiNjNmZiIsImVtYWlsIjoidGVzdEBnbWFpbC5jb20iLCJ1c2VybmFtZSI6InRlc3QiLCJpYXQiOjE2NTg5Mjc0NTUsImV4cCI6MTY1ODk2MzQ1NX0.RUj20rm30i3Vtg-7jeR9y2zVTNPyqFksewka8SYJWtk
-
+@accessToken=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImViMGZkMmEzLTdjZGYtNDg5MS04YzU2LWQyYTJhNjRjZGU2ZSIsImVtYWlsIjoidGVzdDRAZ21haWwuY29tIiwidXNlcm5hbWUiOiJ0ZXN0IiwiaWF0IjoxNjU4OTM4NTY2LCJleHAiOjE2NTg5NzQ1NjZ9.sda-BAEo7HYoEG5qV_qUPq5dc_oVAmZ1GxStAf52Wy8
+@refreshToken=Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImViMGZkMmEzLTdjZGYtNDg5MS04YzU2LWQyYTJhNjRjZGU2ZSIsImVtYWlsIjoidGVzdDRAZ21haWwuY29tIiwidXNlcm5hbWUiOiJ0ZXN0IiwiaWF0IjoxNjU4OTM4NTY2LCJleHAiOjE2NTg5NzQ1NjZ9.3QYMNplU0Yk_xMdjpOMA7-AO6plyiYLLW-Utbg52u6U
+@refreshedAccessToken= Authorization:  Bearer 
 ##--------------------------------------------------------------- USERS
 ## ---------------------------------------------------------------------
 
@@ -17,12 +17,20 @@ POST {{entrypoint}}/user/register
 Content-Type: application/json
 
 {
-
-    "email": "test10@gmail.com",
-    "password": "cassini",
-    "username": "test10",
-    "location_id": "",
-    "car_id": ""
+    "email": "test23@gmail.com",
+    "password": "ChicagoBulls96!",
+    "username": "HisAirness",
+    "location": {
+        "label": "test",
+        "street_number": 55,
+        "address": "5th avenue",
+        "zip_code": "55555",
+        "city": "Chicago",
+        "Lat": 23.45874489489498,
+        "Long": 5.45788949984654654
+    },
+    "car_id": "68",
+    "categories": [1,2,3]
 }
 
 ###
@@ -30,7 +38,7 @@ POST {{entrypoint}}/user/login
 Content-Type: application/json
 
 {
-    "email": "fredo@gmail.com",
+    "email": "test4@gmail.com",
     "password": "cassini"
 }
 
@@ -48,15 +56,16 @@ Content-Type: application/json
 
 ###
 PATCH {{entrypoint}}/user/profile
-{{autorisationBearer}}
+{{accessToken}}
 Content-Type: application/json
 
 {
-    "email": "test@ggmail.com",
-    "password": "cassini",
-    "username": "Volcano63",
-    "location_id": "14",
-    "car_id": "65"
+    "email": "test4@gmail.com",
+    "password": "Cassini1!",
+    "username": "Testasse",
+    "location": 11,
+    "car_id": "65",
+    "categories": [3,1,6]
 }
 
 ### 

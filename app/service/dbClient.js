@@ -9,11 +9,10 @@ const pool = new pg.Pool({
 })
 
 // Configuration pour utiliser la BDD en locale, mettre les variables dans le .env
-// PGHOST=localhost
-// PGDATABASE=
-// PGUSER=
-// PGPASSWORD=
-// PGPORT=port
+// PGHOST = localhost;
+// PGDATABASE = test - apo;
+// PGUSER = postgres;
+// PGPORT = 5000;
 
 // const pool = new pg.Pool();
 // pool.connect()
