@@ -78,12 +78,11 @@ async function loginUser(req, res) {
             return res.status(400).json({ error: "Merci de bien vouloir renseigner l'email" });
         //~ Checks if email is valid
         if (!emailValidator.validate(email))
-            return res.status(401).json({ error: "L'email est incorrect" });
+            return res.status(401).json({ error: "Le format de l'email est incorrect" });
 
         const user = await User.findOneUser(email, "email");
-        console.log("USER FIND", user.rows[0].password);
 
-        if (user.rowCount === 0) return res.status(401).json({ error: "L'email saisi est érroné" });
+        if (user.rowCount === 0) return res.status(401).json({ error: "Aucun utilisateur trouvé" });
         //~ Checks password
         const validPassword = await bcrypt.compare(password, user.rows[0].password);
         if (!validPassword) return res.status(401).json({ error: "Mot de passe incorrect" });
