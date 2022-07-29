@@ -99,7 +99,7 @@ async function loginUser(req, res) {
             httpOnly: true,
             sameSite: "none",
             secure: true, 
-            maxAge : new Date(Date.now() + 999999999 )
+            maxAge : new Date( 999999999 )
         });
 
         res.status(200).json({ accessToken: accessToken });
