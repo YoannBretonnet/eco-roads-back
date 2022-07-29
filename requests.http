@@ -1,12 +1,10 @@
 @entrypoint=https://eco-roads.herokuapp.com/api/v1
 //@entrypoint=http://localhost:4100/api/v1
 
-@autorisationBearer=Authorization: Bearer 
-
-
-@accessToken=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjliYjBjMjc5LWM1ZmItNDAyZC1hMTY3LTBmMmZiNDNmOWVlYyIsImVtYWlsIjoibHVmZnlAZ21haWwuY29tIiwidXNlcm5hbWUiOiJMdWZmeS5ETW9ua2V5IiwiaWF0IjoxNjU5MDcxMDMwLCJleHAiOjE2NTkxMDcwMzB9.0QgJr3eNtQrzZPjpD4ChAW2wYSegOF0eYQ5cF2FTotA
-@refreshToken=Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjliYjBjMjc5LWM1ZmItNDAyZC1hMTY3LTBmMmZiNDNmOWVlYyIsImVtYWlsIjoibHVmZnlAZ21haWwuY29tIiwidXNlcm5hbWUiOiJMdWZmeS5ETW9ua2V5IiwiaWF0IjoxNjU5MDcxMDMwLCJleHAiOjE2NTkxMDcwMzB9.1oDX4BXypR9bv4Eq9goOz5X6vTUOEub2GB4g4gdo3PM
+@accessToken=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjliYjBjMjc5LWM1ZmItNDAyZC1hMTY3LTBmMmZiNDNmOWVlYyIsImVtYWlsIjoibHVmZnlAZ21haWwuY29tIiwidXNlcm5hbWUiOiJMdWZmeS5ETW9ua2V5IiwiaWF0IjoxNjU5MDc5MzM1LCJleHAiOjE2NTkxMTUzMzV9.14-HGsgIOPdjhoNsJAxF_-kTM6_tP5PoOUDmvZVjxvw
+@refreshToken=Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImViMGZkMmEzLTdjZGYtNDg5MS04YzU2LWQyYTJhNjRjZGU2ZSIsImVtYWlsIjoidGVzdDRAZ21haWwuY29tIiwidXNlcm5hbWUiOiJ0ZXN0IiwiaWF0IjoxNjU4OTM4NTY2LCJleHAiOjE2NTg5NzQ1NjZ9.3QYMNplU0Yk_xMdjpOMA7-AO6plyiYLLW-Utbg52u6U
 @refreshedAccessToken= Authorization:  Bearer 
+
 ##--------------------------------------------------------------- USERS
 ## ---------------------------------------------------------------------
 
@@ -17,17 +15,17 @@ POST {{entrypoint}}/user/register
 Content-Type: application/json
 
 {
-    "email": "luffy@gmail.com",
-    "password": "Onepiece63!",
-    "username": "Luffy.DMonkey",
+    "email": "alexia@gmail.com",
+    "password": "Cassini1!",
+    "username": "Bellegosse63",
     "location": {
-        "label": "Grand line",
+        "label": "Home",
         "street_number": 6,
-        "address": "boulevard arlong",
+        "address": "rue de la forge",
         "zipcode": 63360,
-        "city": "Grand Line",
-        "Lat": 99.9999999999,
-        "Long": 1.11111111111
+        "city": "Paris",
+        "Lat": 45.84006584530204,
+        "Long": 3.214898746142839
     },
     "car_id": 24,
     "categories": [1,2]
@@ -60,16 +58,17 @@ PATCH {{entrypoint}}/user/profile
 Content-Type: application/json
 
 {
-    "email": "luffy@gmail.com",
+    "email": "alexia@gmail.com",
     "password": "Cassini1!",
-    "username": "Testasse",
-    "location": 11,
-    "car_id": "65",
-    "categories": [3,1,6]
+    "username": "Bellegosse",
+    "location": 12,
+    "car_id": "75",
+    "categories": [9,10]
 }
 
 ### 
-DELETE {{entrypoint}}/user/profile/
+DELETE {{entrypoint}}/user/profile
+{{accessToken}}
 Content-Type: application/json
 
 

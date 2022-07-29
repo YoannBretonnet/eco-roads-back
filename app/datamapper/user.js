@@ -155,7 +155,7 @@ async function updateData(userId, userData) {
 //~----------------------------------------------------------DELETE CAR
 
 async function deleteData(userId) {
-    const result = await client.query(`DELETE FROM "${TABLE_NAME}" WHERE "id" = $1;`, [userId]);
+    const result = await pool.query(`DELETE FROM "${TABLE_NAME}" WHERE "id" = $1 ;`, [userId]);
     return result.rowCount;
 }
 
