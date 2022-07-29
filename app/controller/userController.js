@@ -89,7 +89,6 @@ async function loginUser(req, res) {
         const validPassword = await bcrypt.compare(password, user.rows[0].password);
         if (!validPassword) return res.status(401).json({ error: "Mot de passe incorrect" });
 
-        console.log("Le user dans le controller c est :", user.rows[0]);
 
         //~ Create token JWT
         let accessToken = generateAccessToken(user.rows[0]);
@@ -143,12 +142,9 @@ async function createUser(req, res) {
             const locationExist = await pool.query(`SELECT * FROM location WHERE lat = ${req.body.location.Lat} AND lon = ${req.body.location.Long}`);
                 if (locationExist.rowCount !== 0) location = locationExist.rows[0].id;
             }
-
         //  Search if the user is already in the database
         const user = await User.findOneUser(email, "email");
         
-        console.log("🚀 ~ file: userController.js ~ line 152 ~ createUser ~ user", user.rows[0])
-
         if (user.rowCount !== 0) throw new Error(`${email} existe déjà.`);
         if (!emailValidator.validate(email))
             return res.status(500).json({ error: `L'email n'est pas valide.` });
@@ -160,10 +156,10 @@ async function createUser(req, res) {
             return res.status(500).json({ error: "Merci de renseigner un nom d'utilisateur" });
 
         password = await bcrypt.hash(password, 10);
-
+        req.body = { ...req.body, password: password}
+        console.log("🚀 ~ file: userController.js ~ line 160 ~ createUser ~ req.body", req.body)
         const createdUser = {...req.body};
         
-        console.log("🚀 ~ line 168 ~ createUser ~ createdUser", createdUser)
         await User.createUser(createdUser);
 
         res.status(200).json({ error: "L'utilisateur a bien été créé" });
@@ -178,15 +174,9 @@ async function createUser(req, res) {
 async function updateUser(req, res) {
     try {
         const userId = req.user.id;
-        console.log("🚀  line 187 ~ updateUser ~ userId", userId)
         let { email, username, password, location, car_id, categories } = req.body;
-        console.log("🚀 line 188 ~ updateUser ~ req.body", req.body)
 
         let user = await User.findOneUser(userId, "id");
-        console.log("🚀 ~ line 192 ~ updateUser ~ user", user)
-
-        
-        
 
         if (!user) return res.status(401).json({ error: "L'utilisateur n'existe pas" });
 
@@ -201,11 +191,11 @@ async function updateUser(req, res) {
         if (!username)
             return res.status(500).json({ error: "Merci de renseigner un nom d'utilisateur" });
 
-        const hashPassword = await bcrypt.hash(req.body.password, 10);
+        password = await bcrypt.hash(req.body.password, 10);
 
         const updatedUser = {
             email,
-            password: hashPassword,
+            password,
             username,
             location,
             car_id,

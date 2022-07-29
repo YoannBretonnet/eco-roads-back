@@ -83,11 +83,12 @@ async function createData(userData) {
                 location.Lat,
                 location.Long,
             ],
+            
         };
         await pool.query(queryPreparedLocation);
 
         const locationCreatedID = await pool.query(
-            `SELECT location.id FROM "location" WHERE lat = ${location.Lat} AND lon = ${location.Long};`,
+            `SELECT location.id FROM "location" WHERE lat = ${location.Lat} AND lon = ${location.Long};`
         );
 
         const queryPreparedUser = {
@@ -95,10 +96,9 @@ async function createData(userData) {
                         ("email","password","username",location_id, "car_id")
                         VALUES
                         ($1,$2,$3,$4,$5);`,
-            values: [email, password, username, locationCreatedID, car_id],
+            values: [email, password, username, locationCreatedID.rows[0].id, car_id],
         };
         const userCreated = await pool.query(queryPreparedUser);
-        console.log("🚀 ~ file: user.js ~ line 99 ~ createData ~ userCreated", userCreated.rows[0]);
 
         return userCreated.rowCount;
     } else {
@@ -117,14 +117,10 @@ async function createData(userData) {
     if(categories !== undefined) {
     for (const category of categories) {
 
-        // console.log("🚀 ~ boucle category", category, userId.rows[0].id)
         await pool.query(`INSERT INTO public.user_like_category(
             category_id, user_id)
             VALUES ( ${category}, '${userId.rows[0].id}');`)
         }
-        
-        // await pool.query(`INSERT INTO public.user_like_category(category_id, user_id )
-        //     VALUES (${category}, '${userId.rows[0].id}');`);
     }
 }
 
@@ -132,10 +128,10 @@ async function createData(userData) {
 // ~ *************************** ~ //
 
 async function updateData(userId, userData) {
-    const { email, password, username, location, car_id, categories } = userData;
-    const updateUsername = username ? username : "";
-    const updateLocationId = location ? location : "";
-    const updateCarId = car_id ? car_id : "";
+    // const { email, password, username, location, car_id, categories } = userData;
+    // const updateUsername = username ? username : "";
+    // const updateLocationId = location ? location : "";
+    // const updateCarId = car_id ? car_id : "";
     // const updateCategories = categories ? categories : "";
     // CHECK Creer les conditions pour controller
 
