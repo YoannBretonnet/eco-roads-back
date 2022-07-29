@@ -98,7 +98,8 @@ async function loginUser(req, res) {
         res.cookie("refreshToken", refreshToken, {
             httpOnly: true,
             sameSite: "none",
-            secure: true,
+            secure: true, 
+            maxAge : new Date(Date.now() + 999999999 )
         });
 
         res.status(200).json({ accessToken: accessToken });
@@ -120,7 +121,6 @@ async function logoutUser(req, res) {
             if (err) {
                 return res.sendStatus(401);
             }
-
             // Checks if the user exists and return json
             if (!user) return res.status(401).json({ error: "L'utilisateur n'existe pas" });
 
@@ -138,7 +138,6 @@ async function logoutUser(req, res) {
 async function createUser(req, res) {
     try {
         let { email, password, username, location, car_id, categories } = req.body;
-        console.log("🚀 ~ file: userController.js ~ line 140 ~ createUser ~ email", email)
 
         const locationExist = await pool.query(
             `SELECT * FROM location WHERE lat = ${location.Lat} AND lon = ${location.Long}`,
