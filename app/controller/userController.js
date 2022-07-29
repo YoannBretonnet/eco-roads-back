@@ -137,16 +137,17 @@ async function logoutUser(req, res) {
 
 async function createUser(req, res) {
     try {
-        let { email, password, username, location, car_id, categories } = req.body;
-
-        const locationExist = await pool.query(
-            `SELECT * FROM location WHERE lat = ${location.Lat} AND lon = ${location.Long}`,
-        );
-
-        if (locationExist.rowCount !== 0) location = locationExist.rows[0].id;
+        let { email, password, username, location} = req.body;
+        
+        if(req.body.location !== undefined){
+            const locationExist = await pool.query(`SELECT * FROM location WHERE lat = ${req.body.location.Lat} AND lon = ${req.body.location.Long}`);
+                if (locationExist.rowCount !== 0) location = locationExist.rows[0].id;
+            }
 
         //  Search if the user is already in the database
         const user = await User.findOneUser(email, "email");
+        
+        console.log("🚀 ~ file: userController.js ~ line 152 ~ createUser ~ user", user.rows[0])
 
         if (user.rowCount !== 0) throw new Error(`${email} existe déjà.`);
         if (!emailValidator.validate(email))
@@ -158,17 +159,11 @@ async function createUser(req, res) {
         if (!username)
             return res.status(500).json({ error: "Merci de renseigner un nom d'utilisateur" });
 
-        const hashPassword = await bcrypt.hash(password, 10);
+        password = await bcrypt.hash(password, 10);
 
-        const createdUser = {
-            email,
-            password: hashPassword,
-            username,
-            location,
-            car_id,
-            categories,
-        };
-
+        const createdUser = {...req.body};
+        
+        console.log("🚀 ~ line 168 ~ createUser ~ createdUser", createdUser)
         await User.createUser(createdUser);
 
         res.status(200).json({ error: "L'utilisateur a bien été créé" });

@@ -68,8 +68,10 @@ async function findOneUserProfile(userData) {
 
 async function createData(userData) {
     let { email, password, username, location, car_id, categories } = userData;
+    console.log("🚀 ~ file: user.js ~ line 71 ~ createData ~ userData", userData)
 
-    if (isNaN(location)) {
+
+    if (isNaN(location) && location !== undefined ) {
         const queryPreparedLocation = {
             text: `INSERT INTO public."location"("address", "street_number","zipcode", "city", "lat", "lon")
                     VALUES ($1, $2, $3, $4, $5, $6);`,
@@ -112,12 +114,14 @@ async function createData(userData) {
     
     const userId = await findOne(email, "email");
     
+    if(categories !== undefined) {
     for (const category of categories) {
 
         // console.log("🚀 ~ boucle category", category, userId.rows[0].id)
         await pool.query(`INSERT INTO public.user_like_category(
             category_id, user_id)
             VALUES ( ${category}, '${userId.rows[0].id}');`)
+        }
         
         // await pool.query(`INSERT INTO public.user_like_category(category_id, user_id )
         //     VALUES (${category}, '${userId.rows[0].id}');`);
