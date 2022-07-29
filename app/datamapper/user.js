@@ -71,9 +71,10 @@ async function findOneUserProfile(userData, columnName) {
 async function createData(userData) {
     console.log("🚀 ~ file: user.js ~ line 72 ~ createData ~ userData", userData)
     let { email, password, username, location, car_id, categories } = userData;
-    console.log("🚀 ~ file: user.js ~ line 74 ~ createData ~ location", location)
+    console.log("🚀 ~ file: user.js ~ line 71 ~ createData ~ userData", userData)
 
-    if (isNaN(location)) {
+
+    if (isNaN(location) && location !== undefined ) {
         const queryPreparedLocation = {
             text: `INSERT INTO public."location"("address", "street_number","zipcode", "city", "lat", "lon")
                     VALUES ($1, $2, $3, $4, $5, $6);`,
@@ -85,11 +86,12 @@ async function createData(userData) {
                 location.Lat,
                 location.Long,
             ],
+            
         };
         await pool.query(queryPreparedLocation);
 
         const locationCreatedID = await pool.query(
-            `SELECT location.id FROM "location" WHERE lat = ${location.Lat} AND lon = ${location.Long};`,
+            `SELECT location.id FROM "location" WHERE lat = ${location.Lat} AND lon = ${location.Long};`
         );
 
         const queryPreparedUser = {
@@ -97,7 +99,7 @@ async function createData(userData) {
                         ("email","password","username",location_id, "car_id")
                         VALUES
                         ($1,$2,$3,$4,$5);`,
-            values: [email, password, username, locationCreatedID, car_id],
+            values: [email, password, username, locationCreatedID.rows[0].id, car_id],
         };
         const userCreated = await pool.query(queryPreparedUser);
 
@@ -112,17 +114,16 @@ async function createData(userData) {
         };
         await pool.query(queryPrepared);
     }
-
+    
     const userId = await findOne(email, "email");
-
+    
+    if(categories !== undefined) {
     for (const category of categories) {
-        // console.log("🚀 ~ boucle category", category, userId.rows[0].id)
+
         await pool.query(`INSERT INTO public.user_like_category(
             category_id, user_id)
-            VALUES ( ${category}, '${userId.rows[0].id}');`);
-
-        // await pool.query(`INSERT INTO public.user_like_category(category_id, user_id )
-        //     VALUES (${category}, '${userId.rows[0].id}');`);
+            VALUES ( ${category}, '${userId.rows[0].id}');`)
+        }
     }
 }
 
@@ -130,10 +131,10 @@ async function createData(userData) {
 // ~ *************************** ~ //
 
 async function updateData(userId, userData) {
-    const { email, password, username, location, car_id, categories } = userData;
-    const updateUsername = username ? username : "";
-    const updateLocationId = location ? location : "";
-    const updateCarId = car_id ? car_id : "";
+    // const { email, password, username, location, car_id, categories } = userData;
+    // const updateUsername = username ? username : "";
+    // const updateLocationId = location ? location : "";
+    // const updateCarId = car_id ? car_id : "";
     // const updateCategories = categories ? categories : "";
     // CHECK Creer les conditions pour controller
 
