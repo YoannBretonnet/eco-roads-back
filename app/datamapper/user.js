@@ -6,7 +6,9 @@ const TABLE_NAME = "user";
 // ~ *** *** FIND ALL USERS *** *** ~ //
 // ~ ****************************** ~ //
 async function findAll() {
-    const result = await pool.query(`SELECT * FROM public."${TABLE_NAME}";`);
+    const result = await pool.query(
+        `SELECT * FROM public."${TABLE_NAME}" ORDER BY created_at DESC;`,
+    );
     return result.rows;
 }
 
@@ -109,16 +111,15 @@ async function createData(userData) {
         };
         await pool.query(queryPrepared);
     }
-    
-    const userId = await findOne(email, "email");
-    
-    for (const category of categories) {
 
+    const userId = await findOne(email, "email");
+
+    for (const category of categories) {
         // console.log("🚀 ~ boucle category", category, userId.rows[0].id)
         await pool.query(`INSERT INTO public.user_like_category(
             category_id, user_id)
-            VALUES ( ${category}, '${userId.rows[0].id}');`)
-        
+            VALUES ( ${category}, '${userId.rows[0].id}');`);
+
         // await pool.query(`INSERT INTO public.user_like_category(category_id, user_id )
         //     VALUES (${category}, '${userId.rows[0].id}');`);
     }
