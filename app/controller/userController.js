@@ -184,9 +184,15 @@ async function createUser(req, res) {
 async function updateUser(req, res) {
     try {
         const userId = req.user.id;
+        console.log("🚀  line 187 ~ updateUser ~ userId", userId)
         let { email, username, password, location, car_id, categories } = req.body;
+        console.log("🚀 line 188 ~ updateUser ~ req.body", req.body)
 
-        let user = await User.findOneUser(userId, "uuid");
+        let user = await User.findOneUser(userId, "id");
+        console.log("🚀 ~ line 192 ~ updateUser ~ user", user)
+
+        
+        
 
         if (!user) return res.status(401).json({ error: "L'utilisateur n'existe pas" });
 
@@ -226,6 +232,7 @@ async function updateUser(req, res) {
 async function deleteUser(req, res) {
     try {
         const userId = req.user.id;
+        console.log("🚀 ~ file: userController.js ~ line 235 ~ deleteUser ~ userId", userId)
         await User.deleteUser(userId);
 
         return res.status(200).json(`L'utilisateur a bien été supprimé`);
