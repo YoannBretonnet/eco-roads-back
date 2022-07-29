@@ -28,10 +28,10 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const PORT = process.env.PORT || 5000;
 const corsOptions = {
-    credentials: true,
+    withCredentials: true,
     origin: "https://e-co-roads.netlify.app",
     optionsSuccessStatus: 200,
-    credentials: true,
+    credentials: true
 };
 
 // app.use(function (req, res, next) {
