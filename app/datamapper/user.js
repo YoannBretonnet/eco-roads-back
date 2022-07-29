@@ -28,14 +28,14 @@ async function findOne(userData, columnName) {
 // ~ *** *** FIND ONE USER PROFILE PAGE *** *** ~ //
 // ~ ****************************************** ~ //
 
-async function findOneUserProfile(userData) {
+async function findOneUserProfile(userData, columnName) {
     const queryPrepared = {
         text: `SELECT public.user.id, public.user.username, public.user.email,
         (SELECT json_build_object('brand_id', public.brand.id, 'name', public.brand.name, 'car_id', public.car.id ,'model', public.car.model, 'image', public.car.image) 
         FROM public."user" 
         JOIN public.car ON public.car.id = public."user".car_id 
         JOIN public.brand ON public.brand.id = public.car.brand_id
-        WHERE public."user".id = $1)  AS "car",
+        WHERE public."user".${columnName} = $1)  AS "car",
         (SELECT 
         json_build_object(
         'address', public.location.address, 
@@ -46,17 +46,17 @@ async function findOneUserProfile(userData) {
         'lon', public.location.lon) AS location 
         FROM public."location"
         JOIN public."user" ON public."user".location_id = public.location.id 
-        WHERE public."user".id = $1),
+        WHERE public."user".${columnName} = $1),
         (SELECT
         JSON_AGG(json_build_object ('category', public."category".name,'id', public."category".id)) 
         AS "categories" 
         FROM public.user_like_category 
         JOIN public.category ON public.category.id = public.user_like_category.category_id
         JOIN public."user" ON public."user".id = public.user_like_category.user_id 
-        WHERE public."user".id = $1
+        WHERE public."user".${columnName} = $1
         GROUP BY public.user.username) 
         FROM public."${TABLE_NAME}" 
-        WHERE public."user".id= $1;`,
+        WHERE public."user".${columnName}= $1;`,
         values: [userData],
     };
 
@@ -69,7 +69,9 @@ async function findOneUserProfile(userData) {
 // ~ *************************** ~ //
 
 async function createData(userData) {
+    console.log("🚀 ~ file: user.js ~ line 72 ~ createData ~ userData", userData)
     let { email, password, username, location, car_id, categories } = userData;
+    console.log("🚀 ~ file: user.js ~ line 74 ~ createData ~ location", location)
 
     if (isNaN(location)) {
         const queryPreparedLocation = {
@@ -98,7 +100,6 @@ async function createData(userData) {
             values: [email, password, username, locationCreatedID, car_id],
         };
         const userCreated = await pool.query(queryPreparedUser);
-        console.log("🚀 ~ file: user.js ~ line 99 ~ createData ~ userCreated", userCreated.rows[0]);
 
         return userCreated.rowCount;
     } else {
@@ -107,7 +108,7 @@ async function createData(userData) {
                 ("email","password","username",location_id, "car_id")
                 VALUES
                 ($1,$2,$3,$4,$5);`,
-            values: [email, password, username, location, car_id],
+            values: [email, password, username, location, car_id]
         };
         await pool.query(queryPrepared);
     }

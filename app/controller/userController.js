@@ -57,7 +57,7 @@ async function fetchOneUser(req, res) {
         const userId = req.user.id;
         if (!userId) return res.status(401).json({ error: "Autorisation refusée" });
 
-        const user = await User.findOneProfile(userId);
+        const user = await User.findOneProfile(userId, "id");
 
         if (user) res.status(200).json(user.rows[0]);
         else throw new Error({ error: "L'utilisateur n'existe pas" });
@@ -80,14 +80,13 @@ async function loginUser(req, res) {
         if (!emailValidator.validate(email))
             return res.status(401).json({ error: "L'email est incorrect" });
 
-        const user = await User.findOneUser(email, "email");
+        const user = await User.findOneProfile(email, "email");
 
         if (user.rowCount === 0) return res.status(401).json({ error: "L'email saisi est érroné" });
 
         //~ Checks password
         const validPassword = await bcrypt.compare(password, user.rows[0].password);
         if (!validPassword) return res.status(401).json({ error: "Mot de passe incorrect" });
-
 
         //~ Create token JWT
         let accessToken = generateAccessToken(user.rows[0]);
@@ -136,41 +135,38 @@ async function logoutUser(req, res) {
 async function createUser(req, res) {
     try {
         let { email, password, username, location, car_id, categories } = req.body;
+        console.log("🚀 ~ file: userController.js ~ line 138 ~ createUser ~ req.body", req.body.location)
 
-        if(location !== null) {const locationExist = await pool.query(
-            `SELECT * FROM location WHERE lat = ${location.Lat} AND lon = ${location.Long}`,
-            )
-            if (locationExist.rowCount !== 0) location = locationExist.rows[0].id;
-            
-            ;}
-            console.log(locationExist.rows[0].id)
-
+        if(location !== undefined){
+        const locationExist = await pool.query(
+            `SELECT * FROM "location" WHERE lat = ${location.Lat} AND lon = ${location.Long};`
+        );
+        if (locationExist.rowCount !== 0 ) {location = locationExist.rows[0].id;
+        }}
+        
         //  Search if the user is already in the database
         const user = await User.findOneUser(email, "email");
-
+        
         if (user.rowCount !== 0) throw new Error(`${email} existe déjà.`);
         if (!emailValidator.validate(email))
-            return res.status(500).json({ error: `L'email n'est pas valide.` });
+        return res.status(500).json({ error: `L'email n'est pas valide.` });
         if (!schema.validate(password))
-            return res.status(500).json({
-                error: "Le mot de passe doit contenir au moins 6 caractères, une majuscule et un caractère spécial.",
-            });
+        return res.status(500).json({
+            error: "Le mot de passe doit contenir au moins 6 caractères, une majuscule et un caractère spécial.",
+        });
         if (!username)
-            return res.status(500).json({ error: "Merci de renseigner un nom d'utilisateur" });
-
-        const hashPassword = await bcrypt.hash(password, 10);
-
-        const createdUser = {
-            email,
-            password: hashPassword,
-            username,
-            location,
-            car_id,
-            categories,
+        return res.status(500).json({ error: "Merci de renseigner un nom d'utilisateur" });
+        
+        password = await bcrypt.hash(password, 10);
+        
+        console.log("🚀 ~ file: userController.js ~ line 163 ~ createUser ~ locationExist", locationExist)
+        const createdUser = { 
+            email, password, username, location, car_id, categories
         };
+        console.log("🚀 ~ file: userController.js ~ line 162 ~ createUser ~ ...req.body", req.body)
 
         await User.createUser(createdUser);
-
+        
         res.status(200).json({ error: "L'utilisateur a bien été créé" });
     } catch (err) {
         _500(err, req, res);
@@ -183,15 +179,10 @@ async function createUser(req, res) {
 async function updateUser(req, res) {
     try {
         const userId = req.user.id;
-        console.log("🚀  line 187 ~ updateUser ~ userId", userId)
-        let { email, username, password, location, car_id, categories } = req.body;
-        console.log("🚀 line 188 ~ updateUser ~ req.body", req.body)
+
+        let { email, username, password } = req.body;
 
         let user = await User.findOneUser(userId, "id");
-        console.log("🚀 ~ line 192 ~ updateUser ~ user", user)
-
-        
-        
 
         if (!user) return res.status(401).json({ error: "L'utilisateur n'existe pas" });
 
@@ -206,16 +197,9 @@ async function updateUser(req, res) {
         if (!username)
             return res.status(500).json({ error: "Merci de renseigner un nom d'utilisateur" });
 
-        const hashPassword = await bcrypt.hash(req.body.password, 10);
+        password = await bcrypt.hash(req.body.password, 10);
 
-        const updatedUser = {
-            email,
-            password: hashPassword,
-            username,
-            location,
-            car_id,
-            categories,
-        };
+        const updatedUser = { ...req.body };
 
         await User.updateUser(userId, updatedUser);
 
@@ -231,7 +215,7 @@ async function updateUser(req, res) {
 async function deleteUser(req, res) {
     try {
         const userId = req.user.id;
-        console.log("🚀 ~ file: userController.js ~ line 235 ~ deleteUser ~ userId", userId)
+        console.log("🚀 ~ file: userController.js ~ line 235 ~ deleteUser ~ userId", userId);
         await User.deleteUser(userId);
 
         return res.status(200).json(`L'utilisateur a bien été supprimé`);

@@ -1,8 +1,8 @@
-@entrypoint=https://eco-roads.herokuapp.com/api/v1
-//@entrypoint=http://localhost:4100/api/v1
+//@entrypoint=https://eco-roads.herokuapp.com/api/v1
+@entrypoint=http://localhost:5000/api/v1
 
-@accessToken=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjliYjBjMjc5LWM1ZmItNDAyZC1hMTY3LTBmMmZiNDNmOWVlYyIsImVtYWlsIjoibHVmZnlAZ21haWwuY29tIiwidXNlcm5hbWUiOiJMdWZmeS5ETW9ua2V5IiwiaWF0IjoxNjU5MDgzMDAwLCJleHAiOjE2NTkxMTkwMDB9.AD_TrYpiAGQ22Vg-Ao-B_TQZidnvT8FGuce7VAZG1Lk
-@refreshToken=Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImViMGZkMmEzLTdjZGYtNDg5MS04YzU2LWQyYTJhNjRjZGU2ZSIsImVtYWlsIjoidGVzdDRAZ21haWwuY29tIiwidXNlcm5hbWUiOiJ0ZXN0IiwiaWF0IjoxNjU4OTM4NTY2LCJleHAiOjE2NTg5NzQ1NjZ9.3QYMNplU0Yk_xMdjpOMA7-AO6plyiYLLW-Utbg52u6U
+@accessToken=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjliYjBjMjc5LWM1ZmItNDAyZC1hMTY3LTBmMmZiNDNmOWVlYyIsImVtYWlsIjoibHVmZnlAZ21haWwuY29tIiwidXNlcm5hbWUiOiJMdWZmeS5ETW9ua2V5IiwiaWF0IjoxNjU5MDg2MjYxLCJleHAiOjE2NTkxMjIyNjF9.PsW72xayv_2kVnMYPgRfQrmJnsLR51JTqqCJHYYbSYs
+@refreshToken=Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjliYjBjMjc5LWM1ZmItNDAyZC1hMTY3LTBmMmZiNDNmOWVlYyIsImVtYWlsIjoibHVmZnlAZ21haWwuY29tIiwidXNlcm5hbWUiOiJMdWZmeS5ETW9ua2V5IiwiaWF0IjoxNjU5MDg2MjYxLCJleHAiOjE2NTkxMjIyNjF9.0F3rbr2klUHQYueZ2nxKa_-_SCROU0d9pu7AXIjsFW0
 @refreshedAccessToken= Authorization:  Bearer 
 
 ##--------------------------------------------------------------- USERS
@@ -15,19 +15,10 @@ POST {{entrypoint}}/user/register
 Content-Type: application/json
 
 {
-    "email": "alexia@gmail.com",
+    "email": "yumigaet@gmail.com",
     "password": "Cassini1!",
     "username": "Bellegosse63",
-    "location": {
-        "label": "Home",
-        "street_number": 6,
-        "address": "rue de la forge",
-        "zipcode": 63360,
-        "city": "Paris",
-        "Lat": 45.84006584530204,
-        "Long": 3.214898746142839
-    },
-    "car_id": 24,
+    "car_id": 17,
     "categories": [1,2]
 }
 
