@@ -158,8 +158,8 @@ async function createUser(req, res) {
             return res.status(500).json({ error: "Merci de renseigner un nom d'utilisateur" });
 
         password = await bcrypt.hash(password, 10);
+        
         req.body = { ...req.body, password: password}
-        console.log("🚀 ~ file: userController.js ~ line 160 ~ createUser ~ req.body", req.body)
         const createdUser = {...req.body};
         
         await User.createUser(createdUser);

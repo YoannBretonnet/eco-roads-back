@@ -69,9 +69,7 @@ async function findOneUserProfile(userData, columnName) {
 // ~ *************************** ~ //
 
 async function createData(userData) {
-    console.log("🚀 ~ file: user.js ~ line 72 ~ createData ~ userData", userData)
     let { email, password, username, location, car_id, categories } = userData;
-    console.log("🚀 ~ file: user.js ~ line 71 ~ createData ~ userData", userData)
 
 
     if (isNaN(location) && location !== undefined ) {
