@@ -29,7 +29,9 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const PORT = process.env.PORT || 5000;
 const corsOptions = {
     withCredentials: true,
-    origin: "https://e-co-roads.netlify.app",
+    origin: ["https://e-co-roads.netlify.app", "http://localhost:8080"],
+    method: ["GET", "POST", "PATCH", "DELETE"],
+    responseHeader: ["Content-Type"],
     optionsSuccessStatus: 200,
     credentials: true
 };
