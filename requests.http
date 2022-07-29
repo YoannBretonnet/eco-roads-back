@@ -1,7 +1,7 @@
 #@entrypoint=https://eco-roads.herokuapp.com/api/v1
 @entrypoint=http://localhost:4100/api/v1
 
-@accessToken=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE4MTRkYTMxLTYzZmItNGM5My05N2Y4LWQ5OWRmNmMxMTdmZCIsImVtYWlsIjoidGVzdDMzQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoiY2Fzc2luaTYzIiwiaWF0IjoxNjU5MTA0NDk4LCJleHAiOjE2NTkxNDA0OTh9.OKCSQkuvExiqpanVcHlEHgHZCJ1L-R2_FbjjYHlFdIU
+@accessToken=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk0MmM0MjNjLWM5N2QtNGQ4MS05ZDZkLTkxMDg5MTE3Njg2OCIsImVtYWlsIjoidXBkYXRlVXNlckBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImNhc3Npbmk2MyIsImlhdCI6MTY1OTEyNzgzMywiZXhwIjoxNjU5MTYzODMzfQ.UKnhI3R1gskY4SVAqEG0zniUxUyZVhef-fmW-CzBDUc
 @refreshToken=Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImViMGZkMmEzLTdjZGYtNDg5MS04YzU2LWQyYTJhNjRjZGU2ZSIsImVtYWlsIjoidGVzdDRAZ21haWwuY29tIiwidXNlcm5hbWUiOiJ0ZXN0IiwiaWF0IjoxNjU4OTM4NTY2LCJleHAiOjE2NTg5NzQ1NjZ9.3QYMNplU0Yk_xMdjpOMA7-AO6plyiYLLW-Utbg52u6U
 @refreshedAccessToken= Authorization:  Bearer 
 ##--------------------------------------------------------------- USERS
@@ -15,15 +15,15 @@ POST {{entrypoint}}/user/register
 Content-Type: application/json
 
 {
-    "email": "test33@gmail.com",
-    "password": "Cassin63!",
+    "email": "updateUser@gmail.com",
+    "password": "Cassini63!",
     "username": "cassini63",
     "location":{
-        "address": "rue de la rue",
-        "street_number": 10,
-        "zipcode": 55000,
-        "city": "Paris",
-        "lat": 40.54545454,
+        "address": "rue de la mer",
+        "street_number": 1,
+        "zipcode": 83000,
+        "city": "Toulon",
+        "Lat": 40.54545454,
         "Long": 0.4854854545
     },
     "car_id": 74,
@@ -36,8 +36,8 @@ POST {{entrypoint}}/user/login
 Content-Type: application/json
 
 {
-    "email": "test3sadasd3@gmail.com",
-    "password": "Cassin63!"
+    "email": "updateUser@gmail.com",
+    "password": "Cassini63!"
 }
 
 ###
@@ -54,11 +54,12 @@ PATCH {{entrypoint}}/user/profile
 Content-Type: application/json
 
 {
-    "email": "test33@gmail.com",
+    "email": "updateUser@gmail.com",
+    "password": "Cassini83!",
     "username": "Bellegosse",
     "location": 12,
-    "car_id": "75",
-    "categories": [9,10]
+    "car_id": 80,
+    "categories": [8,9]
 }
 
 ### 

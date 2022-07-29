@@ -83,22 +83,24 @@ async function loginUser(req, res) {
 
         const user = await User.findOneUser(email, "email");
 
-        if (user.rowCount ===0) return res.status(401).json({ error: "Aucun utilisateur trouvé" });
+        if (user.rowCount === 0) return res.status(401).json({ error: "Aucun utilisateur trouvé" });
 
         // verify if password is the same with user.password
         const validPassword = await bcrypt.compare(password, user.rows[0].password);
         if (!validPassword) return res.status(401).json({ error: "Mot de passe incorrect" });
 
+        // delete user.password;
+        const { ['password']: remove, ...userJwt } = user.rows[0];
 
         //~ Create token JWT
-        let accessToken = generateAccessToken(user.rows[0]);
-        let refreshToken = generateRefreshToken(user.rows[0]);
+        let accessToken = generateAccessToken(userJwt);
+        let refreshToken = generateRefreshToken(userJwt);
 
         res.cookie("refreshToken", refreshToken, {
             httpOnly: true,
             sameSite: "none",
             secure: true, 
-            maxAge : new Date( 999999999 )
+            maxAge : 24 * 60 * 60 * 1000
         });
 
         res.status(200).json({ accessToken: accessToken });
@@ -136,15 +138,17 @@ async function logoutUser(req, res) {
 
 async function createUser(req, res) {
     try {
-        let { email, password, username, location} = req.body;
-        
-        if(location !== undefined){
-            const locationExist = await pool.query(`SELECT * FROM location WHERE lat = ${req.body.location.Lat} AND lon = ${req.body.location.Long}`);
-                if (locationExist.rowCount !== 0) location = locationExist.rows[0].id;
-            }
+        let { email, password, username } = req.body;
+
+        if (req.body.location !== undefined) {
+            const locationExist = await pool.query(
+                `SELECT * FROM location WHERE lat = ${req.body.location.Lat} AND lon = ${req.body.location.Long}`,
+            );
+            if (locationExist.rowCount !== 0) req.body.location = locationExist.rows[0].id;
+        }
         //  Search if the user is already in the database
         const user = await User.findOneUser(email, "email");
-        
+
         if (user.rowCount !== 0) throw new Error(`${email} existe déjà.`);
         if (!emailValidator.validate(email))
             return res.status(500).json({ error: `L'email n'est pas valide.` });
@@ -156,10 +160,10 @@ async function createUser(req, res) {
             return res.status(500).json({ error: "Merci de renseigner un nom d'utilisateur" });
 
         password = await bcrypt.hash(password, 10);
-        req.body = { ...req.body, password: password}
-        console.log("🚀 ~ file: userController.js ~ line 160 ~ createUser ~ req.body", req.body)
-        const createdUser = {...req.body};
-        
+
+        req.body = { ...req.body, password: password };
+        const createdUser = { ...req.body };
+
         await User.createUser(createdUser);
 
         res.status(200).json({ error: "L'utilisateur a bien été créé" });
@@ -173,36 +177,48 @@ async function createUser(req, res) {
 
 async function updateUser(req, res) {
     try {
+        // I retrieve the id put in the req.session 
         const userId = req.user.id;
-
-        // je cherche l utilisateur, 
-        let { email, username, password, location, car_id, categories } = req.body;
-
+        // I verify if the user exist in the database
         let user = await User.findOneUser(userId, "id");
-
+        
         if (!user) return res.status(401).json({ error: "L'utilisateur n'existe pas" });
+        
+        let { email,password, username } = req.body;
+        console.log("🚀 ~ file: userController.js ~ line 188 ~ updateUser ~ req.body", req.body)
 
+        if(isNaN(req.body.location)){
+            // const location = req.body.location;
+            if(req.body.location !== undefined ){
+                const locationExist = await pool.query(`SELECT * FROM location WHERE lat = ${req.body.location.Lat} AND lon = ${req.body.location.Long};`);
+                if (locationExist.rowCount !== 0) req.body.location = locationExist.rows[0].id;
+            }
+        }
+  
+        console.log("🚀 ~ file: userController.js ~ line 192 ~ updateUser ~ location", location)
+            console.log( "~ line 193", req.body.location); 
+            
         if (!emailValidator.validate(email))
             return res.status(500).json({ error: `${email} invalide !` });
-
-        if (!schema.validate(password))
-            return res
+        
+        if(password){ 
+            if(!schema.validate(password)) 
+                return res
                 .status(500)
                 .json({ error: "Le mot de passe doit contenir au moins 6 caractères." });
-
+            }
+        password ? await bcrypt.hash(req.body.password, 10) : user.rows[0].password;    
+        
         if (!username)
             return res.status(500).json({ error: "Merci de renseigner un nom d'utilisateur" });
 
-        password = await bcrypt.hash(req.body.password, 10);
-
-        const updatedUser = {
-            email,
-            password,
-            username,
-            location,
-            car_id,
-            categories,
-        };
+        // if(password) password = await bcrypt.hash(req.body.password, 10);
+console.log("pourquoi ya pas la location", req.body.location);
+        req.body = { ...req.body, 
+            password: password,
+            location: req.body.location ? location : req.body.location };
+            console.log("🚀 ~ file: userController.js ~ line 212 ~ updateUser ~ req.body", req.body)
+        const updatedUser = {...req.body };
 
         await User.updateUser(userId, updatedUser);
 
@@ -211,6 +227,8 @@ async function updateUser(req, res) {
         _500(err, req, res);
     }
 }
+
+
 
 // ------------------------------------------------------- UPDATE USER
 // --------------------------------------------------------------------

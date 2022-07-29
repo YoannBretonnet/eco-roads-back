@@ -68,7 +68,7 @@ async function findOneUserProfile(userData) {
 
 async function createData(userData) {
     let { email, password, username, location, car_id, categories } = userData;
-    console.log("🚀 ~ file: user.js ~ line 71 ~ createData ~ userData", userData)
+    console.log("🚀 ~ line 73 ~ createData ~ categories", categories)
 
 
     if (isNaN(location) && location !== undefined ) {
@@ -81,7 +81,7 @@ async function createData(userData) {
                 location.zipcode,
                 location.city,
                 location.Lat,
-                location.Long,
+                location.Long
             ],
             
         };
@@ -98,20 +98,20 @@ async function createData(userData) {
                         ($1,$2,$3,$4,$5);`,
             values: [email, password, username, locationCreatedID.rows[0].id, car_id],
         };
-        const userCreated = await pool.query(queryPreparedUser);
+        await pool.query(queryPreparedUser);
 
-        return userCreated.rowCount;
+
     } else {
         const queryPrepared = {
             text: `INSERT INTO "${TABLE_NAME}"
                 ("email","password","username",location_id, "car_id")
                 VALUES
                 ($1,$2,$3,$4,$5);`,
-            values: [email, password, username, location, car_id],
+            values: [email, password, username, location, car_id]
         };
         await pool.query(queryPrepared);
     }
-    
+    console.log("JE SUIS LIGNE 116");
     const userId = await findOne(email, "email");
     
     if(categories !== undefined) {
@@ -128,7 +128,7 @@ async function createData(userData) {
 // ~ *************************** ~ //
 
 async function updateData(userId, userData) {
-    // const { email, password, username, location, car_id, categories } = userData;
+    const { email, password, username, location, car_id, categories } = userData;
     // const updateUsername = username ? username : "";
     // const updateLocationId = location ? location : "";
     // const updateCarId = car_id ? car_id : "";
@@ -139,9 +139,9 @@ async function updateData(userId, userData) {
         text: `
             UPDATE "${TABLE_NAME}"
                 SET
-                "email" = $1,
-                "password" = $2,
-                "username" = $3,
+                "email" = COALESCE( $1, "email" )::TEXT,
+                "password" = COALESCE( $2, "password" )::TEXT,
+                "username" = COALESCE( $3, "username" )::TEXT,
                 "location_id" = $4,
                 "car_id" = $5
             WHERE "id" = $6;`,
