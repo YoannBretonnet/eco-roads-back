@@ -72,7 +72,6 @@ async function fetchOneUser(req, res) {
 async function loginUser(req, res) {
     try {
         const { email, password } = req.body;
-        console.log("🚀 ~ file: userController.js ~ line 75 ~ loginUser ~ req.body", req.body)
 
         //~ verify if the email exists
         if (!email)
@@ -82,7 +81,7 @@ async function loginUser(req, res) {
             return res.status(401).json({ error: "L'email est incorrect" });
 
         const user = await User.findOneUser(email, "email");
-        console.log("USER FIND",user.rows[0].password);
+        console.log("USER FIND", user.rows[0].password);
 
         if (user.rowCount === 0) return res.status(401).json({ error: "L'email saisi est érroné" });
         //~ Checks password
@@ -96,8 +95,8 @@ async function loginUser(req, res) {
         res.cookie("refreshToken", refreshToken, {
             httpOnly: true,
             sameSite: "none",
-            secure: true, 
-            maxAge : new Date( 999999999 )
+            secure: true,
+            maxAge: 24 * 60 * 60 * 1000
         });
 
         res.status(200).json({ accessToken: accessToken });
@@ -135,32 +134,34 @@ async function logoutUser(req, res) {
 
 async function createUser(req, res) {
     try {
-        let { email, password, username, location} = req.body;
-        
-        if(req.body.location !== undefined){
-            const locationExist = await pool.query(`SELECT * FROM location WHERE lat = ${req.body.location.Lat} AND lon = ${req.body.location.Long}`);
-                if (locationExist.rowCount !== 0) location = locationExist.rows[0].id;
-            }
+        let { email, password, username, location } = req.body;
+
+        if (req.body.location !== undefined) {
+            const locationExist = await pool.query(
+                `SELECT * FROM location WHERE lat = ${req.body.location.Lat} AND lon = ${req.body.location.Long}`,
+            );
+            if (locationExist.rowCount !== 0) location = locationExist.rows[0].id;
+        }
         //  Search if the user is already in the database
         const user = await User.findOneUser(email, "email");
-        
+
         if (user.rowCount !== 0) throw new Error(`${email} existe déjà.`);
         if (!emailValidator.validate(email))
-        return res.status(500).json({ error: `L'email n'est pas valide.` });
+            return res.status(500).json({ error: `L'email n'est pas valide.` });
         if (!schema.validate(password))
-        return res.status(500).json({
-            error: "Le mot de passe doit contenir au moins 6 caractères, une majuscule et un caractère spécial.",
-        });
+            return res.status(500).json({
+                error: "Le mot de passe doit contenir au moins 6 caractères, une majuscule et un caractère spécial.",
+            });
         if (!username)
             return res.status(500).json({ error: "Merci de renseigner un nom d'utilisateur" });
 
         password = await bcrypt.hash(password, 10);
 
-        req.body = { ...req.body, password: password}
-        const createdUser = {...req.body};
-        
+        req.body = { ...req.body, password: password };
+        const createdUser = { ...req.body };
+
         await User.createUser(createdUser);
-        
+
         res.status(200).json({ error: "L'utilisateur a bien été créé" });
     } catch (err) {
         _500(err, req, res);

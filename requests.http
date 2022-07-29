@@ -1,7 +1,7 @@
 //@entrypoint=https://eco-roads.herokuapp.com/api/v1
 @entrypoint=http://localhost:5000/api/v1
 
-@accessToken=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE4MTRkYTMxLTYzZmItNGM5My05N2Y4LWQ5OWRmNmMxMTdmZCIsImVtYWlsIjoidGVzdDMzQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoiY2Fzc2luaTYzIiwiaWF0IjoxNjU5MDk0NjUxLCJleHAiOjE2NTkxMzA2NTF9.9SjJFyK5LP9WyaOV9JB2R1BNYnDBqgudPHtz0dzkzsA
+@accessToken=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZjMzcxYmUxLTg3YmEtNGUzMy04Mzk2LTg4MTYxNzRlNzhlYSIsImVtYWlsIjoidGVzdDQ1QGdtYWlsLmNvbSIsInVzZXJuYW1lIjoiY2Fzc2luaTYzIiwiaWF0IjoxNjU5MTA3MzgyLCJleHAiOjE2NTkxNDMzODJ9.0Sx8BFpHN9mwm0veR37A7DZdQvBC5RJihgS6HkAdPzM
 @refreshToken=Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImViMGZkMmEzLTdjZGYtNDg5MS04YzU2LWQyYTJhNjRjZGU2ZSIsImVtYWlsIjoidGVzdDRAZ21haWwuY29tIiwidXNlcm5hbWUiOiJ0ZXN0IiwiaWF0IjoxNjU4OTM4NTY2LCJleHAiOjE2NTg5NzQ1NjZ9.3QYMNplU0Yk_xMdjpOMA7-AO6plyiYLLW-Utbg52u6U
 @refreshedAccessToken= Authorization:  Bearer 
 
@@ -15,10 +15,19 @@ POST {{entrypoint}}/user/register
 Content-Type: application/json
 
 {
-    "email": "test33@gmail.com",
+    "email": "test46@gmail.com",
     "password": "Cassin63!",
-    "username": "cassini63"
-
+    "username": "cassini63",
+    "location":{
+        "address": "rue de la rue",
+        "street_number": 10,
+        "zipcode": 55000,
+        "city": "Paris",
+        "Lat": 40.54545454,
+        "Long": 0.4854854545
+    },
+    "car_id": 19,
+    "categories": [2,3]
 }
 
 
@@ -27,8 +36,8 @@ POST {{entrypoint}}/user/login
 Content-Type: application/json
 
 {
-    "email": "luffy@gmail.com",
-    "password": "Onepiece63!"
+    "email": "test46@gmail.com",
+    "password": "Cassin63!"
 }
 
 ###

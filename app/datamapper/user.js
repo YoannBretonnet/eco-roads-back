@@ -70,6 +70,7 @@ async function findOneUserProfile(userData, columnName) {
 
 async function createData(userData) {
     let { email, password, username, location, car_id, categories } = userData;
+    console.log("🚀 ~ file: user.js ~ line 73 ~ createData ~ categories", categories)
 
 
     if (isNaN(location) && location !== undefined ) {
@@ -82,7 +83,7 @@ async function createData(userData) {
                 location.zipcode,
                 location.city,
                 location.Lat,
-                location.Long,
+                location.Long
             ],
             
         };
@@ -99,9 +100,9 @@ async function createData(userData) {
                         ($1,$2,$3,$4,$5);`,
             values: [email, password, username, locationCreatedID.rows[0].id, car_id],
         };
-        const userCreated = await pool.query(queryPreparedUser);
+        await pool.query(queryPreparedUser);
 
-        return userCreated.rowCount;
+
     } else {
         const queryPrepared = {
             text: `INSERT INTO "${TABLE_NAME}"
@@ -112,11 +113,13 @@ async function createData(userData) {
         };
         await pool.query(queryPrepared);
     }
-    
+    console.log("JE SUIS LIGNE 116");
     const userId = await findOne(email, "email");
+    console.log("🚀 ~ file: user.js ~ line 118 ~ createData ~ userId", userId)
     
     if(categories !== undefined) {
     for (const category of categories) {
+    console.log("🚀 ~ file: user.js ~ line 121 ~ createData ~ category", category)
 
         await pool.query(`INSERT INTO public.user_like_category(
             category_id, user_id)

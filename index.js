@@ -8,6 +8,7 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
+// import cors from "cors";
 import helmet from "helmet";
 
 import { router } from "./app/router/index.js";
@@ -26,10 +27,17 @@ app.set("trust proxy", 1); // trust first proxy
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const PORT = process.env.PORT || 5000;
-// const corsOptions = { credentials: true, origin: "https://e-co-roads.netlify.app" };
+// const corsOptions = { credentials: true,
+//                         origin: "https://e-co-roads.netlify.app",
+//                         credentials: true,
+//                     };
 
 app.use(function (req, res, next) {
-    res.setHeader("Access-Control-Allow-Origin", "https://e-co-roads.netlify.app");
+    res.setHeader(
+        "Access-Control-Allow-Origin",
+        "https://e-co-roads.netlify.app",
+        "http://localhost:8080",
+    );
     res.setHeader("Access-Control-Allow-Methods", "*");
     res.setHeader(
         "Access-Control-Allow-Headers",
