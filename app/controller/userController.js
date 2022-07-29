@@ -57,7 +57,6 @@ async function fetchOneUser(req, res) {
         const userId = req.user.id;
         if (!userId) return res.status(401).json({ error: "Autorisation refusée" });
 
-        // const user = await User.findOneUser(userId);
         const user = await User.findOneProfile(userId);
 
         if (user) res.status(200).json(user.rows[0]);
@@ -138,11 +137,13 @@ async function createUser(req, res) {
     try {
         let { email, password, username, location, car_id, categories } = req.body;
 
-        const locationExist = await pool.query(
+        if(location !== null) {const locationExist = await pool.query(
             `SELECT * FROM location WHERE lat = ${location.Lat} AND lon = ${location.Long}`,
-        );
-
-        if (locationExist.rowCount !== 0) location = locationExist.rows[0].id;
+            )
+            if (locationExist.rowCount !== 0) location = locationExist.rows[0].id;
+            
+            ;}
+            console.log(locationExist.rows[0].id)
 
         //  Search if the user is already in the database
         const user = await User.findOneUser(email, "email");
