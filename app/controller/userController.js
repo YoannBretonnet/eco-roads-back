@@ -74,18 +74,18 @@ async function loginUser(req, res) {
     try {
         const { email, password } = req.body;
 
-        //~ verify if the email exists
+        // verify if the email exists
         if (!email)
             return res.status(400).json({ error: "Merci de bien vouloir renseigner l'email" });
-        //~ Checks if email is valid
+        // verify if email is valid
         if (!emailValidator.validate(email))
             return res.status(401).json({ error: "L'email est incorrect" });
 
         const user = await User.findOneUser(email, "email");
 
-        if (user.rowCount === 0) return res.status(401).json({ error: "L'email saisi est érroné" });
+        if (user.rowCount ===0) return res.status(401).json({ error: "Aucun utilisateur trouvé" });
 
-        //~ Checks password
+        // verify if password is the same with user.password
         const validPassword = await bcrypt.compare(password, user.rows[0].password);
         if (!validPassword) return res.status(401).json({ error: "Mot de passe incorrect" });
 
@@ -120,7 +120,7 @@ async function logoutUser(req, res) {
             if (err) {
                 return res.sendStatus(401);
             }
-            // Checks if the user exists and return json
+            // very if the user exists and return json
             if (!user) return res.status(401).json({ error: "L'utilisateur n'existe pas" });
 
             delete user.iat;
@@ -138,7 +138,7 @@ async function createUser(req, res) {
     try {
         let { email, password, username, location} = req.body;
         
-        if(req.body.location !== undefined){
+        if(location !== undefined){
             const locationExist = await pool.query(`SELECT * FROM location WHERE lat = ${req.body.location.Lat} AND lon = ${req.body.location.Long}`);
                 if (locationExist.rowCount !== 0) location = locationExist.rows[0].id;
             }
@@ -174,6 +174,8 @@ async function createUser(req, res) {
 async function updateUser(req, res) {
     try {
         const userId = req.user.id;
+
+        // je cherche l utilisateur, 
         let { email, username, password, location, car_id, categories } = req.body;
 
         let user = await User.findOneUser(userId, "id");
