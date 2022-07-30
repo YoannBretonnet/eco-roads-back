@@ -26,7 +26,8 @@ Content-Type: application/json
         "Lat": 44.4811424159854,
         "Long": 3.22101549756121
     },
-    "car_id": 70
+    "car_id": 70,
+    "categories": [1,2]
 }
 
 
