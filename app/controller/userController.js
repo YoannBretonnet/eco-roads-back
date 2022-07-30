@@ -141,6 +141,7 @@ async function logoutUser(req, res) {
 async function createUser(req, res) {
     try {
         let { email, password, username } = req.body;
+        console.log("🚀 ~ file: userController.js ~ line 144 ~ createUser ~ req.body", req.body)
         
         const user = await User.findOneUser(email, "email");
 

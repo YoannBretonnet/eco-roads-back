@@ -1,7 +1,7 @@
 //@entrypoint=https://eco-roads.herokuapp.com/api/v1
 @entrypoint=http://localhost:5000/api/v1
 
-@accessToken=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZjMzcxYmUxLTg3YmEtNGUzMy04Mzk2LTg4MTYxNzRlNzhlYSIsImVtYWlsIjoidGVzdDQ1QGdtYWlsLmNvbSIsInVzZXJuYW1lIjoiY2Fzc2luaTYzIiwiaWF0IjoxNjU5MTA3MzgyLCJleHAiOjE2NTkxNDMzODJ9.0Sx8BFpHN9mwm0veR37A7DZdQvBC5RJihgS6HkAdPzM
+@accessToken=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjliYjBjMjc5LWM1ZmItNDAyZC1hMTY3LTBmMmZiNDNmOWVlYyIsImVtYWlsIjoibHVmZnlAZ21haWwuY29tIiwidXNlcm5hbWUiOiJMdWZmeS5ETW9ua2V5IiwiaWF0IjoxNjU5MjIwNTcxLCJleHAiOjE2NTkyNTY1NzF9.4wAvVB1qqKbZ_6BMtFO6k6GZd2qQcVHBI171uoJYbiI
 @refreshToken=Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImViMGZkMmEzLTdjZGYtNDg5MS04YzU2LWQyYTJhNjRjZGU2ZSIsImVtYWlsIjoidGVzdDRAZ21haWwuY29tIiwidXNlcm5hbWUiOiJ0ZXN0IiwiaWF0IjoxNjU4OTM4NTY2LCJleHAiOjE2NTg5NzQ1NjZ9.3QYMNplU0Yk_xMdjpOMA7-AO6plyiYLLW-Utbg52u6U
 @refreshedAccessToken= Authorization:  Bearer 
 
@@ -36,8 +36,8 @@ POST {{entrypoint}}/user/login
 Content-Type: application/json
 
 {
-    "email": "alexiatest@gmail.com",
-    "password": "Bellegosse63!"
+    "email": "f095dfcb-80d2-43a6-b807-0a6ceee0f1f8",
+    "password": "dfs"
 }
 
 ###
@@ -58,9 +58,8 @@ PATCH {{entrypoint}}/user/profile
 Content-Type: application/json
 
 {
-    "email": "updateUser@gmail.com",
-    "password": "ddsfoiIO7*7",
-    "username": "upfdkwpof"
+    "email": "luffy@gmail.com",
+    "username": "Chapeau de paille"
 }
 
 ### 
