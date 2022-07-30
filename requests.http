@@ -15,19 +15,18 @@ POST {{entrypoint}}/user/register
 Content-Type: application/json
 
 {
-    "email": "test50@gmail.com",
-    "password": "Cassin63!",
-    "username": "cassini63",
+    "email": "JaysonTatum@gmail.com",
+    "password": "Celtics63!",
+    "username": "GreenLantern",
     "location":{
-        "address": "rue de la rue",
-        "street_number": 10,
-        "zipcode": 55000,
-        "city": "Paris",
-        "Lat": 40.54545454,
-        "Long": 0.4854854545
+        "address": "Avenue de la republique",
+        "street_number": 122,
+        "zipcode": 63000,
+        "city": "Clermont-Ferrand",
+        "Lat": 44.4811424159854,
+        "Long": 3.22101549756121
     },
-    "car_id": 19,
-    "categories": [2,3]
+    "car_id": 70
 }
 
 
@@ -36,8 +35,8 @@ POST {{entrypoint}}/user/login
 Content-Type: application/json
 
 {
-    "email": "test46@gmail.com",
-    "password": "Cassin3!"
+    "email": "alexiatest@gmail.com",
+    "password": "Bellegosse63!"
 }
 
 ###
@@ -58,12 +57,9 @@ PATCH {{entrypoint}}/user/profile
 Content-Type: application/json
 
 {
-    "email": "alexia@gmail.com",
-    "password": "Cassini1!",
-    "username": "Bellegosse",
-    "location": 12,
-    "car_id": "75",
-    "categories": [9,10]
+    "email": "updateUser@gmail.com",
+    "password": "ddsfoiIO7*7",
+    "username": "upfdkwpof"
 }
 
 ### 

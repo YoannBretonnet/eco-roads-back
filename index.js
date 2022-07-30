@@ -21,6 +21,8 @@ app.use(helmet());
 import { specs, serve, setup, cssOptions } from "./swaggerDocs/swaggerDocs.js";
 app.use("/api-docs", serve, setup(specs, cssOptions));
 
+
+
 // If you have your node.js behind a proxy and are using secure: true, you need to set 'trust proxy' in express
 app.set("trust proxy", 1); // trust first proxy
 
@@ -47,7 +49,27 @@ const corsOptions = {
 //     next();
 // });
 
-app.use(cors(corsOptions));
+// If you have your node.js behind a proxy and are using secure: true, you need to set 'trust proxy' in express
+// app.set('trust proxy', 1) // trust first proxy
+
+// ~ *** *** SESSION CONFIG *** *** ~ //
+// ~ ****************************** ~ //
+
+import session from 'express-session';
+app.use(session({
+    saveUninitialized: true,
+    resave: true,
+    secret: process.env.SESSION_SECRET,
+    cookie: { 
+        secure : true,
+        sameSite: 'none', // or 'strict'
+        maxAge: 24 * 60 * 60 * 1000 //24 hours
+        //expires : new Date(Date.now() + 60 * 60 * 1000) //1 hour
+        }
+}));
+
+
+// app.use(cors(corsOptions));
 
 // ~ *** *** PARSER CONFIG *** *** ~ //
 // ~ ***************************** ~ //
