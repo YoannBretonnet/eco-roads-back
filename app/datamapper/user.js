@@ -115,11 +115,9 @@ async function createData(userData) {
     }
     console.log("JE SUIS LIGNE 116");
     const userId = await findOne(email, "email");
-    console.log("🚀 ~ file: user.js ~ line 118 ~ createData ~ userId", userId)
     
     if(categories !== undefined) {
     for (const category of categories) {
-    console.log("🚀 ~ file: user.js ~ line 121 ~ createData ~ category", category)
 
         await pool.query(`INSERT INTO public.user_like_category(
             category_id, user_id)
