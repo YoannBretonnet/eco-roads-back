@@ -2,6 +2,8 @@
 import pool from "../service/dbClient.js";
 import { _400, _404, _500 } from "./errorController.js";
 import { User } from "../model/user.js";
+import { Location } from "../model/location.js";
+import { Category } from "../model/category.js";
 
 import { generateAccessToken, generateRefreshToken } from "../utils/jwtToken.js";
 
@@ -10,6 +12,7 @@ import jwt from "jsonwebtoken";
 
 import emailValidator from "email-validator";
 import passwordValidator from "password-validator";
+import { request } from "express";
 
 const schema = new passwordValidator();
 const worthPassword = ["Passw0rd", "Password123", "Azerty", "Qwerty", "000000", "123456"];
@@ -139,34 +142,30 @@ async function logoutUser(req, res) {
 async function createUser(req, res) {
     try {
         let { email, password, username } = req.body;
-
-        if (req.body.location !== undefined) {
-            const locationExist = await pool.query(
-                `SELECT * FROM location WHERE lat = ${req.body.location.Lat} AND lon = ${req.body.location.Long}`,
-            );
-            if (locationExist.rowCount !== 0) req.body.location = locationExist.rows[0].id;
-        }
-        //  Search if the user is already in the database
+        
         const user = await User.findOneUser(email, "email");
 
         if (user.rowCount !== 0) throw new Error(`${email} existe déjà.`);
+
+        if(req.body.location !== undefined && isNaN(req.body.location)){
+            const existingLocation = await Location.findOrCreateLocation(req.body.location)
+            if(existingLocation) req.body.location = existingLocation;
+        }
+
+
         if (!emailValidator.validate(email))
             return res.status(500).json({ error: `L'email n'est pas valide.` });
         if (!schema.validate(password))
             return res.status(500).json({
                 error: "Le mot de passe doit contenir au moins 6 caractères, une majuscule et un caractère spécial.",
             });
+            req.body.password = await bcrypt.hash(password, 10);
         if (!username)
             return res.status(500).json({ error: "Merci de renseigner un nom d'utilisateur" });
+    
+        await User.createUser(req.body);
 
-        password = await bcrypt.hash(password, 10);
-
-        req.body = { ...req.body, password: password };
-        const createdUser = { ...req.body };
-
-        await User.createUser(createdUser);
-
-        res.status(200).json({ error: "L'utilisateur a bien été créé" });
+        res.status(200).json({ message: "L'utilisateur a bien été créé" });
     } catch (err) {
         _500(err, req, res);
     }
@@ -175,71 +174,56 @@ async function createUser(req, res) {
 // ------------------------------------------------------- UPDATE USER
 // --------------------------------------------------------------------
 
-async function updateUser(req, res) {
+async function updateUser(req, res){
     try {
         // I retrieve the id put in the req.session 
         const userId = req.user.id;
+        let { email,password, username } = req.body;
         // I verify if the user exist in the database
         let user = await User.findOneUser(userId, "id");
-        
+
         if (!user) return res.status(401).json({ error: "L'utilisateur n'existe pas" });
         
-        let { email,password, username } = req.body;
-        console.log("🚀 ~ file: userController.js ~ line 188 ~ updateUser ~ req.body", req.body)
 
-        if(isNaN(req.body.location)){
-            // const location = req.body.location;
-            if(req.body.location !== undefined ){
-                const locationExist = await pool.query(`SELECT * FROM location WHERE lat = ${req.body.location.Lat} AND lon = ${req.body.location.Long};`);
-                if (locationExist.rowCount !== 0) req.body.location = locationExist.rows[0].id;
+        if(req.body.location !== undefined && isNaN(req.body.location)){
+            const existingLocation = await Location.findOrCreateLocation(req.body.location)
+            if(existingLocation) req.body.location = existingLocation;
             }
-        }
-  
-        console.log("🚀 ~ file: userController.js ~ line 192 ~ updateUser ~ location", location)
-            console.log( "~ line 193", req.body.location); 
+
+        if(req.body.categories) await Category.updateCategories( req.body.categories, userId);
             
-        if (!emailValidator.validate(email))
-            return res.status(500).json({ error: `${email} invalide !` });
+        if (!emailValidator.validate(email)) return res.status(500).json({ error: `${email} invalide !` });
         
         if(password){ 
             if(!schema.validate(password)) 
-                return res
-                .status(500)
-                .json({ error: "Le mot de passe doit contenir au moins 6 caractères." });
-            }
-        password ? await bcrypt.hash(req.body.password, 10) : user.rows[0].password;    
+            return res
+            .status(500)
+            .json({ error: "Le mot de passe doit contenir au moins 6 caractères, une majuscule et un caractère spécial." });
+            req.body.password = await bcrypt.hash(password, 10);  
+        }
         
         if (!username)
             return res.status(500).json({ error: "Merci de renseigner un nom d'utilisateur" });
 
-        // if(password) password = await bcrypt.hash(req.body.password, 10);
-console.log("pourquoi ya pas la location", req.body.location);
-        req.body = { ...req.body, 
-            password: password,
-            location: req.body.location ? location : req.body.location };
-            console.log("🚀 ~ file: userController.js ~ line 212 ~ updateUser ~ req.body", req.body)
-        const updatedUser = {...req.body };
+        
+            await User.updateUser(userId, req.body);
 
-        await User.updateUser(userId, updatedUser);
-
-        res.status(200).json({ error: "L'utilisateur a bien été mis à jour" });
+        res.status(200).json({ message: "L'utilisateur a bien été mis à jour" });
     } catch (err) {
         _500(err, req, res);
     }
 }
 
 
-
-// ------------------------------------------------------- UPDATE USER
+// ------------------------------------------------------- DELETE USER
 // --------------------------------------------------------------------
 
 async function deleteUser(req, res) {
     try {
         const userId = req.user.id;
-        console.log("🚀 ~ file: userController.js ~ line 235 ~ deleteUser ~ userId", userId)
         await User.deleteUser(userId);
 
-        return res.status(200).json(`L'utilisateur a bien été supprimé`);
+        return res.status(200).json({ message: `L'utilisateur a bien été supprimé` });
     } catch (err) {
         _500(err, req, res);
     }
@@ -268,6 +252,7 @@ async function refreshToken(req, res) {
     });
 }
 
+
 export {
     fetchAllUsers,
     fetchOneUser,
@@ -276,5 +261,5 @@ export {
     createUser,
     updateUser,
     deleteUser,
-    refreshToken,
+    refreshToken
 };

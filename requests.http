@@ -1,7 +1,7 @@
 #@entrypoint=https://eco-roads.herokuapp.com/api/v1
 @entrypoint=http://localhost:4100/api/v1
 
-@accessToken=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk0MmM0MjNjLWM5N2QtNGQ4MS05ZDZkLTkxMDg5MTE3Njg2OCIsImVtYWlsIjoidXBkYXRlVXNlckBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImNhc3Npbmk2MyIsImlhdCI6MTY1OTEyNzgzMywiZXhwIjoxNjU5MTYzODMzfQ.UKnhI3R1gskY4SVAqEG0zniUxUyZVhef-fmW-CzBDUc
+@accessToken=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk0MmM0MjNjLWM5N2QtNGQ4MS05ZDZkLTkxMDg5MTE3Njg2OCIsImVtYWlsIjoidXBkYXRlVXNlckBnbWFpbC5jb20iLCJ1c2VybmFtZSI6InVwZmRrd3BvZiIsImlhdCI6MTY1OTIxNzU4NiwiZXhwIjoxNjU5MjUzNTg2fQ.yWWNgNEr8J7jiJtnVDjNcRFSdB0_EzYjvuW3eMhv3Nk
 @refreshToken=Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImViMGZkMmEzLTdjZGYtNDg5MS04YzU2LWQyYTJhNjRjZGU2ZSIsImVtYWlsIjoidGVzdDRAZ21haWwuY29tIiwidXNlcm5hbWUiOiJ0ZXN0IiwiaWF0IjoxNjU4OTM4NTY2LCJleHAiOjE2NTg5NzQ1NjZ9.3QYMNplU0Yk_xMdjpOMA7-AO6plyiYLLW-Utbg52u6U
 @refreshedAccessToken= Authorization:  Bearer 
 ##--------------------------------------------------------------- USERS
@@ -15,19 +15,18 @@ POST {{entrypoint}}/user/register
 Content-Type: application/json
 
 {
-    "email": "updateUser@gmail.com",
-    "password": "Cassini63!",
-    "username": "cassini63",
+    "email": "JaysonTatum@gmail.com",
+    "password": "Celtics63!",
+    "username": "GreenLantern",
     "location":{
-        "address": "rue de la mer",
-        "street_number": 1,
-        "zipcode": 83000,
-        "city": "Toulon",
-        "Lat": 40.54545454,
-        "Long": 0.4854854545
+        "address": "Avenue de la republique",
+        "street_number": 122,
+        "zipcode": 63000,
+        "city": "Clermont-Ferrand",
+        "Lat": 44.4811424159854,
+        "Long": 3.22101549756121
     },
-    "car_id": 74,
-    "categories": [7,8,9]
+    "car_id": 70
 }
 
 
@@ -36,8 +35,8 @@ POST {{entrypoint}}/user/login
 Content-Type: application/json
 
 {
-    "email": "updateUser@gmail.com",
-    "password": "Cassini63!"
+    "email": "alexiatest@gmail.com",
+    "password": "Bellegosse63!"
 }
 
 ###
@@ -55,11 +54,8 @@ Content-Type: application/json
 
 {
     "email": "updateUser@gmail.com",
-    "password": "Cassini83!",
-    "username": "Bellegosse",
-    "location": 12,
-    "car_id": 80,
-    "categories": [8,9]
+    "password": "ddsfoiIO7*7",
+    "username": "upfdkwpof"
 }
 
 ### 

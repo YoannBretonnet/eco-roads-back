@@ -68,10 +68,8 @@ async function findOneUserProfile(userData) {
 
 async function createData(userData) {
     let { email, password, username, location, car_id, categories } = userData;
-    console.log("🚀 ~ line 73 ~ createData ~ categories", categories)
 
-
-    if (isNaN(location) && location !== undefined ) {
+    if (isNaN(location) && location !== undefined) {
         const queryPreparedLocation = {
             text: `INSERT INTO public."location"("address", "street_number","zipcode", "city", "lat", "lon")
                     VALUES ($1, $2, $3, $4, $5, $6);`,
@@ -81,14 +79,13 @@ async function createData(userData) {
                 location.zipcode,
                 location.city,
                 location.Lat,
-                location.Long
+                location.Long,
             ],
-            
         };
         await pool.query(queryPreparedLocation);
 
         const locationCreatedID = await pool.query(
-            `SELECT location.id FROM "location" WHERE lat = ${location.Lat} AND lon = ${location.Long};`
+            `SELECT location.id FROM "location" WHERE lat = ${location.Lat} AND lon = ${location.Long};`,
         );
 
         const queryPreparedUser = {
@@ -99,27 +96,23 @@ async function createData(userData) {
             values: [email, password, username, locationCreatedID.rows[0].id, car_id],
         };
         await pool.query(queryPreparedUser);
-
-
     } else {
         const queryPrepared = {
             text: `INSERT INTO "${TABLE_NAME}"
                 ("email","password","username",location_id, "car_id")
                 VALUES
                 ($1,$2,$3,$4,$5);`,
-            values: [email, password, username, location, car_id]
+            values: [email, password, username, location, car_id],
         };
         await pool.query(queryPrepared);
     }
-    console.log("JE SUIS LIGNE 116");
     const userId = await findOne(email, "email");
-    
-    if(categories !== undefined) {
-    for (const category of categories) {
 
-        await pool.query(`INSERT INTO public.user_like_category(
+    if (categories !== undefined) {
+        for (const category of categories) {
+            await pool.query(`INSERT INTO public.user_like_category(
             category_id, user_id)
-            VALUES ( ${category}, '${userId.rows[0].id}');`)
+            VALUES ( ${category}, '${userId.rows[0].id}');`);
         }
     }
 }
@@ -128,24 +121,21 @@ async function createData(userData) {
 // ~ *************************** ~ //
 
 async function updateData(userId, userData) {
-    const { email, password, username, location, car_id, categories } = userData;
-    // const updateUsername = username ? username : "";
-    // const updateLocationId = location ? location : "";
-    // const updateCarId = car_id ? car_id : "";
-    // const updateCategories = categories ? categories : "";
-    // CHECK Creer les conditions pour controller
+    console.log("🚀 ~ file: user.js ~ line 131 ~ updateData ~ userData", userData);
+    const { email, password, username, location, car_id } = userData;
 
     const sql = {
         text: `
             UPDATE "${TABLE_NAME}"
                 SET
-                "email" = COALESCE( $1, "email" )::TEXT,
+                "email" = COALESCE( $1, "email" )::email,
                 "password" = COALESCE( $2, "password" )::TEXT,
                 "username" = COALESCE( $3, "username" )::TEXT,
-                "location_id" = $4,
-                "car_id" = $5
+                "location_id" = COALESCE(( $4 )::INT, "location_id"),
+                "car_id" = COALESCE (( $5 )::INT, "car_id"),
+                "updated_at" = NOW()
             WHERE "id" = $6;`,
-        values: [email, password, updateUsername, updateLocationId, updateCarId, userId],
+        values: [email, password, username, location, car_id, userId ]
     };
     const result = await pool.query(sql);
     return result.rowCount;
