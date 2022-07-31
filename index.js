@@ -50,7 +50,7 @@ const corsOptions = {
 // });
 
 // If you have your node.js behind a proxy and are using secure: true, you need to set 'trust proxy' in express
-// app.set('trust proxy', 1) // trust first proxy
+app.set('trust proxy', 1) // trust first proxy
 
 // ~ *** *** SESSION CONFIG *** *** ~ //
 // ~ ****************************** ~ //
@@ -69,7 +69,7 @@ app.use(session({
 }));
 
 
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
 // ~ *** *** PARSER CONFIG *** *** ~ //
 // ~ ***************************** ~ //

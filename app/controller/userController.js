@@ -116,7 +116,8 @@ async function loginUser(req, res) {
 
 async function logoutUser(req, res) {
     try {
-        const token = req.cookies.refreshToken;
+        const token = req.refreshToken;
+        console.log("🚀 ~ file: userController.js ~ line 120 ~ logoutUser ~ token", token)
 
         if (!token) return res.status(401).json({ error: "Token invalide" });
 
@@ -129,6 +130,7 @@ async function logoutUser(req, res) {
 
             delete user.iat;
             delete user.exp;
+            res.json("Utilisateur deonnecté")
         });
     } catch (err) {
         _500(err, req, res);

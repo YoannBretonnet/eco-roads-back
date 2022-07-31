@@ -1,8 +1,8 @@
 //@entrypoint=https://eco-roads.herokuapp.com/api/v1
 @entrypoint=http://localhost:5000/api/v1
 
-@accessToken=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjliYjBjMjc5LWM1ZmItNDAyZC1hMTY3LTBmMmZiNDNmOWVlYyIsImVtYWlsIjoibHVmZnlAZ21haWwuY29tIiwidXNlcm5hbWUiOiJMdWZmeS5ETW9ua2V5IiwiaWF0IjoxNjU5MjIwNTcxLCJleHAiOjE2NTkyNTY1NzF9.4wAvVB1qqKbZ_6BMtFO6k6GZd2qQcVHBI171uoJYbiI
-@refreshToken=Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImViMGZkMmEzLTdjZGYtNDg5MS04YzU2LWQyYTJhNjRjZGU2ZSIsImVtYWlsIjoidGVzdDRAZ21haWwuY29tIiwidXNlcm5hbWUiOiJ0ZXN0IiwiaWF0IjoxNjU4OTM4NTY2LCJleHAiOjE2NTg5NzQ1NjZ9.3QYMNplU0Yk_xMdjpOMA7-AO6plyiYLLW-Utbg52u6U
+@accessToken=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ4NzMwODQ0LWQwZGItNDdhZi05Y2JmLTIzZmMyNDJlNzliZiIsImVtYWlsIjoiSmF5c29uVGF0dW1AZ21haWwuY29tIiwidXNlcm5hbWUiOiJHcmVlbkxhbnRlcm4iLCJpYXQiOjE2NTkyMjEyMzQsImV4cCI6MTY1OTI1NzIzNH0.7QdtrS9j5rsC3LLDQLBwNjIYDNcWlqdQhnGD9Y0Xe6c
+@refreshToken=Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ4NzMwODQ0LWQwZGItNDdhZi05Y2JmLTIzZmMyNDJlNzliZiIsImVtYWlsIjoiSmF5c29uVGF0dW1AZ21haWwuY29tIiwidXNlcm5hbWUiOiJHcmVlbkxhbnRlcm4iLCJpYXQiOjE2NTkyMjEyMzQsImV4cCI6MTY1OTI1NzIzNH0.l_HWuHHIH-bnVV405H-3pD5cwTIia7-nDZc2I2YCO9g
 @refreshedAccessToken= Authorization:  Bearer 
 
 ##--------------------------------------------------------------- USERS
@@ -26,7 +26,7 @@ Content-Type: application/json
         "Lat": 44.4811424159854,
         "Long": 3.22101549756121
     },
-    "car_id": 70,
+    "car_id": 17,
     "categories": [1,2]
 }
 
@@ -36,8 +36,8 @@ POST {{entrypoint}}/user/login
 Content-Type: application/json
 
 {
-    "email": "f095dfcb-80d2-43a6-b807-0a6ceee0f1f8",
-    "password": "dfs"
+    "email": "JaysonTatum@gmail.com",
+    "password": "Celtics63!"
 }
 
 ###
@@ -58,14 +58,27 @@ PATCH {{entrypoint}}/user/profile
 Content-Type: application/json
 
 {
-    "email": "luffy@gmail.com",
-    "username": "Chapeau de paille"
+    "email": "JayTatum@gmail.com",
+    "username": "greenblood",
+        "location":{
+        "address": "Avenue de la republique",
+        "street_number": 122,
+        "zipcode": 63000,
+        "city": "Clermont-Ferrand",
+        "Lat": 44.4811424159854,
+        "Long": 3.22101549756121
+    },
+    "car_id": 27,
+    "categories": [2,4]
 }
 
 ### 
 DELETE {{entrypoint}}/user/profile
 {{accessToken}}
 Content-Type: application/json
+
+###
+GET {{entrypoint}}/user/logout
 
 
 ###
