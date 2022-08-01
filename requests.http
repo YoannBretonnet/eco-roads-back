@@ -1,7 +1,7 @@
-//@entrypoint=https://eco-roads.herokuapp.com/api/v1
-@entrypoint=http://localhost:5000/api/v1
+@entrypoint=https://eco-roads.herokuapp.com/api/v1
+//@entrypoint=http://localhost:5000/api/v1
 
-@accessToken=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA4OTBhOWZiLTFkYjYtNDZlYy1iMDBmLTUwNjBlOWZlMGY0NyIsImVtYWlsIjoibHVmZnlAZ21haWwuY29tIiwidXNlcm5hbWUiOiJDaGFwZWF1IGRlIHBhaWxsZSIsImlhdCI6MTY1OTMwNDc5NywiZXhwIjoxNjU5MzQwNzk3fQ.x44njvNReakTg79BkZ4X5e3ll5xBUAZr2KsCu7bdcFY
+@accessToken=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA0NzQ4MTM5LTRlNDctNDBhYi05NmJkLTljNDRhNzc1MTdkZiIsImVtYWlsIjoiem9yb0BnbWFpbC5jb20iLCJ1c2VybmFtZSI6IlJvcm9ub2EiLCJpYXQiOjE2NTkzMzkzODAsImV4cCI6MTY1OTM3NTM4MH0.Vzbef28avX21eJ1qV26zZuoD99RV7ZbwaRjcTgALRWA
 @refreshToken=Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ4NzMwODQ0LWQwZGItNDdhZi05Y2JmLTIzZmMyNDJlNzliZiIsImVtYWlsIjoiSmF5c29uVGF0dW1AZ21haWwuY29tIiwidXNlcm5hbWUiOiJHcmVlbkxhbnRlcm4iLCJpYXQiOjE2NTkyMjEyMzQsImV4cCI6MTY1OTI1NzIzNH0.l_HWuHHIH-bnVV405H-3pD5cwTIia7-nDZc2I2YCO9g
 @refreshedAccessToken= Authorization:  Bearer 
 
@@ -15,17 +15,9 @@ POST {{entrypoint}}/user/register
 Content-Type: application/json
 
 {
-    "email": "luffy@gmail.com",
+    "email": "zoro@gmail.com",
     "password": "Onepiece63!",
-    "username": "Chapeau de paille",
-    "location":{
-        "address": "Avenue dAlabata",
-        "street_number": 1,
-        "zipcode": 63000,
-        "city": "Grand Line",
-        "Lat": 44.4811424159854,
-        "Long": 3.22101549756121
-    },
+    "username": "Roronoa",
     "car_id": 16,
     "categories": [1,3,6]
 }
@@ -36,7 +28,7 @@ POST {{entrypoint}}/user/login
 Content-Type: application/json
 
 {
-    "email": "luffy@gmail.com",
+    "email": "zoro@gmail.com",
     "password": "Onepiece63!"
 }
 
