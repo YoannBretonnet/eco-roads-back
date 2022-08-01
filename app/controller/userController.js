@@ -12,6 +12,9 @@ import jwt from "jsonwebtoken";
 import emailValidator from "email-validator";
 import passwordValidator from "password-validator";
 
+import { validation } from "../service/validation.js";
+import { usernameSchema } from "../schema/user.js";
+
 const schema = new passwordValidator();
 const worthPassword = ["Passw0rd", "Password123", "Azerty", "Qwerty", "000000", "123456"];
 schema
@@ -56,11 +59,11 @@ async function fetchAllUsers(req, res) {
 async function fetchOneUser(req, res) {
     try {
         const userId = req.user.id;
-        console.log("🚀 ~ file: userController.js ~ line 59 ~ fetchOneUser ~ userId", userId);
         if (!userId) return res.status(401).json({ error: "Autorisation refusée" });
+        console.log("🚀 ~ file: userController.js ~ line 60 ~ loginUser ~ req.session.refreshToken", req.session.refreshToken)
 
         const user = await User.findOneProfile(userId, "id");
-        console.log("🚀 ~ file: userController.js ~ line 63 ~ fetchOneUser ~ user", user);
+
         if (user) res.status(200).json(user.rows[0]);
         else throw new Error({ error: "L'utilisateur n'existe pas" });
     } catch (err) {
@@ -73,8 +76,8 @@ async function fetchOneUser(req, res) {
 
 async function loginUser(req, res) {
     try {
-        const { email, password } = req.body;
 
+        const { email, password } = req.body;
         // verify if the email exists
         if (!email)
             return res.status(400).json({ error: "Merci de bien vouloir renseigner l'email" });
@@ -93,10 +96,10 @@ async function loginUser(req, res) {
         // delete user.password;
         const { ["password"]: remove, ...userJwt } = user.rows[0];
 
+        req.session.refreshToken = [];
         //~ Create token JWT
         let accessToken = generateAccessToken(userJwt);
         let refreshToken = generateRefreshToken(userJwt);
-
         res.cookie("refreshToken", refreshToken, {
             httpOnly: true,
             sameSite: "none",
@@ -104,7 +107,7 @@ async function loginUser(req, res) {
             maxAge: 24 * 60 * 60 * 1000,
         });
 
-        res.status(200).json({ accessToken: accessToken });
+        res.status(200).json({ accessToken: accessToken});
     } catch (err) {
         return _500(err, req, res);
     }
@@ -188,9 +191,11 @@ async function updateUser(req, res) {
         }
 
         if (req.body.categories) await Category.updateCategories(req.body.categories, userId);
-
+        
+        if(email){  
         if (!emailValidator.validate(email))
             return res.status(500).json({ error: `${email} invalide !` });
+        }
 
         if (password) {
             if (!schema.validate(password))
@@ -202,9 +207,10 @@ async function updateUser(req, res) {
             req.body.password = await bcrypt.hash(password, 10);
         }
 
-        if (!username)
-            return res.status(500).json({ error: "Merci de renseigner un nom d'utilisateur" });
-
+        if (username) {
+            validation.body(usernameSchema);
+        }
+        
         await User.updateUser(userId, req.body);
 
         res.status(200).json({ message: "L'utilisateur a bien été mis à jour" });
@@ -231,21 +237,25 @@ async function deleteUser(req, res) {
 // ----------------------------------------------------------------------
 
 async function refreshToken(req, res) {
-    const authHeader = req.headers["authorization"];
-    const token = authHeader && authHeader.split(" ")[1];
-    console.log("🚀 ~ file: userController.js ~ line 235 ~ refreshToken ~ token", token);
+
+    const token = req.session.refreshToken
+    console.log("🚀 ~ file: userController.js ~ line 242 ~ refreshToken ~ sessionRefresh", req.session.token)
+    // const token = req.cookies
+    // console.log("🚀 ~ file: userController.js ~ line 244 ~ refreshToken ~ token", token)
 
     if (!token) {
         return res.status(401);
     }
-    jwt.verify(token, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
+    jwt.verify(req.session.refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
         if (err) {
+            console.log("🚀 ~ file: userController.js ~ line 246 ~ jwt.verify ~ err", err)
             return res.status(401).json(`L'utilisateur n'existe pas`);
         }
-
+        console.log("testttttttttttttttttttttttttttttt");
         delete user.iat;
         delete user.exp;
         const refreshedAccessToken = generateAccessToken(user);
+        console.log("🚀 ~ file: userController.js ~ line 252 ~ jwt.verify ~ refreshedAccessToken", refreshedAccessToken)
 
         res.status(200).json({ refreshedAccessToken: refreshedAccessToken });
     });

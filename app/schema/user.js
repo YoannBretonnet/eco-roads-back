@@ -23,4 +23,6 @@ const location = Joi.object({
 
 })
 
-export {  userSchema, location };
+const usernameSchema = Joi.string().regex(/^[a-zA-Z0-9]{3,25}$/).required()
+
+export {  userSchema, location, usernameSchema };

@@ -1,9 +1,10 @@
-@entrypoint=https://eco-roads.herokuapp.com/api/v1
-//@entrypoint=http://localhost:5000/api/v1
+//@entrypoint=https://eco-roads.herokuapp.com/api/v1
+@entrypoint=http://localhost:5000/api/v1
 
-@accessToken=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA0NzQ4MTM5LTRlNDctNDBhYi05NmJkLTljNDRhNzc1MTdkZiIsImVtYWlsIjoiem9yb0BnbWFpbC5jb20iLCJ1c2VybmFtZSI6IlJvcm9ub2EiLCJpYXQiOjE2NTkzMzkzODAsImV4cCI6MTY1OTM3NTM4MH0.Vzbef28avX21eJ1qV26zZuoD99RV7ZbwaRjcTgALRWA
-@refreshToken=Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ4NzMwODQ0LWQwZGItNDdhZi05Y2JmLTIzZmMyNDJlNzliZiIsImVtYWlsIjoiSmF5c29uVGF0dW1AZ21haWwuY29tIiwidXNlcm5hbWUiOiJHcmVlbkxhbnRlcm4iLCJpYXQiOjE2NTkyMjEyMzQsImV4cCI6MTY1OTI1NzIzNH0.l_HWuHHIH-bnVV405H-3pD5cwTIia7-nDZc2I2YCO9g
-@refreshedAccessToken= Authorization:  Bearer 
+@accessToken=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNmMDk2NTA3LTFkNTMtNDlkYS1hYjhiLTIzNTI1NDFiMWE2NCIsImVtYWlsIjoidGVzdDdAZ21haWwuY29tIiwidXNlcm5hbWUiOiJheW1lbkJHZHU3OCooKigiLCJsb2NhdGlvbl9pZCI6MTMsImNhcl9pZCI6MTAsImNyZWF0ZWRfYXQiOiIyMDIyLTA4LTAxVDE0OjUwOjM0LjIzOVoiLCJ1cGRhdGVkX2F0IjoiMjAyMi0wOC0wMVQxNDo1Njo1OS4wMTZaIiwiaWF0IjoxNjU5MzY1OTEzLCJleHAiOjE2NTkzNjYwMzN9.AVJRZ-hRegqXVL0ev7OArFmcjwtCdCNxYmV183oLF8s
+@refreshToken=Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA4OTBhOWZiLTFkYjYtNDZlYy1iMDBmLTUwNjBlOWZlMGY0NyIsImVtYWlsIjoibHVmZnlAZ21haWwuY29tIiwidXNlcm5hbWUiOiJDaGFwZWF1IGRlIHBhaWxsZSIsImlhdCI6MTY1OTM1OTY2NCwiZXhwIjoxNjU5Mzk1NjY0fQ.Mbo1YI21GDP18IFDNPEwbOLlL8s8BB9kK4Wfi60YVYo
+
+# @refreshedAccessToken= Authorization:  Bearer 
 
 ##--------------------------------------------------------------- USERS
 ## ---------------------------------------------------------------------
@@ -15,11 +16,18 @@ POST {{entrypoint}}/user/register
 Content-Type: application/json
 
 {
-    "email": "zoro@gmail.com",
+    "email": "test7@gmail.com",
     "password": "Onepiece63!",
-    "username": "Roronoa",
-    "car_id": 16,
-    "categories": [1,3,6]
+    "username": "Sword",
+    "car_id": 12,
+            "location":{
+        "address": "Grand Line Sea",
+        "street_number": 50,
+        "zipcode": 83100,
+        "city": "South Blue",
+        "Lat": 40.454512898265,
+        "Long": -0.451549756121
+    }
 }
 
 
@@ -28,7 +36,7 @@ POST {{entrypoint}}/user/login
 Content-Type: application/json
 
 {
-    "email": "zoro@gmail.com",
+    "email": "test7@gmail.com",
     "password": "Onepiece63!"
 }
 
@@ -40,8 +48,6 @@ Content-Type: application/json
 
 ###
 GET {{entrypoint}}/refresh_token
-Content-Type: application/json
-{{refreshToken}}
 
 
 ###
@@ -50,16 +56,9 @@ PATCH {{entrypoint}}/user/profile
 Content-Type: application/json
 
 {
-    "email": "JayTatum@gmail.com",
-    "username": "luffyD.Monkey",
-        "location":{
-        "address": "Avenue Arlong",
-        "street_number": 99,
-        "zipcode": 63000,
-        "city": "East Blue",
-        "Lat": 44.4811424159854,
-        "Long": 3.22101549756121
-    }
+    "username": "aymenBGdu78",
+    "car_id": 10,
+    "categories": [4,5,6]
 }
 
 ### 
