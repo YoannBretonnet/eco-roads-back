@@ -1,0 +1,7 @@
+%syntax-version=1.0.0
+%project=ecoroads
+
+01.init 2022-07-21T11:55:02Z Etudiant O'clock <student@teleporter> # create tables
+02.add_table_brand 2022-07-24T16:09:01Z gtn83 <gtn83@TDGarden> # modification table car and add table brand
+03.new_constraint_delete_on_cascade 2022-07-29T05:35:11Z gtn83 <gtn83@TDGarden> # delete constraints on table user_like_category
+04.add_domain_french_zipcode_check 2022-07-29T06:04:52Z gtn83 <gtn83@TDGarden> # checks if the postal code has a French format
