@@ -58,10 +58,10 @@ async function findOneUserProfile(userData, columnName) {
         FROM public."${TABLE_NAME}" 
         WHERE public."user".${columnName}= $1;`,
         values: [userData],
-    };
+    }; 
 
     const result = await pool.query(queryPrepared);
-
+    
     return result;
 }
 

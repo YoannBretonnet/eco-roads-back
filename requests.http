@@ -1,8 +1,8 @@
 //@entrypoint=https://eco-roads.herokuapp.com/api/v1
 @entrypoint=http://localhost:5000/api/v1
 
-@accessToken=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNmMDk2NTA3LTFkNTMtNDlkYS1hYjhiLTIzNTI1NDFiMWE2NCIsImVtYWlsIjoidGVzdDdAZ21haWwuY29tIiwidXNlcm5hbWUiOiJheW1lbkJHZHU3OCooKigiLCJsb2NhdGlvbl9pZCI6MTMsImNhcl9pZCI6MTAsImNyZWF0ZWRfYXQiOiIyMDIyLTA4LTAxVDE0OjUwOjM0LjIzOVoiLCJ1cGRhdGVkX2F0IjoiMjAyMi0wOC0wMVQxNDo1Njo1OS4wMTZaIiwiaWF0IjoxNjU5MzY1OTEzLCJleHAiOjE2NTkzNjYwMzN9.AVJRZ-hRegqXVL0ev7OArFmcjwtCdCNxYmV183oLF8s
-@refreshToken=Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA4OTBhOWZiLTFkYjYtNDZlYy1iMDBmLTUwNjBlOWZlMGY0NyIsImVtYWlsIjoibHVmZnlAZ21haWwuY29tIiwidXNlcm5hbWUiOiJDaGFwZWF1IGRlIHBhaWxsZSIsImlhdCI6MTY1OTM1OTY2NCwiZXhwIjoxNjU5Mzk1NjY0fQ.Mbo1YI21GDP18IFDNPEwbOLlL8s8BB9kK4Wfi60YVYo
+@accessToken=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJmMGRkZjBiLWEwYWEtNGE0MC1iM2VlLWNkMzQwNTkzOTEyYiIsImVtYWlsIjoidGVzdDEwQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoidGVzdCIsImxvY2F0aW9uX2lkIjoxMywiY2FyX2lkIjoxMiwiY3JlYXRlZF9hdCI6IjIwMjItMDgtMDFUMTc6NDg6MzMuMzY1WiIsInVwZGF0ZWRfYXQiOm51bGwsImlhdCI6MTY1OTM3ODM0MCwiZXhwIjoxNjU5Mzc5NTQwfQ.MF9PO1wz5I4KBXN13nyaxciOH5_oAbr4ME3R2Az9QVg
+@refreshToken=Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJmMGRkZjBiLWEwYWEtNGE0MC1iM2VlLWNkMzQwNTkzOTEyYiIsImVtYWlsIjoidGVzdDEwQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoidGVzdCIsImxvY2F0aW9uX2lkIjoxMywiY2FyX2lkIjoxMiwiY3JlYXRlZF9hdCI6IjIwMjItMDgtMDFUMTc6NDg6MzMuMzY1WiIsInVwZGF0ZWRfYXQiOm51bGwsImlhdCI6MTY1OTM3NjI3NCwiZXhwIjoxNjU5Mzc2NTc0fQ.RU55u7c4WvkGG2kBvPxddY21VIRNKlTP7DbOa03hBPA
 
 # @refreshedAccessToken= Authorization:  Bearer 
 
@@ -16,11 +16,11 @@ POST {{entrypoint}}/user/register
 Content-Type: application/json
 
 {
-    "email": "test7@gmail.com",
+    "email": "test10@gmail.com",
     "password": "Onepiece63!",
-    "username": "Sword",
+    "username": "test",
     "car_id": 12,
-            "location":{
+        "location":{
         "address": "Grand Line Sea",
         "street_number": 50,
         "zipcode": 83100,
@@ -30,13 +30,12 @@ Content-Type: application/json
     }
 }
 
-
 ###
 POST {{entrypoint}}/user/login
 Content-Type: application/json
 
 {
-    "email": "test7@gmail.com",
+    "email": "test10@gmail.com",
     "password": "Onepiece63!"
 }
 
@@ -56,8 +55,6 @@ PATCH {{entrypoint}}/user/profile
 Content-Type: application/json
 
 {
-    "username": "aymenBGdu78",
-    "car_id": 10,
     "categories": [4,5,6]
 }
 
@@ -68,7 +65,6 @@ Content-Type: application/json
 
 ###
 GET {{entrypoint}}/user/logout
-{{accessToken}}
 
 
 ###

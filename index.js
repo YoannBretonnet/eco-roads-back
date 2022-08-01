@@ -6,7 +6,6 @@ import "dotenv/config";
 // ~ ****************************** ~ //
 import express from "express";
 
-
 import cookieParser from "cookie-parser";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
@@ -38,51 +37,39 @@ const corsOptions = {
     credentials: true,
 };
 
-// app.use(function (req, res, next) {
-    //     res.setHeader("Access-Control-Allow-Origin", "https://e-co-roads.netlify.app");
-    //     res.setHeader("Access-Control-Allow-Methods", "*");
-//     res.setHeader(
-//         "Access-Control-Allow-Headers",
-//         "Authorization, Origin, X-Requested-With, Content-Type, Accept",
-//     );
-//     res.setHeader("Access-Control-Allow-Credentials", "true");
-//     next();
-// });
-
-// If you have your node.js behind a proxy and are using secure: true, you need to set 'trust proxy' in express
-//app.set("trust proxy", 1); // trust first proxy
+app.use(cors(corsOptions));
+app.set("trust proxy", 1);
 
 // ~ *** *** SESSION CONFIG *** *** ~ //
 // ~ ****************************** ~ //
 
 import session from "express-session";
 app.use(
-        session({
-                saveUninitialized: false,
-                resave: true,
-                secret: process.env.SESSION_SECRET,
-                cookie: {
-                        secure: true,
-                        sameSite: "none", // or 'strict'
-                        maxAge: 24 * 60 * 60 * 1000, //24 hours
-                    },
-                }),
-            );
-            
-            app.use(cors(corsOptions));
-            
-            // ~ *** *** PARSER CONFIG *** *** ~ //
-            // ~ ***************************** ~ //
-            app.use(express.urlencoded({ extended: true }));
-            app.use(express.json());
-            app.use(cookieParser());
-            
-            app.use("/", express.static(join(__dirname, "public")));
-            
-            // ~ *** *** LAUNCHER CONFIG *** *** ~ //
-            // ~ ******************************* ~ //
-            app.use(router);
-            
-            app.listen(PORT, () => {
-                console.log(` \x1b[1;33m⚡⚡ http://localhost:${PORT} ⚡⚡ \x1b[0m`);
+    session({
+        saveUninitialized: true,
+        resave: true,
+        proxy: true,
+        secret: process.env.SESSION_SECRET,
+        cookie: {
+            httpOnly: true,
+            sameSite: "none", // or 'strict'
+            maxAge: 24 * 60 * 60 * 1000, //24 hours
+        },
+    }),
+);
+
+// ~ *** *** PARSER CONFIG *** *** ~ //
+// ~ ***************************** ~ //
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(cookieParser());
+
+app.use("/", express.static(join(__dirname, "public")));
+
+// ~ *** *** LAUNCHER CONFIG *** *** ~ //
+// ~ ******************************* ~ //
+app.use(router);
+
+app.listen(PORT, () => {
+    console.log(` \x1b[1;33m⚡⚡ http://localhost:${PORT} ⚡⚡ \x1b[0m`);
 });
