@@ -61,7 +61,6 @@ async function fetchOneUser(req, res) {
         if (!userId) return res.status(401).json({ error: "Autorisation refusée" });
 
         const user = await User.findOneProfile(userId, "id");
-
         if (user) res.status(200).json(user.rows[0]);
         else throw new Error({ error: "L'utilisateur n'existe pas" });
     } catch (err) {
@@ -116,8 +115,8 @@ async function loginUser(req, res) {
 
 async function logoutUser(req, res) {
     try {
-        const token = req.refreshToken;
-        console.log("🚀 ~ file: userController.js ~ line 120 ~ logoutUser ~ token", token)
+        const token = req.cookie.refreshToken;
+        console.log("🚀 ~ file: userController.js ~ line 120 ~ logoutUser ~ token", refreshToken)
 
         if (!token) return res.status(401).json({ error: "Token invalide" });
 
