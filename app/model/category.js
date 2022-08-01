@@ -1,5 +1,5 @@
 //~ IMPORTATION CAR DATA
-import { findAll, findOne, updateData } from "../datamapper/category.js";
+import { findAll, findOne, updateData, findCategoryByUser } from "../datamapper/category.js";
 
 class Category {
     static async findAllCategories() {
@@ -10,8 +10,14 @@ class Category {
         return findOne(categoryId);
     }
 
+    static async 
+
     static async updateCategories(categories, userId) {
         return updateData(categories, userId)
+    }
+
+    static async findUserCategories(userId) {
+        return findCategoryByUser(userId);
     }
 }
 

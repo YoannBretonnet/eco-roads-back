@@ -1,5 +1,4 @@
 //~ IMPORTATION ERROR
-import pool from "../service/dbClient.js";
 import { _400, _404, _500 } from "./errorController.js";
 import { User } from "../model/user.js";
 import { Location } from "../model/location.js";
@@ -12,7 +11,9 @@ import jwt from "jsonwebtoken";
 
 import emailValidator from "email-validator";
 import passwordValidator from "password-validator";
-import { request } from "express";
+
+import { validation } from "../service/validation.js";
+import { usernameSchema } from "../schema/user.js";
 
 const schema = new passwordValidator();
 const worthPassword = ["Passw0rd", "Password123", "Azerty", "Qwerty", "000000", "123456"];
@@ -59,15 +60,16 @@ async function fetchOneUser(req, res) {
     try {
         const userId = req.user.id;
         if (!userId) return res.status(401).json({ error: "Autorisation refusée" });
-
-        // const user = await User.findOneUser(userId);
-        const user = await User.findOneProfile(userId);
-
+        const user = await User.findOneProfile(userId, "id");
+        
         if (user) res.status(200).json(user.rows[0]);
         else throw new Error({ error: "L'utilisateur n'existe pas" });
+        
     } catch (err) {
         return _500(err, req, res);
     }
+    req.session.user = req.user
+    console.log("req.user dans user porfil", req.session.user);
 }
 
 // ------------------------------------------------------- LOGIN USER
@@ -76,37 +78,40 @@ async function fetchOneUser(req, res) {
 async function loginUser(req, res) {
     try {
         const { email, password } = req.body;
-
         // verify if the email exists
         if (!email)
-            return res.status(400).json({ error: "Merci de bien vouloir renseigner l'email" });
+        return res.status(400).json({ error: "Merci de bien vouloir renseigner l'email" });
         // verify if email is valid
         if (!emailValidator.validate(email))
-            return res.status(401).json({ error: "L'email est incorrect" });
-
+        return res.status(401).json({ error: "Le format de l'email est incorrect" });
+        
         const user = await User.findOneUser(email, "email");
-
+        
         if (user.rowCount === 0) return res.status(401).json({ error: "Aucun utilisateur trouvé" });
-
+        
         // verify if password is the same with user.password
         const validPassword = await bcrypt.compare(password, user.rows[0].password);
         if (!validPassword) return res.status(401).json({ error: "Mot de passe incorrect" });
-
+        
         // delete user.password;
-        const { ['password']: remove, ...userJwt } = user.rows[0];
+        const { ["password"]: remove, ...userJwt } = user.rows[0];
 
         //~ Create token JWT
         let accessToken = generateAccessToken(userJwt);
         let refreshToken = generateRefreshToken(userJwt);
-
+        
+        req.session.refreshToken = refreshToken
+        
         res.cookie("refreshToken", refreshToken, {
+            ...(process.env.COOKIE_DOMAIN && {domain: process.env.COOKIE_DOMAIN}),
             httpOnly: true,
             sameSite: "none",
-            secure: true, 
-            maxAge : 24 * 60 * 60 * 1000
+            secure: true,
+            maxAge: 24 * 60 * 60 * 1000,
         });
-
-        res.status(200).json({ accessToken: accessToken });
+        
+        
+        res.status(200).send({ accessToken : accessToken});
     } catch (err) {
         return _500(err, req, res);
     }
@@ -117,7 +122,7 @@ async function loginUser(req, res) {
 
 async function logoutUser(req, res) {
     try {
-        const token = req.cookies.refreshToken;
+        const token = req.session.refreshToken;
 
         if (!token) return res.status(401).json({ error: "Token invalide" });
 
@@ -125,12 +130,14 @@ async function logoutUser(req, res) {
             if (err) {
                 return res.sendStatus(401);
             }
-            // very if the user exists and return json
             if (!user) return res.status(401).json({ error: "L'utilisateur n'existe pas" });
-
-            delete user.iat;
-            delete user.exp;
+            req.user = user;
+            return token;
         });
+        req.user = null;
+        req.session.destroy();
+
+        res.json("Utilisateur deconnecté");
     } catch (err) {
         _500(err, req, res);
     }
@@ -142,16 +149,15 @@ async function logoutUser(req, res) {
 async function createUser(req, res) {
     try {
         let { email, password, username } = req.body;
-        
+
         const user = await User.findOneUser(email, "email");
 
         if (user.rowCount !== 0) throw new Error(`${email} existe déjà.`);
 
-        if(req.body.location !== undefined && isNaN(req.body.location)){
-            const existingLocation = await Location.findOrCreateLocation(req.body.location)
-            if(existingLocation) req.body.location = existingLocation;
+        if (req.body.location !== undefined && isNaN(req.body.location)) {
+            const existingLocation = await Location.findOrCreateLocation(req.body.location);
+            if (existingLocation) req.body.location = existingLocation;
         }
-
 
         if (!emailValidator.validate(email))
             return res.status(500).json({ error: `L'email n'est pas valide.` });
@@ -159,10 +165,10 @@ async function createUser(req, res) {
             return res.status(500).json({
                 error: "Le mot de passe doit contenir au moins 6 caractères, une majuscule et un caractère spécial.",
             });
-            req.body.password = await bcrypt.hash(password, 10);
+        req.body.password = await bcrypt.hash(password, 10);
         if (!username)
             return res.status(500).json({ error: "Merci de renseigner un nom d'utilisateur" });
-    
+
         await User.createUser(req.body);
 
         res.status(200).json({ message: "L'utilisateur a bien été créé" });
@@ -174,46 +180,47 @@ async function createUser(req, res) {
 // ------------------------------------------------------- UPDATE USER
 // --------------------------------------------------------------------
 
-async function updateUser(req, res){
+async function updateUser(req, res) {
     try {
-        // I retrieve the id put in the req.session 
+        // I retrieve the id put in the req.session
         const userId = req.user.id;
-        let { email,password, username } = req.body;
+        let { email, password, username } = req.body;
         // I verify if the user exist in the database
         let user = await User.findOneUser(userId, "id");
 
         if (!user) return res.status(401).json({ error: "L'utilisateur n'existe pas" });
-        
 
-        if(req.body.location !== undefined && isNaN(req.body.location)){
-            const existingLocation = await Location.findOrCreateLocation(req.body.location)
-            if(existingLocation) req.body.location = existingLocation;
-            }
-
-        if(req.body.categories) await Category.updateCategories( req.body.categories, userId);
-            
-        if (!emailValidator.validate(email)) return res.status(500).json({ error: `${email} invalide !` });
-        
-        if(password){ 
-            if(!schema.validate(password)) 
-            return res
-            .status(500)
-            .json({ error: "Le mot de passe doit contenir au moins 6 caractères, une majuscule et un caractère spécial." });
-            req.body.password = await bcrypt.hash(password, 10);  
+        if (req.body.location !== undefined && isNaN(req.body.location)) {
+            const existingLocation = await Location.findOrCreateLocation(req.body.location);
+            if (existingLocation) req.body.location = existingLocation;
         }
-        
-        if (!username)
-            return res.status(500).json({ error: "Merci de renseigner un nom d'utilisateur" });
 
+        if (req.body.categories) await Category.updateCategories(req.body.categories, userId);
         
-            await User.updateUser(userId, req.body);
+        if(email){  
+        if (!emailValidator.validate(email))
+            return res.status(500).json({ error: `${email} invalide !` });
+        }
+
+        if (password) {
+            if (!schema.validate(password))
+                return res
+                    .status(500)
+                    .json({
+                        error: "Le mot de passe doit contenir au moins 6 caractères, une majuscule et un caractère spécial.",
+                    });
+            req.body.password = await bcrypt.hash(password, 10);
+        }
+
+        if (username) validation.body(usernameSchema);
+        
+        await User.updateUser(userId, req.body);
 
         res.status(200).json({ message: "L'utilisateur a bien été mis à jour" });
     } catch (err) {
         _500(err, req, res);
     }
 }
-
 
 // ------------------------------------------------------- DELETE USER
 // --------------------------------------------------------------------
@@ -233,17 +240,16 @@ async function deleteUser(req, res) {
 // ----------------------------------------------------------------------
 
 async function refreshToken(req, res) {
-    const authHeader = req.headers["authorization"];
-    const token = authHeader && authHeader.split(" ")[1];
+    const token = req.session.refreshToken
 
     if (!token) {
-        return res.sendStatus(401);
+        return res.status(401);
     }
-    jwt.verify(token, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
+    jwt.verify(req.session.refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
         if (err) {
-            return res.sendStatus(401).json(`L'utilisateur n'existe pas`);
+            console.log("🚀 ~ file: userController.js ~ line 246 ~ jwt.verify ~ err", err)
+            return res.status(401).json(`L'utilisateur n'existe pas`);
         }
-
         delete user.iat;
         delete user.exp;
         const refreshedAccessToken = generateAccessToken(user);
@@ -251,7 +257,6 @@ async function refreshToken(req, res) {
         res.status(200).json({ refreshedAccessToken: refreshedAccessToken });
     });
 }
-
 
 export {
     fetchAllUsers,
@@ -261,5 +266,5 @@ export {
     createUser,
     updateUser,
     deleteUser,
-    refreshToken
+    refreshToken,
 };

@@ -1,0 +1,98 @@
+[
+    {
+        "model": "Zoé",
+        "image": "renault-zoe-2-medium.png",
+        "brand_id": 1,
+        "network_id": 3
+    },
+    {
+        "model": "Twingo",
+        "image": "renault_twingo.png",
+        "brand_id": 1,
+        "network_id": 3
+    },
+    {
+        "model": "Mégane",
+        "image": "renault_megane.png",
+        "brand_id": 1,
+        "network_id": 3
+    },
+    {
+        "model": "e-208",
+        "image": "peugeot-e-208-1.png",
+        "brand_id": 2,
+        "network_id": 3
+    },
+    {
+        "model": "e-2008",
+        "image": "peugeot-e-2008.png",
+        "brand_id": 2,
+        "network_id": 3
+    },
+    {
+        "model": "Kona",
+        "image": "Hyundai_Kona_remove.png",
+        "brand_id": 3,
+        "network_id": 2
+    },
+    {
+        "model": "Ioniq",
+        "image": "hyundai-ioniq_w.png",
+        "brand_id": 3,
+        "network_id": 2
+    },
+    {
+        "model": "e-tron S",
+        "image": "Audi_E-tron_S_remove.png",
+        "brand_id": 4,
+        "network_id": 2
+    },
+    {
+        "model": "e-tron GT Quattro",
+        "image": "Audi_E-tron_GT_Quattro_remove.png",
+        "brand_id": 4,
+        "network_id": 2
+    },
+    {
+        "model": "Q4 e-tron",
+        "image": "Audi_Q4_E-tron_remove.png",
+        "brand_id": 4,
+        "network_id": 2
+    },
+    {
+        "model": "Model S",
+        "image": "tesla_model_s.png",
+        "brand_id": 5,
+        "network_id": 1
+    },
+    {
+        "model": "Model X",
+        "image": "Tesla_Model_X2_remove.png",
+        "brand_id": 5,
+        "network_id": 1
+    },
+    {
+        "model": "Model Y",
+        "image": "Tesla_Model_Y2_remove.png",
+        "brand_id": 5,
+        "network_id": 1
+    },
+    {
+        "model": "ID.3",
+        "image": "volkswagen-id3-medium.png",
+        "brand_id": 6,
+        "network_id": 2
+    },
+    {
+        "model": "ID.4",
+        "image": "Volkswagen_ID.4_remove.png",
+        "brand_id": 6,
+        "network_id": 2
+    },
+    {
+        "model": "ID.Buzz",
+        "image": "Volkswagen_ID.Buzz_remove.png",
+        "brand_id": 6,
+        "network_id": 2
+    }
+]

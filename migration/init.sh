@@ -15,7 +15,6 @@ export PGUSER=postgres
 #sqitch add 01.init -n "create tables"
 #sqitch add 02.add_table_brand -n "modification table car and add table brand"
 #sqitch add 03.new_constraint_delete_on_cascade -n "delete constraints on table user_like_category"
-sqitch add 04.add_domain_french_zipcode_check -n "checks if the postal code has a French format"
 
 #* 5 - Initialiser Sqitch dans le terminal
 #sh init.sh

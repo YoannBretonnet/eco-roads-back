@@ -1,12 +1,13 @@
-#@entrypoint=https://eco-roads.herokuapp.com/api/v1
-@entrypoint=http://localhost:4100/api/v1
+//@entrypoint=https://eco-roads.herokuapp.com/api/v1
+@entrypoint=http://localhost:5000/api/v1
 
-@accessToken=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk0MmM0MjNjLWM5N2QtNGQ4MS05ZDZkLTkxMDg5MTE3Njg2OCIsImVtYWlsIjoidXBkYXRlVXNlckBnbWFpbC5jb20iLCJ1c2VybmFtZSI6InVwZmRrd3BvZiIsImlhdCI6MTY1OTIxNzU4NiwiZXhwIjoxNjU5MjUzNTg2fQ.yWWNgNEr8J7jiJtnVDjNcRFSdB0_EzYjvuW3eMhv3Nk
-@refreshToken=Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImViMGZkMmEzLTdjZGYtNDg5MS04YzU2LWQyYTJhNjRjZGU2ZSIsImVtYWlsIjoidGVzdDRAZ21haWwuY29tIiwidXNlcm5hbWUiOiJ0ZXN0IiwiaWF0IjoxNjU4OTM4NTY2LCJleHAiOjE2NTg5NzQ1NjZ9.3QYMNplU0Yk_xMdjpOMA7-AO6plyiYLLW-Utbg52u6U
-@refreshedAccessToken= Authorization:  Bearer 
+@accessToken=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJmMGRkZjBiLWEwYWEtNGE0MC1iM2VlLWNkMzQwNTkzOTEyYiIsImVtYWlsIjoidGVzdDEwQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoidGVzdCIsImxvY2F0aW9uX2lkIjoxMywiY2FyX2lkIjoxMiwiY3JlYXRlZF9hdCI6IjIwMjItMDgtMDFUMTc6NDg6MzMuMzY1WiIsInVwZGF0ZWRfYXQiOm51bGwsImlhdCI6MTY1OTM3ODM0MCwiZXhwIjoxNjU5Mzc5NTQwfQ.MF9PO1wz5I4KBXN13nyaxciOH5_oAbr4ME3R2Az9QVg
+@refreshToken=Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJmMGRkZjBiLWEwYWEtNGE0MC1iM2VlLWNkMzQwNTkzOTEyYiIsImVtYWlsIjoidGVzdDEwQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoidGVzdCIsImxvY2F0aW9uX2lkIjoxMywiY2FyX2lkIjoxMiwiY3JlYXRlZF9hdCI6IjIwMjItMDgtMDFUMTc6NDg6MzMuMzY1WiIsInVwZGF0ZWRfYXQiOm51bGwsImlhdCI6MTY1OTM3NjI3NCwiZXhwIjoxNjU5Mzc2NTc0fQ.RU55u7c4WvkGG2kBvPxddY21VIRNKlTP7DbOa03hBPA
+
+# @refreshedAccessToken= Authorization:  Bearer 
+
 ##--------------------------------------------------------------- USERS
 ## ---------------------------------------------------------------------
-
 
 GET {{entrypoint}}/users
 
@@ -15,36 +16,37 @@ POST {{entrypoint}}/user/register
 Content-Type: application/json
 
 {
-    "email": "JaysonTatum@gmail.com",
-    "password": "Celtics63!",
-    "username": "GreenLantern",
-    "location":{
-        "address": "Avenue de la republique",
-        "street_number": 122,
-        "zipcode": 63000,
-        "city": "Clermont-Ferrand",
-        "Lat": 44.4811424159854,
-        "Long": 3.22101549756121
-    },
-    "car_id": 70
+    "email": "test10@gmail.com",
+    "password": "Onepiece63!",
+    "username": "test",
+    "car_id": 12,
+        "location":{
+        "address": "Grand Line Sea",
+        "street_number": 50,
+        "zipcode": 83100,
+        "city": "South Blue",
+        "Lat": 40.454512898265,
+        "Long": -0.451549756121
+    }
 }
-
 
 ###
 POST {{entrypoint}}/user/login
 Content-Type: application/json
 
 {
-    "email": "alexiatest@gmail.com",
-    "password": "Bellegosse63!"
+    "email": "test10@gmail.com",
+    "password": "Onepiece63!"
 }
 
 ###
 GET {{entrypoint}}/user/profile
+Content-Type: application/json
 {{accessToken}}
+
+
 ###
-GET {{entrypoint}}/user/refresh_token
-{{refreshToken}}
+GET {{entrypoint}}/refresh_token
 
 
 ###
@@ -53,15 +55,17 @@ PATCH {{entrypoint}}/user/profile
 Content-Type: application/json
 
 {
-    "email": "updateUser@gmail.com",
-    "password": "ddsfoiIO7*7",
-    "username": "upfdkwpof"
+    "categories": [4,5,6]
 }
 
 ### 
 DELETE {{entrypoint}}/user/profile
 {{accessToken}}
 Content-Type: application/json
+
+###
+GET {{entrypoint}}/user/logout
+
 
 ###
 GET {{entrypoint}}/cars

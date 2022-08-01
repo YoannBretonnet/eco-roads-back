@@ -1,7 +1,8 @@
--- Revert ecoroads:02.add_table_brand from pg
+-- Revert ecoroads:02.add_table_brand to pg
 
 BEGIN;
 
--- XXX Add DDLs here.
+ALTER TABLE car DROP CONSTRAINT car_brand_id;
+DROP TABLE brand;
 
 COMMIT;

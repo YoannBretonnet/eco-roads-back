@@ -5,7 +5,6 @@ const TABLE_NAME = "category";
 //~ ------------------------------------------------------------------- FIND ALL CATEGORIES
 
 async function findAll() {
-
     const result = await pool.query(`SELECT category.id, category.name FROM "${TABLE_NAME}";`);
 
     return result.rows;
@@ -25,11 +24,15 @@ async function findCategoryByUser(userId) {
         values: [userId],
     };
     const result = await pool.query(queryPrepared);
-    return result.rows[0];
+    return result;
 }
 
+
 async function updateData(categories, userId) {
-    await pool.query(`DELETE FROM public.user_like_category WHERE user_id = $1;`, [userId]);
+
+    const findUserCategories = await pool.query(`SELECT category_id FROM public.user_like_category WHERE user_id = $1;`, [userId])
+
+    if (findUserCategories.rowCount !== 0) await pool.query(`DELETE FROM public.user_like_category WHERE user_id = $1;`, [userId]);
 
     for await (const category of categories) {
         pool.query(`INSERT INTO public.user_like_category

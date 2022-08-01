@@ -30,7 +30,7 @@ import { validation } from "../service/validation.js";
 
 router.get("/users", fetchAllUsers);
 // connection
-router.post("/user/register", validation.body(userSchema), createUser);
+router.post("/user/register",  createUser);
 
 router.post("/user/login", loginUser);
 router.get("/user/logout", logoutUser);
@@ -41,6 +41,6 @@ router.delete("/user/profile",authenticateToken ,deleteUser);
 
 
 //refreshToken
-router.get("/user/refresh_token", refreshToken);
+router.get("/refresh_token", refreshToken);
 
 export { router };

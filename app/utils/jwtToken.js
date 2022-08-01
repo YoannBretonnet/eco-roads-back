@@ -1,13 +1,11 @@
 import jwt from "jsonwebtoken";
 
 function generateAccessToken(user) {
-    let payload = { id: user.id, email: user.email, username: user.username };
-    return jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "36000s" });
+    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "20min" });
 }
 
 function generateRefreshToken(user) {
-    let payload = { id: user.id, email: user.email, username: user.username };
-    return jwt.sign(payload, process.env.REFRESH_TOKEN_SECRET, { expiresIn: "36000s" });
+    return jwt.sign(user, process.env.REFRESH_TOKEN_SECRET, { expiresIn: "30min" });
 }
 
 export { generateAccessToken, generateRefreshToken };

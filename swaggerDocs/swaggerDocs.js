@@ -39,12 +39,12 @@ const options = {
         // Tous les serveurs
         servers: [
             {
-                url: "https://eco-roads.herokuapp.com/api/v1/users",
-                description: "API v1/users",
+                url: "https://eco-roads.herokuapp.com/api/v1",
+                description: "API v1/",
             },
             {
-                url: "https://eco-roads.herokuapp.com/api/v1/cars",
-                description: "API v1/cars",
+                url: "http://localhost:4100/api/v1",
+                description: "localhost",
             },
         ],
 
@@ -82,7 +82,6 @@ const options = {
             // //~ ------------- LOCATIONS
             // "/locations": locations,
             // "/location/{id}": locationId,
-
 
             // //~ ------------- ROADS
             // "/roads": roads,

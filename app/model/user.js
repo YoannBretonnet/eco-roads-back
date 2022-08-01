@@ -6,8 +6,8 @@ class User {
         return findAll();
     }
 
-    static async findOneProfile(user) {
-        return findOneUserProfile(user);
+    static async findOneProfile(user, columnName) {
+        return findOneUserProfile(user, columnName);
     }
 
     static async findOneUser(email, columnName) {

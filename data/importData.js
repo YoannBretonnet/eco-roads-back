@@ -22,7 +22,6 @@ import cars from "./json/cars.json" assert { type: "json" };
 //         rejectUnauthorized: false
 //     }
 // });
-git 
 
 
 // client.connect(function (err) {

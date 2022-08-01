@@ -6,7 +6,9 @@ const TABLE_NAME = "user";
 // ~ *** *** FIND ALL USERS *** *** ~ //
 // ~ ****************************** ~ //
 async function findAll() {
-    const result = await pool.query(`SELECT * FROM public."${TABLE_NAME}";`);
+    const result = await pool.query(
+        `SELECT * FROM public."${TABLE_NAME}" ORDER BY created_at DESC;`,
+    );
     return result.rows;
 }
 
@@ -26,14 +28,14 @@ async function findOne(userData, columnName) {
 // ~ *** *** FIND ONE USER PROFILE PAGE *** *** ~ //
 // ~ ****************************************** ~ //
 
-async function findOneUserProfile(userData) {
+async function findOneUserProfile(userData, columnName) {
     const queryPrepared = {
         text: `SELECT public.user.id, public.user.username, public.user.email,
         (SELECT json_build_object('brand_id', public.brand.id, 'name', public.brand.name, 'car_id', public.car.id ,'model', public.car.model, 'image', public.car.image) 
         FROM public."user" 
         JOIN public.car ON public.car.id = public."user".car_id 
         JOIN public.brand ON public.brand.id = public.car.brand_id
-        WHERE public."user".id = $1)  AS "car",
+        WHERE public."user".${columnName} = $1)  AS "car",
         (SELECT 
         json_build_object(
         'address', public.location.address, 
@@ -44,22 +46,22 @@ async function findOneUserProfile(userData) {
         'lon', public.location.lon) AS location 
         FROM public."location"
         JOIN public."user" ON public."user".location_id = public.location.id 
-        WHERE public."user".id = $1),
+        WHERE public."user".${columnName} = $1),
         (SELECT
         JSON_AGG(json_build_object ('category', public."category".name,'id', public."category".id)) 
         AS "categories" 
         FROM public.user_like_category 
         JOIN public.category ON public.category.id = public.user_like_category.category_id
         JOIN public."user" ON public."user".id = public.user_like_category.user_id 
-        WHERE public."user".id = $1
+        WHERE public."user".${columnName} = $1
         GROUP BY public.user.username) 
         FROM public."${TABLE_NAME}" 
-        WHERE public."user".id= $1;`,
+        WHERE public."user".${columnName}= $1;`,
         values: [userData],
-    };
+    }; 
 
     const result = await pool.query(queryPrepared);
-
+    
     return result;
 }
 
@@ -79,7 +81,7 @@ async function createData(userData) {
                 location.zipcode,
                 location.city,
                 location.Lat,
-                location.Long,
+                location.Long
             ],
         };
         await pool.query(queryPreparedLocation);
@@ -102,7 +104,7 @@ async function createData(userData) {
                 ("email","password","username",location_id, "car_id")
                 VALUES
                 ($1,$2,$3,$4,$5);`,
-            values: [email, password, username, location, car_id],
+            values: [email, password, username, location, car_id]
         };
         await pool.query(queryPrepared);
     }

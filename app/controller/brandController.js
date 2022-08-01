@@ -7,6 +7,7 @@ import { Brand } from "../model/brand.js";
 
 //~---------------------------------------FETCH ALL BRANDS
 
+
 async function fetchAllBrands(req, res) {
     try {
         const brands = await Brand.findAllBrands();
