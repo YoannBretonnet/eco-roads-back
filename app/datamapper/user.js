@@ -38,6 +38,7 @@ async function findOneUserProfile(userData, columnName) {
         WHERE public."user".${columnName} = $1)  AS "car",
         (SELECT 
         json_build_object(
+        'label', public.location.label,
         'address', public.location.address, 
         'street_number', public.location.street_number, 
         'zipcode', public.location.zipcode, 

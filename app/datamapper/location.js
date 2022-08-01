@@ -25,8 +25,8 @@ async function findOrCreateData(location) {
             return existingLocation.rows[0].id;
         } else {
             const preparedQuery = {
-                text: `INSERT INTO public."location"("address", "street_number","zipcode", "city", "lat", "lon")
-                    VALUES ($1, $2, $3, $4, $5, $6);`,
+                text: `INSERT INTO public."location"("address", "street_number","zipcode", "city", "lat", "lon", "label")
+                    VALUES ($1, $2, $3, $4, $5, $6, $7);`,
                 values: [
                     location.address,
                     location.street_number,
@@ -34,6 +34,7 @@ async function findOrCreateData(location) {
                     location.city,
                     location.Lat,
                     location.Long,
+                    location.label
                 ],
             };
             

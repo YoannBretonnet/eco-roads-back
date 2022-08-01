@@ -62,6 +62,11 @@ async function fetchOneUser(req, res) {
         if (!userId) return res.status(401).json({ error: "Autorisation refusée" });
         const user = await User.findOneProfile(userId, "id");
         
+        console.log("dans le user profile ligne 65",{refresh :  req.cookies.refreshToken});
+        delete req.cookies.refreshToken;
+        
+        console.log("dans le user profile  ligne 68", req.cookies);
+        
         if (user) res.status(200).json(user.rows[0]);
         else throw new Error({ error: "L'utilisateur n'existe pas" });
         
@@ -106,10 +111,12 @@ async function loginUser(req, res) {
             ...(process.env.COOKIE_DOMAIN && {domain: process.env.COOKIE_DOMAIN}),
             httpOnly: true,
             sameSite: "none",
-            secure: true,
-            maxAge: 24 * 60 * 60 * 1000,
+            // secure: true,
+            maxAge: 24 * 60 * 60 * 1000
         });
+
         
+        console.log(req.cookies);
         
         res.status(200).send({ accessToken : accessToken});
     } catch (err) {
