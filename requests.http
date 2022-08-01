@@ -1,7 +1,7 @@
 //@entrypoint=https://eco-roads.herokuapp.com/api/v1
-@entrypoint=http://localhost:4100/api/v1
+@entrypoint=http://localhost:5000/api/v1
 
-@accessToken=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZiZDBlZjczLTVmNDItNDg5My1hZTBkLTYzNGI3M2U4MzQ1NCIsImVtYWlsIjoiVXNzb3BwQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoiVXNzb3BwIiwibG9jYXRpb25faWQiOjY2LCJjYXJfaWQiOjc4LCJjcmVhdGVkX2F0IjoiMjAyMi0wOC0wMVQyMzowNjowMy4wNzlaIiwidXBkYXRlZF9hdCI6bnVsbCwiaWF0IjoxNjU5Mzk1MTcxLCJleHAiOjE2NTkzOTYzNzF9.OhmqWRBwG8n93oqXxebCPxi6OxcLJp2eL0mTY-V83xs
+@accessToken=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZhMDQyMDVmLWY4NTctNGRiZC1hMTM5LWY1YjM1MGFjZWQxZSIsImVtYWlsIjoiVXNzb3BwQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoiVXNzb3BwIiwibG9jYXRpb25faWQiOjI1LCJjYXJfaWQiOjExLCJjcmVhdGVkX2F0IjoiMjAyMi0wOC0wMVQyMzoxMzo0Ni45MjJaIiwidXBkYXRlZF9hdCI6bnVsbCwiaWF0IjoxNjU5Mzk1NjUyLCJleHAiOjE2NTkzOTY4NTJ9.cNhENZZbHzVW3Vw6yW4mrq_-lJpRxiAun3lzspD3HpY
 
 
 
@@ -22,14 +22,14 @@ Content-Type: application/json
     "email": "Ussopp@gmail.com",
     "password": "Onepiece63!",
     "username": "Ussopp",
-    "car_id": 78,
-        "label": " 25 Grand line, 83100 South Blue",
+    "car_id": 11,
         "location":{
+        "label": " 25 Grand line, 83100 South Blue",
         "address": "Grand Line Sea",
         "street_number": 2,
         "zipcode": 83000,
-        "city": "Eats Blue",
-        "Lat": 46.94412898265,
+        "city": "East Blue",
+        "Lat": 41.94412898265,
         "Long": -2.121549756121
     }
 }
@@ -59,6 +59,15 @@ PATCH {{entrypoint}}/user/profile
 Content-Type: application/json
 
 {
+        "location":{
+        "label": " 25 Grand line, 83100 South Blue",
+        "address": "Grand Line Sea",
+        "street_number": 2,
+        "zipcode": 83000,
+        "city": "East Blue",
+        "Lat": 41.94412898265,
+        "Long": -2.121549756121
+        },
     "categories": [4,5,6]
 }
 
