@@ -9,6 +9,37 @@
 
 # @refreshedAccessToken= Authorization:  Bearer 
 
+##  ------------------------------------------------------------- MAPS
+## --------------------------------------------------------------------
+
+POST {{entrypoint}}/map
+Content-Type: application/json
+
+{
+        "categories": [1,2,3],
+        "car_id": 10,
+        "label": "6 rue de la forge",
+        "location":{
+            "address": "Rue de la forge",
+            "street_number": 6,
+            "zipcode": 63360,
+            "city": "Lussat",
+            "Lat": 45.840034,
+            "Long": 3.214805
+    },
+    "arrival": {
+        "label": "108 rue de la forge",
+        "address": "Rue de bellevue",
+        "street_number": 108,
+        "zipcode": 33000,
+        "city": "Bordeaux",
+        "Lat": 44.834081,
+        "Long": -0.585122
+    }
+}
+
+
+###
 ##--------------------------------------------------------------- USERS
 ## ---------------------------------------------------------------------
 
@@ -31,7 +62,16 @@ Content-Type: application/json
         "city": "Eats Blue",
         "Lat": 46.94412898265,
         "Long": -2.121549756121
-    }
+    },
+    "arrival":{
+        "address": "Grand Line Sea",
+        "street_number": 2,
+        "zipcode": 83000,
+        "city": "Eats Blue",
+        "Lat": 46.94412898265,
+        "Long": -2.121549756121
+    },
+    "catergories": [0,1]
 }
 
 ###

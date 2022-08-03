@@ -23,6 +23,9 @@ router.use("/api/v1", brandRouter);
 import { router as categoryRouter } from "./category.js";
 router.use("/api/v1", categoryRouter);
 
+import { router as locationRouter } from "./location.js";
+router.use("/api/v1", locationRouter);
+
 // ROAD ROUTES
 // import { router as roadRouter } from "./road.js";
 // router.use("/api/v1", roadRouter);
