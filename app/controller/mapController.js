@@ -38,10 +38,8 @@ async function createMap(req, res) {
             );
             if (isPointInPolygon === true) POI.push(network.coordinates);
         }
-        // console.log("🚀 ~ file: mapController.js ~ line 41 ~ createMap ~ POI", POI)
 
         const finalRoute = geolib.orderByDistance(departure, POI);
-        //* sorti de mon triage
 
         const geoJson = {
             waypoints: {
@@ -105,33 +103,3 @@ async function createMap(req, res) {
 }
 
 export { createMap };
-
-// {
-//     "type": "Feature",
-//     "properties": {
-//       "image": "https://www.domoklic.com/wp-content/uploads/2020/07/DMK-Borne.jpg",
-//       "title": "Borne de recharge ENGIE",
-//       "adresse": "102 Rue du Port, 35630 Vignoc",
-//       "icon-image": "borne"
-//       },
-//     "geometry": {
-//     "type": "Point",
-//     "coordinates": [
-//       -1.57609, 47.32144
-//     ]
-//     }
-//     },
-//     {
-//       "type": "Feature",
-//       "properties": {
-//         "image": "https://www.domoklic.com/wp-content/uploads/2020/07/DMK-Borne.jpg",
-//         "title": "Borne de recharge ENGIE",
-//         "adresse": "24 Rue du Lac, 448000 St Herblain",
-//         "icon-image": "borne"
-//         },
-//       "geometry": {
-//       "type": "Point",
-//       "coordinates": [
-//         -1.6609, 47.7144
-//       ]
-//   }}>
