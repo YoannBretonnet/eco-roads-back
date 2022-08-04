@@ -32,7 +32,7 @@ const corsOptions = {
     withCredentials: true,
     origin: ["https://e-co-roads.netlify.app", "http://localhost:8080"],
     method: ["GET", "POST", "PATCH", "DELETE"],
-    responseHeader: ["Content-Type"],
+    responseHeader: ["Content-Type", "Origin", "X-Requested-With", "Authorization"],
     optionsSuccessStatus: 200,
     credentials: true,
 };

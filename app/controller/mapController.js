@@ -9,16 +9,13 @@ import * as geolib from "geolib";
 //~---------------------------------------CREATE MAP
 async function createMap(req, res) {
     try {
-        console.log("TEST MAPPING !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         // recuperer les infos des modales via un req.body
         const { location, arrival, categories, car_id } = req.body;
         const departure = { lat: location.Lat, lng: location.Long };
 
         // POI en fonction des categories
         const interesting = await InterestingPoint.findInterestingPointCategories(categories);
-        console.log("🚀 ~ file: mapController.js ~ line 19 ~ createMap ~ interesting", interesting)
         const networks = await InterestingPoint.findChargingStationByNetwork(car_id);
-        console.log("🚀 ~ file: mapController.js ~ line 21 ~ createMap ~ networks", networks)
         const visitorCar = await Car.findOneCar(car_id);
         const visitorCategory = await Category.findCategoryVisitor(categories)
 
@@ -62,6 +59,7 @@ async function createMap(req, res) {
                 (interet) => JSON.stringify(interet.coordinates) === JSON.stringify(coord),
             );
             if (intRes) {
+                // console.log("🚀 ~ file: mapController.js ~ line 65 ~ geoJson.road=finalRoute.map ~ intRes", intRes.image)
                 return {
                     type: "Feature",
                     borne: false,
