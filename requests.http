@@ -16,25 +16,25 @@ POST {{entrypoint}}/map
 Content-Type: application/json
 
 {
-        "categories": [1,2,3],
-        "car_id": 10,
-        "label": "6 rue de la forge",
+        "categories": [1, 2, 3],
+        "car_id": 1,
         "location":{
-            "address": "Rue de la forge",
-            "street_number": 6,
-            "zipcode": 63360,
-            "city": "Lussat",
-            "Lat": 45.840034,
-            "Long": 3.214805
+            "label": "25 rue de Fort Boyard",
+            "address": "Rue de Fort Boyard",
+            "street_number": 15,
+            "zipcode": 17000,
+            "city": "La Rochelle",
+            "Lat": 46.159711550901854,
+            "Long": -1.1341349301277615
     },
     "arrival": {
-        "label": "108 rue de la forge",
-        "address": "Rue de bellevue",
-        "street_number": 108,
-        "zipcode": 33000,
-        "city": "Bordeaux",
-        "Lat": 44.834081,
-        "Long": -0.585122
+            "label": "108 rue de bellevue",
+            "address": "Rue de bellevue",
+            "street_number": 108,
+            "zipcode": 33000,
+            "city": "Bordeaux",
+            "Lat": 44.83408100000000,
+            "Long": -0.58512200000000
     }
 }
 

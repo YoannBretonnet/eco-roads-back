@@ -1,5 +1,5 @@
 //~ IMPORTATION INTERESTING POINT DATA
-import { findAll, findOne, findInterestingPointByCategory } from "../datamapper/interesting_point.js";
+import { getAllInterestingPointByCategory, getAllChargingStationByCar } from "../datamapper/interestingPoint.js";
 
 class InterestingPoint {
 
@@ -11,10 +11,12 @@ class InterestingPoint {
         return findOne(interestingPointId);
     }
 
-    static async
+    static async findChargingStationByNetwork(car_id){
+        return getAllChargingStationByCar(car_id);
+    }
 
     static async findInterestingPointCategories(categories) {
-        return findInterestingPointByCategory(categories);
+        return getAllInterestingPointByCategory(categories);
     }
 }
 

@@ -79,3 +79,11 @@ console.log(polygon.waypoints);
 
 
 
+const geoJson = [{
+    type: "feature",
+    properties:{
+        "image": network.image,
+        "title": network.name
+
+    },
+}]

@@ -1,5 +1,5 @@
 import { _400, _404, _500 } from "./errorController.js";
-// import { Interesting } from "../model/interesting.js";
+import { InterestingPoint } from "../model/interestingPoint.js";
 import { polygonArea } from "../utils/polygon.js";
 import * as geolib from "geolib";
 
@@ -10,76 +10,123 @@ async function createMap(req, res) {
         // recuperer les infos des modales via un req.body
         const { location, arrival, categories, car_id } = req.body;
         const departure = { lat: location.Lat, lng: location.Long };
-        // const interestingByCategory = await Interesting.query(categories);
-        // const networks = await Interesting.findAllNetworkByCar(car_id);
-        const interestingByCategory = [
-            { lat: 45.90216613254294, lon: 2.195625340575916 },
-            { lat: 45.503190739986344, lon: 2.5691604907550336 },
-            { lat: 45.05482024291084, lon: 1.0860062179850078 },
-            { lat: 44.852676393329226, lon: -0.15544883996323436 },
-            { lat: 46.16910434996179, lon: -0.06755821639167713 },
-            { lat: 44.31276571453327, lon: 2.0967483890579137 },
-            { lat: 44.31276571453327, lon: 2.0967483890579137 },
-            { lat: 46.31276571453327, lon: 2.0967483890579137 },
-            { lat: 44.31276571453327, lon: 3.0967483890579137 },
-            { lat: 45.00613254294, lon: 1.195625340575916 },
-            { lat: 45.242166132544, lon: 1.805625340575916 },
-        ];
-        const networks = [
-            { lat: 45.80216613254294, lon: 2.195625340575916 },
-            { lat: 45.403190739986344, lon: 2.5691604907550336 },
-            { lat: 45.15482024291084, lon: 1.0860062179850078 },
-            { lat: 44.952676393329226, lon: -0.15544883996323436 },
-            { lat: 46.36910434996179, lon: -0.06755821639167713 },
-            { lat: 44.51276571453327, lon: 2.0967483890579137 },
-            { lat: 44.91276571453327, lon: 2.0967483890579137 },
-            { lat: 47.31276571453327, lon: 2.0967483890579137 },
-            { lat: 42.31276571453327, lon: 3.0967483890579137 },
-            { lat: 45.100613254294, lon: 1.195625340575916 },
-            { lat: 45.242166132544, lon: 1.805625340575916 },
-        ];
+
+        const interesting = await InterestingPoint.findInterestingPointCategories(categories);
+        //* POI en fonction des categories
+        console.log("🚀 ~ file: mapController.js ~ line 15 ~ createMap ~ interesting", interesting);
+
+        const networks = await InterestingPoint.findChargingStationByNetwork(car_id);
+        //* Borne de recharge
+        console.log("🚀 ~ file: mapController.js ~ line 18 ~ createMap ~ networks", networks);
 
         const polygon = polygonArea(location, arrival);
 
-        // Generer le polygon de recherche via location.Lat, location.Long, arrival.Lat, arrival.Long
+        const POI = [{ lat: arrival.Lat, lon: arrival.Long }];
 
-        // faire appel a la bdd pour selectionner les location lie au borne de recharge en fonction du vehicule et les locations liees au categories
-        // "properties" : { image: poi.image || network.image, title : network.name || POI.name, address : location.label,  icon-image : network.icon || poi.icon },
-        //  "geometry: { "type": "Point", "coordinates":[location.lon, location.lat]} WHERE NETWORK || WHERE CATEGORY"
-
-        const POI = [{ lat: arrival.Lat, lon: arrival.Long}];
-        console.log("🚀 ~ file: mapController.js ~ line 51 ~ createMap ~ POI", POI)
-
-        for (const category of interestingByCategory) {
+        for (const category of interesting) {
             const isPointInPolygon = geolib.isPointInPolygon(
-                { lat: category.lat, lon: category.lon },
+                { lat: category.coordinates.lat, lon: category.coordinates.lon },
                 polygon.waypoints,
             );
-            if (isPointInPolygon === true) POI.push(category);
+            if (isPointInPolygon === true) POI.push(category.coordinates);
         }
+
         for (const network of networks) {
             const isPointInPolygon = geolib.isPointInPolygon(
-                { lat: network.lat, lon: network.lon },
+                { lat: network.coordinates.lat, lon: network.coordinates.lon },
                 polygon.waypoints,
             );
-            if (isPointInPolygon === true) POI.push(network);
+            if (isPointInPolygon === true) POI.push(network.coordinates);
         }
-        console.log("🚀 ~ file: mapController.js ~ line 37 ~ createMap ~ POI", POI);
+        // console.log("🚀 ~ file: mapController.js ~ line 41 ~ createMap ~ POI", POI)
 
-        const finalRoute = geolib.orderByDistance(departure, POI)
-        console.log("🚀 ~ file: mapController.js ~ line 69 ~ createMap ~ finalRoute", finalRoute)
+        const finalRoute = geolib.orderByDistance(departure, POI);
+        //* sorti de mon triage
+        console.log("🚀 ~ file: mapController.js ~ line 53 ~ createMap ~ finalRoute", finalRoute);
 
-        // checker si les locations filtrées sont dans le polygon si true, alors on push dans un array, si false on s'en bat les couilles
-        // const departure = { lon: location.Long, lat: location.Lat }
-        // console.log("🚀 ~ file: mapController.js ~ line 24 ~ createMap ~ departure", departure)
+        const geoJson = {
+            waypoints : {
+                departure: [req.body.location.Long, req.body.location.Lat],
+                arrival: [req.body.arrival.Long, req.body.arrival.Lat]
+            },
+            road: undefined,
+        };
+        geoJson.road = finalRoute.map((coord) => {
+            const intRes = interesting.find(
+                (interet) => JSON.stringify(interet.coordinates) === JSON.stringify(coord),
+            );
+            if (intRes) {
+                return {
+                    type: "Feature",
+                    borne: false,
+                    properties: {
+                        image: "https://eco-roads.herokuapp.com/images/jardin_japonais.jpg",
+                        title: intRes.name,
+                        adresse: intRes.label,
+                        icon: intRes.icon,
+                    },
+                    geometry: {
+                        type: "Point",
+                        coordinates: [intRes.coordinates.lon, intRes.coordinates.lat],
+                    },
+                };
+            }
 
-        // Les vérifications sont faites grâce a Joi et ses schémas
-        // await Location.createMap(req.body);
+            const netRes = networks.find(
+                (network) => JSON.stringify(network.coordinates) === JSON.stringify(coord),
+            );
+            if (netRes) {
+                return {
+                    type: "Feature",
+                    borne: true,
+                    properties: {
+                        title: netRes.name,
+                        adresse: netRes.label,
+                    },
+                    geometry: {
+                        type: "Point",
+                        coordinates: [netRes.coordinates.lon, netRes.coordinates.lat],
+                    },
+                };
+            }
+        });
+        geoJson.road.pop();
+        console.log("🚀 ~ file: mapController.js ~ line 53 ~ geoJson ~ geoJson", geoJson);
 
-        return res.status(200).json(`Le trajet a bien été créé`);
+        return res.status(200).json(geoJson);
     } catch (err) {
         _500(err, req, res);
     }
 }
 
 export { createMap };
+
+// {
+//     "type": "Feature",
+//     "properties": {
+//       "image": "https://www.domoklic.com/wp-content/uploads/2020/07/DMK-Borne.jpg",
+//       "title": "Borne de recharge ENGIE",
+//       "adresse": "102 Rue du Port, 35630 Vignoc",
+//       "icon-image": "borne"
+//       },
+//     "geometry": {
+//     "type": "Point",
+//     "coordinates": [
+//       -1.57609, 47.32144
+//     ]
+//     }
+//     },
+//     {
+//       "type": "Feature",
+//       "properties": {
+//         "image": "https://www.domoklic.com/wp-content/uploads/2020/07/DMK-Borne.jpg",
+//         "title": "Borne de recharge ENGIE",
+//         "adresse": "24 Rue du Lac, 448000 St Herblain",
+//         "icon-image": "borne"
+//         },
+//       "geometry": {
+//       "type": "Point",
+//       "coordinates": [
+//         -1.6609, 47.7144
+//       ]
+//   }}>
