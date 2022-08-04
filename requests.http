@@ -19,7 +19,7 @@ Content-Type: application/json
         "categories": [1, 2, 3],
         "car_id": 1,
         "location":{
-            "label": "25 rue de Fort Boyard",
+            "label": "25 rue de Fort Boyard, 17000 La Rochelle",
             "address": "Rue de Fort Boyard",
             "street_number": 15,
             "zipcode": 17000,
@@ -28,7 +28,7 @@ Content-Type: application/json
             "Long": -1.1341349301277615
     },
     "arrival": {
-            "label": "108 rue de bellevue",
+            "label": "108 rue de bellevue, 33000 Bordeaux",
             "address": "Rue de bellevue",
             "street_number": 108,
             "zipcode": 33000,
@@ -71,7 +71,7 @@ Content-Type: application/json
         "Lat": 46.94412898265,
         "Long": -2.121549756121
     },
-    "catergories": [0,1]
+    "categories": [0,1]
 }
 
 ###

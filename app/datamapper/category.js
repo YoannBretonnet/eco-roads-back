@@ -27,6 +27,11 @@ async function findCategoryByUser(userId) {
     return result;
 }
 
+async function findCategory(categories) {
+    const result = await pool.query(`SELECT c.name FROM category AS c  WHERE c.id IN ($1, $2, $3);`, [categories[0], categories[1], categories[2]])
+    return result.rows
+}
+
 
 async function updateData(categories, userId) {
 
@@ -41,4 +46,4 @@ async function updateData(categories, userId) {
     }
 }
 
-export { findAll, findOne, findCategoryByUser, updateData };
+export { findAll, findOne, findCategory, findCategoryByUser, updateData };

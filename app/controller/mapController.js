@@ -1,23 +1,23 @@
 import { _400, _404, _500 } from "./errorController.js";
 import { InterestingPoint } from "../model/interestingPoint.js";
+import { Car } from "../model/car.js";
+import { Category } from "../model/category.js";
 import { polygonArea } from "../utils/polygon.js";
 import * as geolib from "geolib";
 
-//~---------------------------------------CREATE MAP
 
+//~---------------------------------------CREATE MAP
 async function createMap(req, res) {
     try {
         // recuperer les infos des modales via un req.body
         const { location, arrival, categories, car_id } = req.body;
         const departure = { lat: location.Lat, lng: location.Long };
 
+        // POI en fonction des categories
         const interesting = await InterestingPoint.findInterestingPointCategories(categories);
-        //* POI en fonction des categories
-        console.log("🚀 ~ file: mapController.js ~ line 15 ~ createMap ~ interesting", interesting);
-
         const networks = await InterestingPoint.findChargingStationByNetwork(car_id);
-        //* Borne de recharge
-        console.log("🚀 ~ file: mapController.js ~ line 18 ~ createMap ~ networks", networks);
+        const visitorCar = await Car.findOneCar(car_id);
+        const visitorCategory = await Category.findCategoryVisitor(categories)
 
         const polygon = polygonArea(location, arrival);
 
@@ -42,12 +42,17 @@ async function createMap(req, res) {
 
         const finalRoute = geolib.orderByDistance(departure, POI);
         //* sorti de mon triage
-        console.log("🚀 ~ file: mapController.js ~ line 53 ~ createMap ~ finalRoute", finalRoute);
 
         const geoJson = {
-            waypoints : {
+            waypoints: {
                 departure: [req.body.location.Long, req.body.location.Lat],
-                arrival: [req.body.arrival.Long, req.body.arrival.Lat]
+                arrival: [req.body.arrival.Long, req.body.arrival.Lat],
+            },
+            userInfo: {
+                car: visitorCar,
+                departureAddress: req.body.location.label,
+                arrivalAddress: req.body.arrival.label,
+                categories : visitorCategory
             },
             road: undefined,
         };
