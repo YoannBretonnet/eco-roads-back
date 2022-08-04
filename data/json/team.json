@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Océane Vignot",
+        "description": "Scrum Master, Git Master",
+        "image": "oceane.png"
+    },
+    {
+        "name": "Aymen El Bakkaly",
+        "description": "Lead Dev Front",
+        "image": "aymen.png"
+    },
+    {
+        "name": "Alexandre Humbert",
+        "description": "Lead Dev Back",
+        "image": "alex.png"
+    },
+    {
+        "name": "Yoann Bretonnet",
+        "description": "Dev Front",
+        "image": "yoann.png"
+    },
+    {
+        "name": "Gaëtan Santucci",
+        "description": "Product owner",
+        "image": "gaetan.png"
+    }
+]

@@ -1,0 +1,650 @@
+[
+    {
+        "address": "Résidence la Plantille",
+        "street_number": 1,
+        "zipcode": 33290,
+        "city": "Blanquefort",
+        "lat": 44.900475959003366,
+        "lon": -0.6436189483641365
+    },
+    {
+        "address": "Rue de Noune",
+        "street_number": 55,
+        "zipcode": 33480,
+        "city": "Brach",
+        "lat": 45.07055778344622,
+        "lon": -0.9216131108945604
+    },
+    {
+        "address": "Place de l'Eglise",
+        "street_number": null,
+        "zipcode": 33460,
+        "city": "Lamarque",
+        "lat": 45.09628025048654,
+        "lon": -0.7145066398140052
+    },
+    {
+        "address": "Avenue du Fort Médoc",
+        "street_number": null,
+        "zipcode": 33460,
+        "city": "Cussac-Fort-Médoc",
+        "lat": 45.11122065991949,
+        "lon": -0.7048972143458369
+    },
+    {
+        "address": "ZA, Le Treytin",
+        "street_number": null,
+        "zipcode": 33112,
+        "city": "Saint-Laurent-Médoc",
+        "lat": 45.16046586060606,
+        "lon": -0.8112046473153379
+    },
+    {
+        "address": "Jetée du Port d'Hourtin",
+        "street_number": null,
+        "zipcode": 33990,
+        "city": "Hourtin",
+        "lat": 45.180203555107326,
+        "lon": -1.0878581730044916
+    },
+    {
+        "address": "Île aux enfant",
+        "street_number": null,
+        "zipcode": 33990,
+        "city": "Hourtin",
+        "lat": 45.18585544763359,
+        "lon": -1.0878720864977571
+    },
+    {
+        "address": "Rue Pierre Curie",
+        "street_number": 17,
+        "zipcode": 33340,
+        "city": "Lesparre-Médoc",
+        "lat": 45.307553327936226,
+        "lon": -0.9431911374190362
+    },
+    {
+        "address": "Château Loudenne",
+        "street_number": null,
+        "zipcode": 33340,
+        "city": "Saint-Yzans-de-Médoc",
+        "lat": 45.320819018170745,
+        "lon": -0.7919971050469639
+    },
+    {
+        "address": "Lieu-dit La Petite Canau",
+        "street_number": null,
+        "zipcode": 33590,
+        "city": "Saint-Vivien de Médoc",
+        "lat": 45.45483154194093,
+        "lon": -1.014682609918304
+    },
+    {
+        "address": "Rue Jean Edmond Laporte",
+        "street_number": 2,
+        "zipcode": 33780,
+        "city": "Soulac-sur-Mer",
+        "lat": 45.51389059160941,
+        "lon": -1.121711361983233
+    },
+    {
+        "address": "Avenue du Phare de Cordouan",
+        "street_number": 19,
+        "zipcode": 33123,
+        "city": "Le Verdon-sur-Mer",
+        "lat": 45.569077942132665,
+        "lon": -1.0634986896969574
+    },
+    {
+        "address": "Chemin du Fort de Suzac",
+        "street_number": null,
+        "zipcode": 17110,
+        "city": "Saint-George-de-Didonne",
+        "lat": 45.57788947355588,
+        "lon": -0.9919487301591825
+    },
+    {
+        "address": "Avenue des Congrès",
+        "street_number": 1,
+        "zipcode": 17200,
+        "city": "Royan",
+        "lat": 45.62397462297659,
+        "lon": -1.032675311131723
+    },
+    {
+        "address": "Rue Notre Dame",
+        "street_number": 14,
+        "zipcode": 17200,
+        "city": "Royan",
+        "lat": 45.62410719016474,
+        "lon": -1.0309617901459203
+    },
+    {
+        "address": "Avenue des Fleurs de la Paix",
+        "street_number": 5,
+        "zipcode": 17200,
+        "city": "Royan",
+        "lat": 45.630036548418715,
+        "lon": -1.0133328152659717
+    },
+    {
+        "address": "Avenue des Pierrières",
+        "street_number": null,
+        "zipcode": 17420,
+        "city": "Saint-Palais-sur-Mer",
+        "lat": 45.640843892080355,
+        "lon": -1.0980069210895878
+    },
+    {
+        "address": "Allée des Chevrefeuilles",
+        "street_number": 9,
+        "zipcode": 17200,
+        "city": "Royan",
+        "lat": 45.65426396780989,
+        "lon": -1.0202965552790129
+    },
+    {
+        "address": "Lieu-dit de la Coubre",
+        "street_number": null,
+        "zipcode": 17390,
+        "city": "La Tremblade",
+        "lat": 45.69672900089735,
+        "lon": -1.233257459389967
+    },
+    {
+        "address": "Place de la Cure",
+        "street_number": 5,
+        "zipcode": 17113,
+        "city": "Mornac-sur-Seudre",
+        "lat": 45.709209370500766,
+        "lon": -1.0280260461863735
+    },
+    {
+        "address": "Route de la Fouasse",
+        "street_number": null,
+        "zipcode": 17570,
+        "city": "Les Mathes",
+        "lat": 45.72597907566233,
+        "lon": -1.1730200428857975
+    },
+    {
+        "address": "Avenue de la Cèpe",
+        "street_number": 19,
+        "zipcode": 17390,
+        "city": "La Tremblade",
+        "lat": 45.792520118519874,
+        "lon": -1.180988535723123
+    },
+    {
+        "address": "Rue des Martyrs",
+        "street_number": null,
+        "zipcode": 17320,
+        "city": "Marennes-Hiers-Brouages",
+        "lat": 45.794046110104816,
+        "lon": -1.1220728594954228
+    },
+    {
+        "address": "Port Ostréicole",
+        "street_number": null,
+        "zipcode": 17560,
+        "city": "Bourcefranc-le-Chapus",
+        "lat": 45.85509869130901,
+        "lon": -1.168980545677202
+    },
+    {
+        "address": "Rue Jacqueline Auriol",
+        "street_number": 7,
+        "zipcode": 17450,
+        "city": "Fouras",
+        "lat": 45.981508801247394,
+        "lon": -1.0817938683268453
+    },
+    {
+        "address": "Moulin de la Pierre",
+        "street_number": null,
+        "zipcode": 17220,
+        "city": "Saint-Vivien",
+        "lat": 46.08091844927534,
+        "lon": -1.0246288589890427
+    },
+    {
+        "address": "Route du Médoc",
+        "street_number": 469,
+        "zipcode": 33520,
+        "city": "Bruges",
+        "lat": 44.879501626717506,
+        "lon": -0.6252972883747032
+    },
+    {
+        "address": "Route Philibert",
+        "street_number": 32,
+        "zipcode": 33121,
+        "city": "Carcans",
+        "lat": 45.06926602588722,
+        "lon": -1.0418378938880173
+    },
+    {
+        "address": "Route de saint vivien",
+        "street_number": 44,
+        "zipcode": 33590,
+        "city": "Vensac",
+        "lat": 45.41039900027439,
+        "lon": -1.0353373662736858
+    },
+    {
+        "address": "Route de Saint-Palais",
+        "street_number": 12,
+        "zipcode": 17200,
+        "city": "Saint-Sulpice-de-Royan",
+        "lat": 45.67280683477516,
+        "lon": -1.0113195306848346
+    },
+    {
+        "address": "Rue Ovide Beillard",
+        "street_number": 2,
+        "zipcode": 17320,
+        "city": "Marennes-Hiers-Brouage",
+        "lat": 45.82302303618504,
+        "lon": -1.1018181865051426
+    },
+    {
+        "address": "Route de la Rochelle",
+        "street_number": null,
+        "zipcode": 17300,
+        "city": "Vergeroux",
+        "lat": 45.96666158563619,
+        "lon": -0.9825129653163439
+    },
+    {
+        "address": "Rue de la Forge",
+        "street_number": 1,
+        "zipcode": 35750,
+        "city": "Saint-Malon-sur Mer",
+        "lat": 48.0933167969856,
+        "lon": -2.09700167867071
+    },
+    {
+        "address": "Rue de la Cour Neuve",
+        "street_number": 4,
+        "zipcode": 35550,
+        "city": "Lohéac",
+        "lat": 47.8611830621387,
+        "lon": -1.89528853015298
+    },
+    {
+        "address": "L'Orme",
+        "street_number": 24,
+        "zipcode": 44130,
+        "city": "l'Orme",
+        "lat": 47.4607398171482,
+        "lon": -1.86061984249281
+    },
+    {
+        "address": "Allée Olivier V. de Clisson",
+        "street_number": 6,
+        "zipcode": 44130,
+        "city": "Blain",
+        "lat": 47.4682602894456,
+        "lon": -1.75936213109864
+    },
+    {
+        "address": "D69",
+        "street_number": null,
+        "zipcode": 44170,
+        "city": "Abbaretz",
+        "lat": 47.5747313528269,
+        "lon": -1.46183346323768
+    },
+    {
+        "address": "Rue du Suet",
+        "street_number": 9,
+        "zipcode": 35780,
+        "city": "La Richardais",
+        "lat": 48.6102647554106,
+        "lon": -2.02495594898219
+    },
+    {
+        "address": "Rue David Macdonald Stewart",
+        "street_number": null,
+        "zipcode": 35400,
+        "city": "Saint-Malo",
+        "lat": 48.6746599420318,
+        "lon": -1.96358017849965
+    },
+    {
+        "address": "Place Jean de Châtillon",
+        "street_number": 3,
+        "zipcode": 35400,
+        "city": "Saint-Malo",
+        "lat": 48.6494228899862,
+        "lon": -2.02572730201159
+    },
+    {
+        "address": "ZA la Porte de Ker Lann, Bis Rue Charles Coude",
+        "street_number": 30,
+        "zipcode": 35170,
+        "city": "Bruz",
+        "lat": 48.0600775820013,
+        "lon": -1.724190679926
+    },
+    {
+        "address": "Le Perray",
+        "street_number": 2,
+        "zipcode": 35190,
+        "city": "Tinténiac",
+        "lat": 48.3144138422573,
+        "lon": 1.72825712582721
+    },
+    {
+        "address": "Bout de Bois",
+        "street_number": 12,
+        "zipcode": 44810,
+        "city": "Blanquefort",
+        "lat": 47.4666617090996,
+        "lon": -1.58932576969524
+    },
+    {
+        "address": "85 Rue de Rennes",
+        "street_number": 85,
+        "zipcode": 44119,
+        "city": "Treillières",
+        "lat": 47.33563521498256,
+        "lon": -1.56754909262437
+    },
+    {
+        "address": "La Planche",
+        "street_number": null,
+        "zipcode": 35000,
+        "city": "Rennes",
+        "lat": 48.0918209719215,
+        "lon": -1.7405321802564
+    },
+    {
+        "address": "Parc du Port Mulon",
+        "street_number": null,
+        "zipcode": 44390,
+        "city": "Nort-sur-Erdre",
+        "lat": 47.4299043647783,
+        "lon": -1.49796558837659
+    },
+    {
+        "address": "Route de Saint-Joseph",
+        "street_number": 334,
+        "zipcode": 44300,
+        "city": "Nantes",
+        "lat": 47.2622841139964,
+        "lon": -1.52866496748723
+    },
+    {
+        "address": "Le Petit-Bourg",
+        "street_number": null,
+        "zipcode": 35630,
+        "city": "Le Petit-Bourg",
+        "lat": 48.3156737184612,
+        "lon": -1.76444927987106
+    },
+    {
+        "address": "Lieu-dit Le Licornou",
+        "street_number": null,
+        "zipcode": 35720,
+        "city": "Lieu-dit Le Licornou",
+        "lat": 48.437007020965,
+        "lon": -1.87205947904496
+    },
+    {
+        "address": "Le Parc de la Higourdais",
+        "street_number": null,
+        "zipcode": 35120,
+        "city": "Epiniac",
+        "lat": 48.4806116047807,
+        "lon": -1.68779644232234
+    },
+    {
+        "address": "Pointe du Grouin",
+        "street_number": null,
+        "zipcode": 35260,
+        "city": "Cancale",
+        "lat": 48.7070845365989,
+        "lon": -1.84595882839982
+    },
+    {
+        "address": "Le Pas d'Héric",
+        "street_number": null,
+        "zipcode": 44390,
+        "city": "Le pas d'Héric",
+        "lat": 47.449046343184,
+        "lon": -1.57478456008218
+    },
+    {
+        "address": "D2 Clegreuc",
+        "street_number": null,
+        "zipcode": 44170,
+        "city": "Vay",
+        "lat": 47.5617200911744,
+        "lon": -1.73068024258255
+    },
+    {
+        "address": "Route de la mine",
+        "street_number": null,
+        "zipcode": 44170,
+        "city": "Abbaretz",
+        "lat": 47.5599253289616,
+        "lon": -1.54197259092815
+    },
+    {
+        "address": "Le Gavre",
+        "street_number": null,
+        "zipcode": 44130,
+        "city": "Le Gavre",
+        "lat": 47.5678200511842,
+        "lon": -1.77442383886244
+    },
+    {
+        "address": "D1, Sion-les-Mines",
+        "street_number": null,
+        "zipcode": 44590,
+        "city": "Sion-Les-Mines",
+        "lat": 47.7265557195788,
+        "lon": -1.59436321373229
+    },
+    {
+        "address": "Les Près Hauts",
+        "street_number": null,
+        "zipcode": 35480,
+        "city": "Guipry-Messac",
+        "lat": 47.7648407942693,
+        "lon": -1.81696383055537
+    },
+    {
+        "address": "D366, Pleslin-Trigavou",
+        "street_number": null,
+        "zipcode": 22490,
+        "city": "Pleslin-Trivagou",
+        "lat": 48.5357252267394,
+        "lon": -1.97084959539812
+    },
+    {
+        "address": "Le Bois  du Cobac",
+        "street_number": null,
+        "zipcode": 35720,
+        "city": "Mesnil-Roc'h",
+        "lat": 48.437854779528,
+        "lon": -1.83313194403274
+    },
+    {
+        "address": "La Bourbansais",
+        "street_number": null,
+        "zipcode": 35720,
+        "city": "Pleuguneuc",
+        "lat": 48.4028101169708,
+        "lon": -1.8992788440336
+    },
+    {
+        "address": "Château de Caradeuc",
+        "street_number": null,
+        "zipcode": 35190,
+        "city": "Bécherel",
+        "lat": 48.2912870538596,
+        "lon": -1.95584637287168
+    },
+    {
+        "address": "Bd Pasteur",
+        "street_number": 53,
+        "zipcode": 35170,
+        "city": "Bruz",
+        "lat": 48.020133331858,
+        "lon": -1.74079177287845
+    },
+    {
+        "address": "Plesse",
+        "street_number": null,
+        "zipcode": 44630,
+        "city": "Plesse",
+        "lat": 47.5100666225244,
+        "lon": -1.93237844582271
+    },
+    {
+        "address": "Les Naudières",
+        "street_number": 1,
+        "zipcode": 44880,
+        "city": "Sautron",
+        "lat": 47.2685474302978,
+        "lon": -1.69700559534577
+    },
+    {
+        "address": "Forêt du Gâvre",
+        "street_number": null,
+        "zipcode": 44130,
+        "city": "Le Gavre",
+        "lat": 47.5165745029453,
+        "lon": -1.80302445446985
+    },
+    {
+        "address": "Z.A du Bois de Teillay Quartier du Haut Bois",
+        "street_number": null,
+        "zipcode": 35150,
+        "city": "Janzé",
+        "lat": 47.9734328410075,
+        "lon": -1.53172368574673
+    },
+    {
+        "address": "Moulin de la Vallée",
+        "street_number": null,
+        "zipcode": 44290,
+        "city": "Conquéreuil",
+        "lat": 47.6379357087926,
+        "lon": -1.74835272966561
+    },
+    {
+        "address": "RD 81",
+        "street_number": null,
+        "zipcode": 44360,
+        "city": "Vigneux-de-Bretagne",
+        "lat": 47.2909405266578,
+        "lon": -1.70000584008781
+    },
+    {
+        "address": "10 La Grand Haie",
+        "street_number": 10,
+        "zipcode": 44390,
+        "city": "Saffré",
+        "lat": 47.4741721939922,
+        "lon": -1.5613182815625
+    },
+    {
+        "address": "Boubalin",
+        "street_number": null,
+        "zipcode": 44810,
+        "city": "Héric",
+        "lat": 47.4358824319368,
+        "lon": -1.6608270667293
+    },
+    {
+        "address": "La Hattais",
+        "street_number": null,
+        "zipcode": 35390,
+        "city": "Grand-Fougeray",
+        "lat": 47.7671929641194,
+        "lon": -1.76189144424474
+    },
+    {
+        "address": "La Bijouterie",
+        "street_number": null,
+        "zipcode": 35440,
+        "city": "Feins",
+        "lat": 48.3393052445054,
+        "lon": -1.63803950718214
+    },
+    {
+        "address": "Sent. du Halage",
+        "street_number": null,
+        "zipcode": 35190,
+        "city": "Saint-Domineuc",
+        "lat": 48.3790826009083,
+        "lon": -1.88339856858959
+    },
+    {
+        "address": "2 Av. de la Hoguette",
+        "street_number": 2,
+        "zipcode": 35400,
+        "city": "Saint-Malo",
+        "lat": 48.658906277934,
+        "lon": -1.99829902281003
+    },
+    {
+        "address": "Terrain de l'enclos",
+        "street_number": null,
+        "zipcode": 22490,
+        "city": "Plouër-sur-Rance",
+        "lat": 48.5258318643571,
+        "lon": -1.98605668384994
+    },
+    {
+        "address": "Rue de l'égalité",
+        "street_number": 9,
+        "zipcode": 35720,
+        "city": "Mesnil-Roc'h",
+        "lat": 48.446369531396016,
+        "lon": -1.9104513679207893
+    },
+    {
+        "address": "Place de l'église",
+        "street_number": 13,
+        "zipcode": 35190,
+        "city": "Saint-Domineuc",
+        "lat": 48.37280190724012,
+        "lon": -1.8755520996562436
+    },
+    {
+        "address": "Rue Françoise Leroux",
+        "street_number": 2,
+        "zipcode": 35190,
+        "city": "Tinténac",
+        "lat": 48.330170981355245,
+        "lon": -1.841928376332642
+    },
+    {
+        "address": "Rue de Montsifrot",
+        "street_number": 4,
+        "zipcode": 35520,
+        "city": "La Mézière",
+        "lat": 48.22012892876349,
+        "lon": -1.7547555257178882
+    },
+    {
+        "address": "Imp. des Châtaigners",
+        "street_number": 3,
+        "zipcode": 35760,
+        "city": "Saint-Grégoire",
+        "lat": 48.178809170635134,
+        "lon": -1.722406081045125
+    },
+    {
+        "address": "Rue Newton",
+        "street_number": 8,
+        "zipcode": 35760,
+        "city": "Montgermont",
+        "lat": 48.15561064077974,
+        "lon": -1.7072866346218152
+    }
+]

@@ -16,6 +16,7 @@ import cars from "./json/cars.json" assert { type: "json" };
 import locations from "./json/location.json" assert { type: "json" };
 import interestingPoints from "./json/interestingPoints.json" assert { type : "json" }; 
 import chargingStations from "./json/chargingStations.json" assert { type: "json" }; 
+import team from "./json/team.json" assert { type: "json"};
 
 import pg from 'pg';
 // import pg from 'pg';
@@ -84,14 +85,22 @@ client.connect(function (err) {
     //     )
     // }
 
-    for (const chargingStation of chargingStations) {
-        console.log("🚀 ~ J'insère dans charging stations", chargingStation)
+    // for (const chargingStation of chargingStations) {
+    //     console.log("🚀 ~ J'insère dans charging stations", chargingStation)
             
-            await client.query(
-                `INSERT INTO "charging_station"("network_id", "location_id")
-                VALUES($1, $2)`, [chargingStation.network_id, chargingStation.location_id]
-            )
-        }
+    //         await client.query(
+    //             `INSERT INTO "charging_station"("network_id", "location_id")
+    //             VALUES($1, $2)`, [chargingStation.network_id, chargingStation.location_id]
+    //         )
+    //     }
+
+    // for ( const member of team ){
+    //     console.log("🚀 ~J insere dans member : ", member)
+    //     await client.query(
+    //         `INSERT INTO "team"("name", "description", "image")
+    //         VALUES($1, $2, $3)`, [ member.name, member.description, member.image ]
+    //         )
+    // } 
     
     await client.end();
 })();

@@ -1,0 +1,50 @@
+[
+    {
+        "network_id": 1,
+        "location_id": 27
+    },
+    {
+        "network_id": 2,
+        "location_id": 28
+    },
+    {
+        "network_id": 3,
+        "location_id": 29
+    },
+    {
+        "network_id": 1,
+        "location_id": 30
+    },
+    {
+        "network_id": 3,
+        "location_id": 31
+    },
+    {
+        "network_id": 2,
+        "location_id": 32
+    },
+    {
+        "network_id": 3,
+        "location_id": 76
+    },
+    {
+        "network_id": 2,
+        "location_id": 77
+    },
+    {
+        "network_id": 1,
+        "location_id": 78
+    },
+    {
+        "network_id": 3,
+        "location_id": 79
+    },
+    {
+        "network_id": 2,
+        "location_id": 80
+    },
+    {
+        "network_id": 1,
+        "location_id": 81
+    }
+]
