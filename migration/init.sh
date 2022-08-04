@@ -15,7 +15,7 @@ export PGUSER=postgres
 #sqitch add 01.init -n "create tables"
 #sqitch add 02.add_table_brand -n "modification table car and add table brand"
 #sqitch add 03.new_constraint_delete_on_cascade -n "delete constraints on table user_like_category"
-
+sqitch add 04.add_image_icon -n "add column image, icon"
 #* 5 - Initialiser Sqitch dans le terminal
 #sh init.sh
 #Saisir le mot de passe pour le nouveau rôle : mot de passe pour le nouveau rôle

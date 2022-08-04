@@ -9,6 +9,37 @@
 
 # @refreshedAccessToken= Authorization:  Bearer 
 
+##  ------------------------------------------------------------- MAPS
+## --------------------------------------------------------------------
+
+POST {{entrypoint}}/map
+Content-Type: application/json
+
+{
+        "categories": [1, 2, 3],
+        "car_id": 1,
+        "location":{
+            "label": "25 rue de Fort Boyard, 17000 La Rochelle",
+            "address": "Rue de Fort Boyard",
+            "street_number": 15,
+            "zipcode": 17000,
+            "city": "La Rochelle",
+            "Lat": 46.159711550901854,
+            "Long": -1.1341349301277615
+    },
+    "arrival": {
+            "label": "108 rue de bellevue, 33000 Bordeaux",
+            "address": "Rue de bellevue",
+            "street_number": 108,
+            "zipcode": 33000,
+            "city": "Bordeaux",
+            "Lat": 44.83408100000000,
+            "Long": -0.58512200000000
+    }
+}
+
+
+###
 ##--------------------------------------------------------------- USERS
 ## ---------------------------------------------------------------------
 
@@ -31,7 +62,16 @@ Content-Type: application/json
         "city": "East Blue",
         "Lat": 41.94412898265,
         "Long": -2.121549756121
-    }
+    },
+    "arrival":{
+        "address": "Grand Line Sea",
+        "street_number": 2,
+        "zipcode": 83000,
+        "city": "Eats Blue",
+        "Lat": 46.94412898265,
+        "Long": -2.121549756121
+    },
+    "categories": [0,1]
 }
 
 ###

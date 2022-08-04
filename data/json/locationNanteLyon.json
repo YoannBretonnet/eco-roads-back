@@ -1,0 +1,181 @@
+[
+    
+    {
+    "address": "Rue des Frères Louis et Emilie Bertrand",
+    "street_number": 14,
+    "zipcode": 69200,
+    "city": "Vénissieux",
+    "lat": 45.717842813513464,
+    "lon": -4.868770669395593
+    },
+    {
+    "address": "Rue Roger Salengro",
+    "street_number": 51,
+    "zipcode": 69200,
+    "city": "Vénissieux",
+    "lat": 45.71943281908229,
+    "lon": -4.871688869316334
+    },
+    {
+    "address": "Avenue du Progrés",
+    "street_number": 37,
+    "zipcode": 69800,
+    "city": "Saint-Priest",
+    "lat": 45.7156741292828,
+    "lon": -4.957894678204726    
+    },
+    {
+    "address": "Rue de l'Arche",
+    "street_number": 3,
+    "zipcode": 38080,
+    "city": "L'isle-d'Albeau",
+    "lat": 45.611370565130585,
+    "lon": -5.212335353972923
+    },
+    {
+    "address": "A43",
+    "street_number": "",
+    "zipcode": 38480,
+    "city": "Romagnieu",
+    "lat": 45.57788486762442,
+    "lon": -5.630766491604705
+    },
+    {
+    "address": "Rue Alexander Fleming",
+    "street_number": 42,
+    "zipcode": 73000,
+    "city": "Chambéry",
+    "lat": 45.59684564424041,
+    "lon": -5.895677647788647
+    
+    },
+    {
+    "address": "Chemin du Planchamp",
+    "street_number": 4,
+    "zipcode": 73100,
+    "city": "Mouxy",
+    "lat": 45.67361814938019,
+    "lon": -5.930562391239246        
+    },
+    {
+    "address": "Rue des Près Chardon",
+    "street_number": 174,
+    "zipcode": 74540,
+    "city": "Alby-sur-Chéran",
+    "lat": 45.81440890245631,
+    "lon": -6.006191269318687        
+    },
+    {
+    "address": "Aire de Fontane",
+    "street_number": 851,
+    "zipcode": 74600,
+    "city": "Seynod",
+    "lat": 45.87549082587873,
+    "lon": -6.069266106039426       
+    },
+    {
+    "address": "Rue du Rond-Point",
+    "street_number": 14,
+    "zipcode": 74960,
+    "city": "Cran-Gevrier",
+    "lat": 45.896541769186186,
+    "lon": -6.111248482962869        
+    },
+    {
+    "address": "Rue de la Mettrie",
+    "street_number": 6,
+    "zipcode": 35400,
+    "city": "Saint-Malo",
+    "lat": 48.64758977509419,
+    "lon": -2.023458302246845            
+    },
+    {
+    "address": "All. de la Grassinais",
+    "street_number": 20,
+    "zipcode": 35400,
+    "city": "Saint-Malo",
+    "lat": 48.62230600871389,
+    "lon": -1.9880427338904754            
+    },
+    {
+    "address": "Rue des Marais",
+    "street_number": 4,
+    "zipcode": 35430,
+    "city": "Châteauneuf",
+    "lat": 48.559884246652736,
+    "lon": -1.9289467713462896           
+    },
+    {
+    "address": "Rue de l'égalité",
+    "street_number": 9,
+    "zipcode": 35720,
+    "city": "Mesnil-Roc'h",
+    "lat": 48.446369531396016,
+    "lon": -1.9104513679207893            
+    },
+    {
+    "address": "Place de l'église",
+    "street_number": 13,
+    "zipcode": 35190,
+    "city": "Saint-Domineuc",
+    "lat": 48.37280190724012,
+    "lon": -1.8755520996562436
+    
+    },
+    {
+    "address": "Rue Françoise Leroux",
+    "street_number": 2,
+    "zipcode": 35190,
+    "city": "Tinténac",
+    "lat": 48.330170981355245,
+    "lon": -1.841928376332642
+    },
+    {
+    "address": "Rue de Montsifrot",
+    "street_number": 4,
+    "zipcode": 35520,
+    "city": "La Mézière",
+    "lat": 48.22012892876349,
+    "lon": -1.7547555257178882
+    },
+    {
+    "address": "Imp. des Châtaigners",
+    "street_number": 3,
+    "zipcode": 35760,
+    "city": "Saint-Grégoire",
+    "lat": 48.178809170635134,
+    "lon": -1.722406081045125
+    },
+    {
+    "address": "Rue Newton",
+    "street_number": 8,
+    "zipcode": 35760,
+    "city": "Montgermont",
+    "lat": 48.15561064077974,
+    "lon": -1.7072866346218152
+    },
+    {
+    "address": "Rue de l'Océan",            
+    "city": "Héric",
+    "street_number": 1,
+    "zipcode": 44810,
+    "lat": 47.414203191768884,
+    "lon": -1.6538744106479009
+    },
+    {
+    "address": "Rue Marie Curie",
+    "street_number": 8,
+    "zipcode": 44119,
+    "city": "Grandchamps-des-Fontaines",
+    "lat": 47.37474111476573,
+    "lon": -1.6456305016635722            
+    },
+    {
+    "address": "Rue Pasteur",
+    "street_number": 31,
+    "zipcode": 44119,
+    "city": "Treillères",
+    "lat": 47.2775376952438,
+    "lon": -1.588757063496626            
+    }
+]

@@ -16,8 +16,8 @@ async function findAll() {
 
 async function findOne(carId) {
     const result = await pool.query(
-        `SELECT car.id, car.model, car.image, brand_id, network.name FROM ${TABLE_NAME} JOIN network ON network.id = car.network_id WHERE "id" = $1;`,
-        [carId],
+        `SELECT c.id, c.model, c.image, c.brand_id, brand.name AS brandName, n.name FROM car AS c JOIN network AS n ON n.id = c.network_id JOIN brand ON brand.id = c.brand_id WHERE c.id = $1;`,
+        [carId]
     );
 
     return result.rows[0];

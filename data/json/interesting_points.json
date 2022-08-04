@@ -1,9 +1,185 @@
 [
     {
-        "name": "",
-        "description": "",
-        "eco_friendly": "",
-        "category_id": "",
-        "location_id": ""
+        "name": "Parc Majolan",
+        "description": "Le parc Majolan est un parc public réalisé dans un style romantique baroque par le paysagiste Louis LeBreton",
+        "eco_friendly": false,
+        "category_id": 6,
+        "location_id": 1
+    },
+    {
+        "name": "Ferme de la Noune",
+        "description": "Ferme typique du Médoc au milieu de la forêt de pins, Spécialisés dans l'élevage d'escargots et de la production d'asperges et de fraises, Vous pourrez y acheter tous les produits de la ferme.",
+        "eco_friendly": false,
+        "category_id": 3,
+        "location_id": 2
+    },
+    {
+        "name": "Eglise de Saint-Seurin",
+        "description": "le dôme du clocher de l'église de Saint-Seurin de Lamarque fait la fierté des habitant du village. Muni de quatre tables d'orientation, le dôme constitue un point de vue panoramique à 360° unique par son originalité",
+        "eco_friendly": false,
+        "category_id": 2,
+        "location_id": 3
+    },
+    {
+        "name": "Fort Médoc",
+        "description": "Complexe militaire situé sur la commune de Cussac-Fort-Médoc. Classé monument historique, ce fort a été construit par Vauban en 1689,",
+        "eco_friendly": false,
+        "category_id": 2,
+        "location_id": 4
+    },
+    {
+        "name": "Nauera bières et vins",
+        "description": "Brasserie artisanale. Venez découvrir des bières complexes, racées et désaltérantes. Chacune de leur recette est unique et originale.",
+        "eco_friendly": false,
+        "category_id": 3,
+        "location_id": 5
+    },
+    {
+        "name": "Sea Fly",
+        "description": "Sea Flu propose de de la location de bateau, ainsi que la location de matérielde wake-board, ski nautique, Omnia et Kneeboard",
+        "eco_friendly": false,
+        "category_id": 5,
+        "location_id": 6
+    },
+    {
+        "name": "Aqua Speed",
+        "description": "Base d'activité nautique à Hourtin, basé sur un tout nouveau concept : Le karting aquatique",
+        "eco_friendly": false,
+        "category_id": 5,
+        "location_id": 7
+    },
+    {
+        "name": "Tour de l'honneur",
+        "description": "La tour de l'honneur est un des seuls vestiges du château des sires de Lesparre, Classé monument historique depuis 1913, c'est la pièces maitresse d'un château datant du XIVe siècle",
+        "eco_friendly": false,
+        "category_id": 2,
+        "location_id": 8
+    },
+    {
+        "name": "Roseraie du Château Lourdenne",
+        "description": "Au cœur du Médoc, le Château Loudenne bénéficie d'une situation unique sur l'Estuaire de la Gironde. Il abrite une étonnante collection de roses anglaises rares et anciennes.",
+        "eco_friendly": false,
+        "category_id": 4,
+        "location_id": 9
+    },
+    {
+        "name": "Ferme Eau Médoc",
+        "description": "Partez à la pêche aux crevettes dans les bassins exploités en milieu naturel dans le Médoc. Découvrez un paysage hors du temps  puis savourez les différents produits de la ferme (bigorneaux, huitres, gambas…) ",
+        "eco_friendly": false,
+        "category_id": 3,
+        "location_id": 10
+    },
+    {
+        "name": "Soulac-sur-Mer",
+        "description": "Une des plus séduisantes stations balnéaires de Gironde, née à la fin du XIXe siècle. Vous y trouverez également la basilique Notre-Dame-de-la-fin-des-Terres.",
+        "eco_friendly": false,
+        "category_id": 2,
+        "location_id": 11
+    },
+    {
+        "name": "Ferry Direction Royan",
+        "description": "Rendez-vous au bac du verdon sur mer pour aller jusqu'à Royen en ferry.",
+        "eco_friendly": false,
+        "category_id": 1,
+        "location_id": 12
+    },
+    {
+        "name": "Pointe de Suzac",
+        "description": "La pointe de Suzac est un cap rocheux, s'avançant dans l'estuaire de la Gironde, couverte d'une riche végétation et constitue l'un des principaux espaces préservésde la région royannaise.",
+        "eco_friendly": false,
+        "category_id": 1,
+        "location_id": 13
+    },
+    {
+        "name": "Eglise Notre-Dame de Royan",
+        "description": "Eglise en ciment armé, bénie en 1958, dotée d'une nef de 35m de haut et d'un orgue de 3600 tuyaux.",
+        "eco_friendly": false,
+        "category_id": 2,
+        "location_id": 14
+    },
+    {
+        "name": "Restaurant les Filets Bleus",
+        "description": "Les Filets Bleus vous propose une cuisine traditionnelle qui valorise les produits de la mer et du terroir.",
+        "eco_friendly": false,
+        "category_id": 3,
+        "location_id": 15
+    },
+    {
+        "name": "Planet Exotica",
+        "description": "Parc animalier abritant un grand nombre de reptiles, des reproductions de dinosaures grandeur nature et une mini ferme",
+        "eco_friendly": false,
+        "category_id": 6,
+        "location_id": 16
+    },
+    {
+        "name": "Le Pont du Diable",
+        "description": "Le Pont du Diable est une formation rocheuse calcaire naturelle située sur une peninsule de la commune de Saint-Palais-sur-Mer.",
+        "eco_friendly": false,
+        "category_id": 1,
+        "location_id": 17
+    },
+    {
+        "name": "Coolangalook",
+        "description": "Parcs aventure, parcours d'accrobranche et tyrolienne, au cœur d'une forêt luxuriante, avec des hauteurs vairées pour adultes et enfants.",
+        "eco_friendly": false,
+        "category_id": 5,
+        "location_id": 18
+    },
+    {
+        "name": "Phare de la Coubre",
+        "description": "Phare rouge et blanc, étroit, datant du début du XXe Siècle, offrant à son sommet une vue sur la mer et la forêt",
+        "eco_friendly": false,
+        "category_id": 1,
+        "location_id": 19
+    },
+    {
+        "name": "Mornac-sur-Seudre",
+        "description": "Mornac-Sur Seudre est l'un des deux 'Plus beaux village de France' du pays Royannais. Il appartient également au réseau des 'Villes et métiers d'art' et depuis 2011 au réseau des 'Villages de pierres et d'eau', label qui fait la promotion des sites exceptionnels, présentant la particularités d'être situés au bord d'une étendue d'eau.",
+        "eco_friendly": false,
+        "category_id": 2,
+        "location_id": 20
+    },
+    {
+        "name": "Luna Park - Les Mathes",
+        "description": "Parc d'attractios animé avec des manèges à sensations, des feux d'artifices, un mini golf et un fast-food.",
+        "eco_friendly": false,
+        "category_id": 6,
+        "location_id": 21
+    },
+    {
+        "name": "Plage de la Cèpe",
+        "description": "La plage de la Cèpe est l'une des principales plages de Ronce-les-Bains. Elle est protègée des forts courants par des bancs de sable et la pointe du Galon d'Or.",
+        "eco_friendly": false,
+        "category_id": 4,
+        "location_id": 22
+    },
+    {
+        "name": "Cité de L'huître",
+        "description": "La Cité de l'Huitre est un espace muséographique et un centre d'ostréiculture. C'est l'un des pôles touristiques et culturels les plus visités de Charente-Maritime.",
+        "eco_friendly": false,
+        "category_id": 3,
+        "location_id": 23
+    },
+    {
+        "name": "Fort Louvois",
+        "description": "Fort insulaire du XVIIe avec expositions historiques, chasses aux trésors et salle de déguisements pour les enfants.",
+        "eco_friendly": false,
+        "category_id": 2,
+        "location_id": 24
+    },
+    {
+        "name": "Kayak Découverte 17",
+        "description": "Balades et sorties en kayak de mer, autour de Fouras, du Fort Boyard, de l'île d'Aix et de l'île Madame.",
+        "eco_friendly": false,
+        "category_id": 5,
+        "location_id": 25
+    },
+    {
+        "name": "Pop Corn Labyrinthe",
+        "description": "Venez en famille ou entre amis vous amuser au pop corn labyrinthe à St-Vivien. Mais encore préparez-vous à vivre une 1h30 d’aventure en pleine nature avec des étapes ludiques.",
+        "eco_friendly": false,
+        "category_id": 6,
+        "location_id": 26
     }
+
 ]
