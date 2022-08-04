@@ -51,13 +51,20 @@ client.connect(function (err) {
     //         [car.model, car.image, car.brand_id, car.network_id]);
     // }
 
-    // for (const location of locations) {
-    //     // console.log(" J insere dans location : ", location.address, location.street_number, location.zipcode, location.city, location.lat, location.lon);
-    //     await client.query(
-    //         `INSERT INTO "location"("label","address", "street_number", "zipcode", "city", "lat", "lon") VALUES 
-    //         ($1, $2, $3, $4, $5, $6, $7);`,
-    //         [`${location.street_number} ${location.address}, ${location.zipcode} ${location.city}` , location.address, location.street_number, location.zipcode, location.city, location.lat, location.lon]);
-    // }
+    for (const location of locations) {
+        if(location.street_number !== null){
+            const label = `${location.street_number} ${location.address}, ${location.zipcode} ${location.city}` 
+            console.log("🚀 ~ file: importData.js ~ line 57 ~ label", label)
+        } else {
+            const label = `${location.address}, ${location.zipcode} ${location.city}`
+            console.log("🚀 ~ file: importData.js ~ line 60 ~ label", label)
+        }
+        // console.log(" J insere dans location : ", location.address, location.street_number, location.zipcode, location.city, location.lat, location.lon);
+        // await client.query(
+        //     `INSERT INTO "location"("label","address", "street_number", "zipcode", "city", "lat", "lon") VALUES 
+        //     ($1, $2, $3, $4, $5, $6, $7);`,
+        //     [`${label}` , location.address, location.street_number, location.zipcode, location.city, location.lat, location.lon]);
+    }
 
     // for (const poi of interesting_points) {
     // console.log("🚀 ~ file: importData.js ~ line 62 ~ poi", poi)
@@ -68,14 +75,14 @@ client.connect(function (err) {
     //     )
     // }
 
-    for (const chargingStation of charging_stations) {
-        console.log("🚀 ~ J'insère dans charging stations", chargingStation)
+    // for (const chargingStation of charging_stations) {
+    //     console.log("🚀 ~ J'insère dans charging stations", chargingStation)
             
-            await client.query(
-                `INSERT INTO "charging_station"("network_id", "location_id")
-                VALUES($1, $2)`, [chargingStation.network_id, chargingStation.location_id]
-            )
-        }
+    //         await client.query(
+    //             `INSERT INTO "charging_station"("network_id", "location_id")
+    //             VALUES($1, $2)`, [chargingStation.network_id, chargingStation.location_id]
+    //         )
+    //     }
     
     await client.end();
 })();
