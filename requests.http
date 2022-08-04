@@ -17,7 +17,7 @@ Content-Type: application/json
 
 {
         "categories": [1, 2, 3],
-        "car_id": 1,
+        "car_id": 8,
         "location":{
             "label": "25 rue de Fort Boyard, 17000 La Rochelle",
             "address": "Rue de Fort Boyard",

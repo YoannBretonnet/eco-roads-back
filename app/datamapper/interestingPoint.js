@@ -22,7 +22,7 @@ async function findOneInterestingPoint(interestingPointId) {
 
 async function getAllInterestingPointByCategory(categories) {
     const result = await pool.query(
-    `SELECT ip.image, ip.name, ip.description, location.label, category.icon, json_build_object('lat', location.lat, 'lon', location.lon) AS coordinates
+    `SELECT ip.name, ip.description, location.label, ip.image,category.icon, json_build_object('lat', location.lat, 'lon', location.lon) AS coordinates
     FROM Interesting_point AS ip
     JOIN category ON category.id = ip.category_id
     JOIN location ON ip.location_id = location.id

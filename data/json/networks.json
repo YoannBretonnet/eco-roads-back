@@ -1,11 +1,14 @@
 [
     {
-        "name": "Superchargeur"
+        "name": "Superchargeur",
+        "image": "borne.jpg"
     },
     {
-        "name": "Ionity"
+        "name": "Ionity",
+        "image": "borne.jpg"
     },
     {
-        "name": "Totalenergies"
+        "name": "Totalenergies",
+        "image": "borne.jpg"
     }
 ]
