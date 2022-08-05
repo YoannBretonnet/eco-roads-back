@@ -16,7 +16,7 @@ POST {{entrypoint}}/map
 Content-Type: application/json
 
 {
-        "categories": [1, 2, 3],
+        "categories": [4, 5, 6],
         "car_id": 1,
         "location":{
             "label": "25 rue de Fort Boyard, 17000 La Rochelle",
@@ -24,8 +24,8 @@ Content-Type: application/json
             "street_number": 15,
             "zipcode": 17000,
             "city": "La Rochelle",
-            "Lat": 46.159711550901854,
-            "Long": -1.1341349301277615
+            "Lat": 46.33342424379,
+            "Long": -1.3047137072481991
     },
     "arrival": {
             "label": "108 rue de bellevue, 33000 Bordeaux",
@@ -33,8 +33,8 @@ Content-Type: application/json
             "street_number": 108,
             "zipcode": 33000,
             "city": "Bordeaux",
-            "Lat": 44.83408100000000,
-            "Long": -0.58512200000000
+            "Lat": 44.9232823983815,
+            "Long": -0.23967107651036118
     }
 }
 

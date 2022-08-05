@@ -1,7 +1,6 @@
 -- Deploy ecoroads:03.new_constraint_delete_on_cascade to pg
 
-ALTER TABLE "user_like_category"
-drop CONSTRAINT "user_like_category_user_id_fkey";
+
 ALTER TABLE "user_like_category"
 drop CONSTRAINT "user_like_category_user_id_fkey";
 ALTER TABLE "user_like_category"
