@@ -1,11 +1,14 @@
 [
     {
-        "name": "Superchargeur"
+        "name": "Superchargeur",
+        "image": "https://eco-roads.herokuapp.com/images/borne.jpg"
     },
     {
-        "name": "Ionity"
+        "name": "Ionity",
+        "image": "https://eco-roads.herokuapp.com/images/borne.jpg"
     },
     {
-        "name": "Totalenergies"
+        "name": "Totalenergies",
+        "image": "https://eco-roads.herokuapp.com/images/borne.jpg"
     }
 ]

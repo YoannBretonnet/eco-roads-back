@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Océane Vignot",
+        "description": "Scrum Master, Git Master",
+        "image": "https://eco-roads.herokuapp.com/images/oceane.png"
+    },
+    {
+        "name": "Aymen El Bakkaly",
+        "description": "Lead Dev Front",
+        "image": "https://eco-roads.herokuapp.com/images/aymen.png"
+    },
+    {
+        "name": "Alexandre Humbert",
+        "description": "Lead Dev Back",
+        "image": "https://eco-roads.herokuapp.com/images/alex.png"
+    },
+    {
+        "name": "Yoann Bretonnet",
+        "description": "Dev Front",
+        "image": "https://eco-roads.herokuapp.com/images/yoann.png"
+    },
+    {
+        "name": "Gaëtan Santucci",
+        "description": "Product owner",
+        "image": "https://eco-roads.herokuapp.com/images/gaetan.png"
+    }
+]

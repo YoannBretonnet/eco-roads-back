@@ -43,8 +43,8 @@ async function findOneUserProfile(userData, columnName) {
         'street_number', public.location.street_number, 
         'zipcode', public.location.zipcode, 
         'city', public.location.city,
-        'lat', public.location.lat,
-        'lon', public.location.lon) AS location 
+        'Lat', public.location.lat,
+        'Long', public.location.lon) AS location 
         FROM public."location"
         JOIN public."user" ON public."user".location_id = public.location.id 
         WHERE public."user".${columnName} = $1),

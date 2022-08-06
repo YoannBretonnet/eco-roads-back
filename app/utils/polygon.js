@@ -49,7 +49,6 @@ const D = {
 const polygon = {
     waypoints: [ A, B, C, D ]
 } 
-console.log("🚀 ~ file: polygon.js ~ line 52 ~ polygonArea ~ polygon", polygon)
 
 return polygon
 }

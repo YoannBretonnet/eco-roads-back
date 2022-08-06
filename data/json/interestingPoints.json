@@ -1,0 +1,554 @@
+[
+    {
+        "name": "Parc Majolan",
+        "description": "Le parc Majolan est un parc public réalisé dans un style romantique baroque par le paysagiste Louis LeBreton",
+        "eco_friendly": false,
+        "image": "parc.jpg",
+        "category_id": 6,
+        "location_id": 1
+    },
+    {
+        "name": "Ferme de la Noune",
+        "description": "Ferme typique du Médoc au milieu de la forêt de pins, Spécialisés dans l'élevage d'escargots et de la production d'asperges et de fraises, Vous pourrez y acheter tous les produits de la ferme.",
+        "eco_friendly": false,
+        "image": "restaurant.jpg",
+        "category_id": 3,
+        "location_id": 2
+    },
+    {
+        "name": "Eglise de Saint-Seurin",
+        "description": "le dôme du clocher de l'église de Saint-Seurin de Lamarque fait la fierté des habitant du village. Muni de quatre tables d'orientation, le dôme constitue un point de vue panoramique à 360° unique par son originalité",
+        "eco_friendly": false,
+        "image": "musee.jpg",
+        "category_id": 2,
+        "location_id": 3
+    },
+    {
+        "name": "Fort Médoc",
+        "description": "Complexe militaire situé sur la commune de Cussac-Fort-Médoc. Classé monument historique, ce fort a été construit par Vauban en 1689,",
+        "eco_friendly": false,
+        "image": "musee.jpg",
+        "category_id": 2,
+        "location_id": 4
+    },
+    {
+        "name": "Nauera bières et vins",
+        "description": "Brasserie artisanale. Venez découvrir des bières complexes, racées et désaltérantes. Chacune de leur recette est unique et originale.",
+        "eco_friendly": false,
+        "image": "restaurant.jpg",
+        "category_id": 3,
+        "location_id": 5
+    },
+    {
+        "name": "Sea Fly",
+        "description": "Sea Flu propose de de la location de bateau, ainsi que la location de matérielde wake-board, ski nautique, Omnia et Kneeboard",
+        "eco_friendly": false,
+        "image": "sport.jpg",
+        "category_id": 5,
+        "location_id": 6
+    },
+    {
+        "name": "Aqua Speed",
+        "description": "Base d'activité nautique à Hourtin, basé sur un tout nouveau concept : Le karting aquatique",
+        "eco_friendly": false,
+        "image": "attraction.jpg",
+        "category_id": 5,
+        "location_id": 7
+    },
+    {
+        "name": "Tour de l'honneur",
+        "description": "La tour de l'honneur est un des seuls vestiges du château des sires de Lesparre, Classé monument historique depuis 1913, c'est la pièces maitresse d'un château datant du XIVe siècle",
+        "eco_friendly": false,
+        "image": "musee.jpg",
+        "category_id": 2,
+        "location_id": 8
+    },
+    {
+        "name": "Roseraie du Château Lourdenne",
+        "description": "Au cœur du Médoc, le Château Loudenne bénéficie d'une situation unique sur l'Estuaire de la Gironde. Il abrite une étonnante collection de roses anglaises rares et anciennes.",
+        "eco_friendly": false,
+        "image": "parc.jpg",
+        "category_id": 4,
+        "location_id": 9
+    },
+    {
+        "name": "Ferme Eau Médoc",
+        "description": "Partez à la pêche aux crevettes dans les bassins exploités en milieu parcl dans le Médoc. Découvrez un paysage hors du temps  puis savourez les différents produits de la ferme (bigorneaux, huitres, gambas…) ",
+        "eco_friendly": false,
+        "image": "restaurant.jpg",
+        "category_id": 3,
+        "location_id": 10
+    },
+    {
+        "name": "Soulac-sur-Mer",
+        "description": "Une des plus séduisantes stations balnéaires de Gironde, née à la fin du XIXe siècle. Vous y trouverez également la basilique Notre-Dame-de-la-fin-des-Terres.",
+        "eco_friendly": false,
+        "image": "musee.jpg",
+        "category_id": 2,
+        "location_id": 11
+    },
+    {
+        "name": "Ferry Direction Royan",
+        "description": "Rendez-vous au bac du verdon sur mer pour aller jusqu'à Royen en ferry.",
+        "eco_friendly": false,
+        "image": "panorama.jpg",
+        "category_id": 1,
+        "location_id": 12
+    },
+    {
+        "name": "Pointe de Suzac",
+        "description": "La pointe de Suzac est un cap rocheux, s'avançant dans l'estuaire de la Gironde, couverte d'une riche végétation et constitue l'un des principaux espaces préservésde la région royannaise.",
+        "eco_friendly": false,
+        "image": "panorama.jpg",
+        "category_id": 1,
+        "location_id": 13
+    },
+    {
+        "name": "Eglise Notre-Dame de Royan",
+        "description": "Eglise en ciment armé, bénie en 1958, dotée d'une nef de 35m de haut et d'un orgue de 3600 tuyaux.",
+        "eco_friendly": false,
+        "image": "musee.jpg",
+        "category_id": 2,
+        "location_id": 14
+    },
+    {
+        "name": "Restaurant les Filets Bleus",
+        "description": "Les Filets Bleus vous propose une cuisine traditionnelle qui valorise les produits de la mer et du terroir.",
+        "eco_friendly": false,
+        "image": "restaurant.jpg",
+        "category_id": 3,
+        "location_id": 15
+    },
+    {
+        "name": "Planet Exotica",
+        "description": "Parc animalier abritant un grand nombre de reptiles, des reproductions de dinosaures grandeur parc et une mini ferme",
+        "eco_friendly": false,
+        "image":"zoo.jpg",
+        "category_id": 6,
+        "location_id": 16
+    },
+    {
+        "name": "Le Pont du Diable",
+        "description": "Le Pont du Diable est une formation rocheuse calcaire parclle située sur une peninsule de la commune de Saint-Palais-sur-Mer.",
+        "eco_friendly": false,
+        "image":"panorama.jpg",
+        "category_id": 1,
+        "location_id": 17
+    },
+    {
+        "name": "Coolangalook",
+        "description": "Parcs aventure, parcours d'accrobranche et tyrolienne, au cœur d'une forêt luxuriante, avec des hauteurs vairées pour adultes et enfants.",
+        "eco_friendly": false,
+        "image":"sport.jpg",
+        "category_id": 5,
+        "location_id": 18
+    },
+    {
+        "name": "Phare de la Coubre",
+        "description": "Phare rouge et blanc, étroit, datant du début du XXe Siècle, offrant à son sommet une vue sur la mer et la forêt",
+        "eco_friendly": false,
+        "image":"panorama.jpg",
+        "category_id": 1,
+        "location_id": 19
+    },
+    {
+        "name": "Mornac-sur-Seudre",
+        "description": "Mornac-Sur Seudre est l'un des deux 'Plus beaux village de France' du pays Royannais. Il appartient également au réseau des 'Villes et métiers d'art' et depuis 2011 au réseau des 'Villages de pierres et d'eau', label qui fait la promotion des sites exceptionnels, présentant la particularités d'être situés au bord d'une étendue d'eau.",
+        "eco_friendly": false,
+        "image":"musee.jpg",
+        "category_id": 2,
+        "location_id": 20
+    },
+    {
+        "name": "Luna Park - Les Mathes",
+        "description": "Parc d'attractios animé avec des manèges à sensations, des feux d'artifices, un mini golf et un fast-food.",
+        "eco_friendly": false,
+        "image":"parc.jpg",
+        "category_id": 6,
+        "location_id": 21
+    },
+    {
+        "name": "Plage de la Cèpe",
+        "description": "La plage de la Cèpe est l'une des principales plages de Ronce-les-Bains. Elle est protègée des forts courants par des bancs de sable et la pointe du Galon d'Or.",
+        "eco_friendly": false,
+        "image":"parc.jpg",
+        "category_id": 4,
+        "location_id": 22
+    },
+    {
+        "name": "Cité de L'huître",
+        "description": "La Cité de l'Huitre est un espace muséographique et un centre d'ostréiculture. C'est l'un des pôles touristiques et culturels les plus visités de Charente-Maritime.",
+        "eco_friendly": false,
+        "image":"restaurant.jpg",
+        "category_id": 3,
+        "location_id": 23
+    },
+    {
+        "name": "Fort Louvois",
+        "description": "Fort insulaire du XVIIe avec expositions historiques, chasses aux trésors et salle de déguisements pour les enfants.",
+        "eco_friendly": false,
+        "image":"musee.jpg",
+        "category_id": 2,
+        "location_id": 24
+    },
+    {
+        "name": "Kayak Découverte 17",
+        "description": "Balades et sorties en kayak de mer, autour de Fouras, du Fort Boyard, de l'île d'Aix et de l'île Madame.",
+        "eco_friendly": false,
+        "image":"sport.jpg",
+        "category_id": 5,
+        "location_id": 25
+    },
+    {
+        "name": "Pop Corn Labyrinthe",
+        "description": "Venez en famille ou entre amis vous amuser au pop corn labyrinthe à St-Vivien. Mais encore préparez-vous à vivre une 1h30 d’aventure en pleine parc avec des étapes ludiques.",
+        "eco_friendly": false,
+        "image": "attraction.jpg",
+        "category_id": 6,
+        "location_id": 26
+    },
+    {
+        "name": "Musée de la forge",
+        "description": "Philippe Klein est un forgeron passionné, et excellent pédagogue",
+        "eco_friendly": false,
+        "image": "musee.jpg",
+        "category_id": 2,
+        "location_id": 33 
+    },
+    {
+        "name": "Manoir de l'Automobile",
+        "description": "Très bel endroit avec une diversité de véhicules impressionnante !",
+        "eco_friendly": false,
+        "image": "musee.jpg",
+        "category_id": 2,
+        "location_id": 34
+    },
+    {
+        "name": "Musée mines et minéraux la ferme de l'orme",
+        "description": "Une petite mine aux merveilles au milieu de l'Orme",
+        "eco_friendly": false,
+        "image": "musee.jpg",
+        "category_id": 2,
+        "location_id": 35
+    },
+    {
+        "name": "Musée de l'Imprimerie Ancienne",
+        "description": "De belles presses d'imprimerie et plein d'autres encore, le tout dans un site historique",
+        "eco_friendly": false,
+        "image": "musee.jpg",
+        "category_id": 2,
+        "location_id": 36
+    },
+    {
+        "name": "Musée Agri-Rétro",
+        "description": "Près de 300 tracteurs et autres engins agricoles nous retracent une belle évolution de la technique",
+        "eco_friendly": false,
+        "image": "musee.jpg",
+        "category_id": 2,
+        "location_id": 37
+    },
+    {
+        "name": "Atelier Manoli, musée jardin sculpture",
+        "description": "Une découverte à quelques pas de Dinard, une heure pour découvrir un artiste et ses œuvres",
+        "eco_friendly": false,
+        "image": "musee.jpg",
+        "category_id": 2,
+        "location_id": 38
+    },
+    {
+        "name": "Musée Jacques Cartier",
+        "description": "Très belle visite, on y apprend beaucoup de choses",
+        "eco_friendly": false,
+        "image": "musee.jpg",
+        "category_id": 2,
+        "location_id": 39
+    },
+    {
+        "name": "Creperie Bergamote",
+        "description": "Salon de thé raffiné proposant une sélection de crèpes haut de gamme",
+        "eco_friendly": false,
+        "image": "restaurant.jpg",
+        "category_id": 3,
+        "location_id": 40
+    },
+    {
+        "name": "Restaurant l'Unik",
+        "description": "Les prix ne sont pas accessibles a tous le monde mais c'est de la cuisine de très bonnes qualité.",
+        "eco_friendly": false,
+        "image": "restaurant.jpg",
+        "category_id": 3,
+        "location_id": 41
+    },
+    {
+        "name": "Restaurant La Vieille Auberge",
+        "description": "Très bon restaurant avec un cadre sympa. Le personnel est vraiment agréable.",
+        "eco_friendly": false,
+        "image": "restaurant.jpg",
+        "category_id": 3,
+        "location_id": 42
+    },
+    {
+        "name": "Côtes et Bouchons",
+        "description": "L'ambiance est super, les patrons chaleureux et dynamiques, le service impeccable",
+        "eco_friendly": false,
+        "image": "restaurant.jpg",
+        "category_id": 3,
+        "location_id": 43
+    },
+    {
+        "name": "Restaurant Le Moulin Blanc",
+        "description": "Super accueil, cuisine excellente et excellent rapport qualité prix.",
+        "eco_friendly": false,
+        "image": "restaurant.jpg",
+        "category_id": 3,
+        "location_id": 44
+    },
+    {
+        "name": "Etangs d'Apigné",
+        "description": "Très belle promenade, plein de grenouilles, très verdoyant",
+        "eco_friendly": false,
+        "image": "etang.jpg",
+        "category_id": 4,
+        "location_id": 45
+    },
+    {
+        "name": "Parc du port Mullon",
+        "description": "Un beau parc au bord de l'eau avec une grande variété d'arbres",
+        "eco_friendly": false,
+        "image": "parc.jpg",
+        "category_id": 4,
+        "location_id": 46
+    },
+    {
+        "name": "Parc Floral de la Beaujoire",
+        "description": "Un parc magnifique sur les bords de l'Erdre. Un nombre impressionnant de rosiers de variétés différentes.",
+        "eco_friendly": false,
+        "image": "parc.jpg",
+        "category_id": 4,
+        "location_id": 47
+    },
+    {
+        "name": "Etang de Bazougues",
+        "description": "Un immense calme, une généreuse tranquilité, le souffle du vent qui chante dans les plantes aquatiques",
+        "eco_friendly": false,
+        "image": "etang.jpg",
+        "category_id": 4,
+        "location_id": 48
+    },
+    {
+        "name": "Etang du Rouvre",
+        "description": "Endroit sympathique et calme pour une promenade",
+        "eco_friendly": false,
+        "image": "etang.jpg",
+        "category_id": 4,
+        "location_id": 49
+    },
+    {
+        "name": "Parc de La Higourdais",
+        "description": "Au cœur d’un espace parcl préservé, le Parc de la Higourdais vous accueille toute l’année.",
+        "eco_friendly": false,
+        "image": "parc.jpg",
+        "category_id": 4,
+        "location_id": 50
+    },
+    {
+        "name": "Pointe du Grouin",
+        "description": "Promontoire escarpé avec vue sur la Manche et sur l'île des Landes",
+        "eco_friendly": false,
+        "image": "panorama.jpg",
+        "category_id": 1,
+        "location_id": 51
+    },
+    {
+        "name": "Écluse du Pas d'Héric",
+        "description": "Lieu visible soit sur une péniche ou à vélo sur le chemin de halage",
+        "eco_friendly": false,
+        "image": "panorama.jpg",
+        "category_id": 1,
+        "location_id": 52
+    },
+    {
+        "name": "Observatoire de l'étang de Clegreuc",
+        "description": "Magnifique panorama à partir de l'observatoire",
+        "eco_friendly": false,
+        "image": "panorama.jpg",
+        "category_id": 1,
+        "location_id": 53
+    },
+    {
+        "name": "Mines Abbaretz",
+        "description": "Paysage étonnant et lunaire",
+        "eco_friendly": false,
+        "image": "panorama.jpg",
+        "category_id": 1,
+        "location_id": 54
+    },
+    {
+        "name": "le Puits du Pillier",
+        "description": "Un site inatendu en pleine forêt",
+        "eco_friendly": false,
+        "image": "panorama.jpg",
+        "category_id": 1,
+        "location_id": 55
+    },
+    {
+        "name": "Menhir de de la grée à midi",
+        "description": "Très joli site de menhirs",
+        "eco_friendly": false,
+        "image": "panorama.jpg",
+        "category_id": 1,
+        "location_id": 56
+    },
+    {
+        "name": "La grotte de l'Ermite",
+        "description": "Vue panoramique autour de la grotte très belle",
+        "eco_friendly": false,
+        "image": "panorama.jpg",
+        "category_id": 1,
+        "location_id": 57
+    },
+    {
+        "name": "Pont Saint Hubert",
+        "description": "Très bel édifice entre 2 rives, beau panorama en voiture à pied à vélo",
+        "eco_friendly": false,
+        "image": "panorama.jpg",
+        "category_id": 1,
+        "location_id": 58
+    },
+    {
+        "name": "Cobac Parc",
+        "description": "Parc très sympathique, familial et convivial, ombragé, pour tous les âges",
+        "eco_friendly": false,
+        "image": "attraction.jpg",
+        "category_id": 6,
+        "location_id": 59
+    },
+    {
+        "name": "Parc Zoologique & Château de la Bourbansais",
+        "description": "parc zoologique, très bien entretenu, plusieurs espaces, spectacle des oiseaux et rapaces",
+        "eco_friendly": false,
+        "image": "attraction.jpg",
+        "category_id": 6,
+        "location_id": 60
+    },
+    {
+        "name": "Château de Caradeuc",
+        "description": "Ce parc et château est un espace merveilleux et féerique.",
+        "eco_friendly": false,
+        "image": "parc.jpg",
+        "category_id": 6,
+        "location_id": 61
+    },
+    {
+        "name": "Parc Ornithologique de Bretagne",
+        "description": "Les oiseaux sont magnifiques et les canards très gourmands!",
+        "eco_friendly": false,
+        "image": "parc.jpg",
+        "category_id": 6,
+        "location_id": 62
+    },
+    {
+        "name": "Château de Carheil",
+        "description": "Une étape à ne pas rater pour varier les plaisir",
+        "eco_friendly": false,
+        "image": "parc.jpg",
+        "category_id": 6,
+        "location_id": 63
+    },
+    {
+        "name": "Parc des Naudières",
+        "description": "Un parc en extérieur idéal pour une journée en famille ou entre amis ! ",
+        "eco_friendly": false,
+        "image": "parc.jpg",
+        "category_id": 6,
+        "location_id": 64
+    },
+    {
+        "name": "Rond-Point de la Belle Etoile",
+        "description": "Magnifique site, forêt avec pleins de sentiers et d'endroit a découvrir. ",
+        "eco_friendly": false,
+        "image": "parc.jpg",
+        "category_id": 4,
+        "location_id": 65
+    },
+    {
+        "name": "Enigmaparc",
+        "description": "Super experience, une sortie des plus originales",
+        "eco_friendly": false,
+        "image": "attraction.jpg",
+        "category_id": 6,
+        "location_id": 66
+    },
+    {
+        "name": "Terrain moto cross Conquereuil",
+        "description": "Initiation au moto cross!",
+        "eco_friendly": false,
+        "image": "sport.jpg",
+        "category_id": 5,
+        "location_id": 67
+    },
+    {
+        "name": "Golf de Nantes",
+        "description": "Superbe cardre pour s'essayer au golf",
+        "eco_friendly": false,
+        "image": "sport.jpg",
+        "category_id": 5,
+        "location_id": 68
+    },
+    {
+        "name": "Poney Club Des Rhodos",
+        "description": "Petite structure bien équipée, manège et carrière, idéal du débutant poney ",
+        "eco_friendly": false,
+        "image": "sport.jpg",
+        "category_id": 5,
+        "location_id": 69
+    },
+    {
+        "name": "Ecuries du canal",
+        "description": "Randonnées équestres au bord de l'eau",
+        "eco_friendly": false,
+        "image": "sport.jpg",
+        "category_id": 5,
+        "location_id": 70
+    },
+    {
+        "name": "Espace equestre du Val Khyri",
+        "description": "De très belles balades à cheval faire",
+        "eco_friendly": false,
+        "image": "sport.jpg",
+        "category_id": 5,
+        "location_id": 71
+    },
+    {
+        "name": "Aviron au pays d'Aubigné",
+        "description": "Pour changer du bord de mer, dériveurs, pédalos en famille",
+        "eco_friendly": false,
+        "image": "sport.jpg",
+        "category_id": 5,
+        "location_id": 72
+    },
+    {
+        "name": "Club de Canoë",
+        "description": "De super randonnées en canoe et kayaks",
+        "eco_friendly": false,
+        "image": "sport.jpg",
+        "category_id": 5,
+        "location_id": 73
+    },
+    {
+        "name": "Surf school",
+        "description": "Initiation au surf, char à voile",
+        "eco_friendly": false,
+        "image": "sport.jpg",
+        "category_id": 5,
+        "location_id": 74 
+    },
+    {
+        "name": "Centre Nautique Rance Frémur de Dinan",
+        "description": "Très bon point de départ pour une balade en kayak ",
+        "eco_friendly": false,
+        "image": "sport.jpg",
+        "category_id": 5,
+        "location_id": 75
+    }
+]

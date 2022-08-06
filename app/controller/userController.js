@@ -62,10 +62,8 @@ async function fetchOneUser(req, res) {
         if (!userId) return res.status(401).json({ error: "Autorisation refusée" });
         const user = await User.findOneProfile(userId, "id");
         
-        console.log("dans le user profile ligne 65",{refresh :  req.cookies.refreshToken});
         delete req.cookies.refreshToken;
         
-        console.log("dans le user profile  ligne 68", req.cookies);
         
         if (user) res.status(200).json(user.rows[0]);
         else throw new Error({ error: "L'utilisateur n'existe pas" });

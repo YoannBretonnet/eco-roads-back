@@ -8,12 +8,6 @@ import pg from "pg";
 //     ssl: { rejectUnauthorized: false }
 // })
 
-// Configuration pour utiliser la BDD en locale, mettre les variables dans le .env
-// PGHOST = localhost;
-// PGDATABASE = test - apo;
-// PGUSER = postgres;
-// PGPORT = 5000;
-
 const pool = new pg.Pool();
 pool.connect()
     .then( () => console.log('DB connected') )

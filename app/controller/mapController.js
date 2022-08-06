@@ -5,19 +5,39 @@ import { Category } from "../model/category.js";
 import { polygonArea } from "../utils/polygon.js";
 import * as geolib from "geolib";
 
-
 //~---------------------------------------CREATE MAP
 async function createMap(req, res) {
     try {
+        const userId = req.user;
+        // if(req.user)
+        //* On a besoin de recuperer les labels du point de depart et de l arrivee
+        const road = {
+            location : {
+                label: req.body.location.label,
+                lat: req.body.location.Lat,
+                lon: req.body.location.Long
+            },
+            arrival : { 
+                label: req.body.arrival.label,
+                lat: req.body.arrival.Lat,
+                lon: req.body.arrival.Long
+            },
+            car_id : req.body.car_id,
+            categories: req.body.categories
+        }//creer un datamapper, un model
+
         // recuperer les infos des modales via un req.body
         const { location, arrival, categories, car_id } = req.body;
-        const departure = { lat: location.Lat, lng: location.Long };
+        console.log("🚀 ~ file: mapController.js ~ line 19 ~ createMap ~ arrival", arrival);
+        console.log("🚀 ~ file: mapController.js ~ line 19 ~ createMap ~ location", location);
+
+        const departure = { lat: location.Lat, lon: location.Long };
 
         // POI en fonction des categories
         const interesting = await InterestingPoint.findInterestingPointCategories(categories);
         const networks = await InterestingPoint.findChargingStationByNetwork(car_id);
         const visitorCar = await Car.findOneCar(car_id);
-        const visitorCategory = await Category.findCategoryVisitor(categories)
+        const visitorCategory = await Category.findCategoryVisitor(categories);
 
         const polygon = polygonArea(location, arrival);
 
@@ -38,10 +58,8 @@ async function createMap(req, res) {
             );
             if (isPointInPolygon === true) POI.push(network.coordinates);
         }
-        // console.log("🚀 ~ file: mapController.js ~ line 41 ~ createMap ~ POI", POI)
 
         const finalRoute = geolib.orderByDistance(departure, POI);
-        //* sorti de mon triage
 
         const geoJson = {
             waypoints: {
@@ -52,7 +70,7 @@ async function createMap(req, res) {
                 car: visitorCar,
                 departureAddress: req.body.location.label,
                 arrivalAddress: req.body.arrival.label,
-                categories : visitorCategory
+                categories: visitorCategory,
             },
             road: undefined,
         };
@@ -61,13 +79,15 @@ async function createMap(req, res) {
                 (interet) => JSON.stringify(interet.coordinates) === JSON.stringify(coord),
             );
             if (intRes) {
+                // console.log("🚀 ~ file: mapController.js ~ line 65 ~ geoJson.road=finalRoute.map ~ intRes", intRes.image)
                 return {
                     type: "Feature",
                     borne: false,
                     properties: {
-                        image: "https://eco-roads.herokuapp.com/images/jardin_japonais.jpg",
+                        image: `https://eco-roads.herokuapp.com/images/${intRes.image}`,
                         title: intRes.name,
                         adresse: intRes.label,
+                        description: intRes.description,
                         icon: intRes.icon,
                     },
                     geometry: {
@@ -85,6 +105,7 @@ async function createMap(req, res) {
                     type: "Feature",
                     borne: true,
                     properties: {
+                        image: netRes.image,
                         title: netRes.name,
                         adresse: netRes.label,
                     },
@@ -96,7 +117,6 @@ async function createMap(req, res) {
             }
         });
         geoJson.road.pop();
-        console.log("🚀 ~ file: mapController.js ~ line 53 ~ geoJson ~ geoJson", geoJson);
 
         return res.status(200).json(geoJson);
     } catch (err) {
@@ -106,32 +126,3 @@ async function createMap(req, res) {
 
 export { createMap };
 
-// {
-//     "type": "Feature",
-//     "properties": {
-//       "image": "https://www.domoklic.com/wp-content/uploads/2020/07/DMK-Borne.jpg",
-//       "title": "Borne de recharge ENGIE",
-//       "adresse": "102 Rue du Port, 35630 Vignoc",
-//       "icon-image": "borne"
-//       },
-//     "geometry": {
-//     "type": "Point",
-//     "coordinates": [
-//       -1.57609, 47.32144
-//     ]
-//     }
-//     },
-//     {
-//       "type": "Feature",
-//       "properties": {
-//         "image": "https://www.domoklic.com/wp-content/uploads/2020/07/DMK-Borne.jpg",
-//         "title": "Borne de recharge ENGIE",
-//         "adresse": "24 Rue du Lac, 448000 St Herblain",
-//         "icon-image": "borne"
-//         },
-//       "geometry": {
-//       "type": "Point",
-//       "coordinates": [
-//         -1.6609, 47.7144
-//       ]
-//   }}>
