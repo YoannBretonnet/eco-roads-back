@@ -7,8 +7,6 @@ router.get("/", (req, res) => {
     );
 });
 
-
-
 // USER ROUTE
 import { router as userRouter } from "./users.js";
 router.use("/api/v1", userRouter);
@@ -31,8 +29,7 @@ router.use("/api/v1", locationRouter);
 import { router as teamRouter } from "./team.js";
 router.use("/api/v1", teamRouter);
 
-// ROAD ROUTES
-// import { router as roadRouter } from "./road.js";
-// router.use("/api/v1", roadRouter);
+import { router as roadRouter } from "./road.js";
+router.use("/api/v1", roadRouter);
 
 export { router };

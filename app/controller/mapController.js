@@ -4,19 +4,21 @@ import { Car } from "../model/car.js";
 import { Category } from "../model/category.js";
 import { polygonArea } from "../utils/polygon.js";
 import * as geolib from "geolib";
+import { Road} from "../model/road.js";
 
-//~---------------------------------------CREATE MAP
+//~--------------------------------------- CREATE MAP
 async function createMap(req, res) {
     try {
-        const userId = req.user;
-        // if(req.user)
-        //* On a besoin de recuperer les labels du point de depart et de l arrivee
-        const road = {
-            location : {
-                label: req.body.location.label,
-                lat: req.body.location.Lat,
-                lon: req.body.location.Long
-            },
+        const userId = req.user.id;
+        console.log("🚀 ~ file: mapController.js ~ line 12 ~ createMap ~ userId", userId)
+        if(userId){
+            // //* On a besoin de recuperer les labels du point de depart et de l arrivee
+            const road = {
+                location : {
+                    label: req.body.location.label,
+                    lat: req.body.location.Lat,
+                    lon: req.body.location.Long
+                },
             arrival : { 
                 label: req.body.arrival.label,
                 lat: req.body.arrival.Lat,
@@ -24,12 +26,15 @@ async function createMap(req, res) {
             },
             car_id : req.body.car_id,
             categories: req.body.categories
-        }//creer un datamapper, un model
+        }
+        const result = await Road.createRoad(userId, road);
+        console.log("🚀 ~ file: mapController.js ~ line 32 ~ createMap ~ result", result)
+    }
+        //creer un datamapper, un model
 
         // recuperer les infos des modales via un req.body
         const { location, arrival, categories, car_id } = req.body;
-        console.log("🚀 ~ file: mapController.js ~ line 19 ~ createMap ~ arrival", arrival);
-        console.log("🚀 ~ file: mapController.js ~ line 19 ~ createMap ~ location", location);
+
 
         const departure = { lat: location.Lat, lon: location.Long };
 

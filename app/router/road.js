@@ -1,14 +1,14 @@
 // IMPORTATIONS
 
 import { Router } from 'express';
+import { fetchAllRoads } from '../controller/roadController.js';
 const router = Router();
 
-// import { fetchAllRoads, fetchOneRoad, createRoad, updateRoad, deleteRoad } from '../controller/roadController.js';
 
-// ROUTES ROADS
-//CHECK CREER LES CONTROLLERS/MODELS ET DATAMAPPER LIES
-// router.get('/roads', fetchAllRoads);
-// router.post('/roads', createRoad);
+// import { fetchAllRoads, fetchOneRoad, createRoad, updateRoad, deleteRoad } from '../controller/roadController.js';
+import { authenticateToken } from "../middleware/auth.js";
+
+router.get('/roads', authenticateToken, fetchAllRoads)
 
 // router.get('/road/:id', fetchOneRoad);
 // router.patch('/road/:id', updateRoad);

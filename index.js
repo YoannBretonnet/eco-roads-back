@@ -69,6 +69,7 @@ app.use("/", express.static(join(__dirname, "public")));
 // ~ *** *** LAUNCHER CONFIG *** *** ~ //
 // ~ ******************************* ~ //
 app.use(router);
+console.log(" JE SUIS DANS L INDEX");
 
 app.listen(PORT, () => {
     console.log(` \x1b[1;33m⚡⚡ http://localhost:${PORT} ⚡⚡ \x1b[0m`);

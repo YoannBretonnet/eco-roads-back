@@ -1,7 +1,7 @@
 //@entrypoint=https://eco-roads.herokuapp.com/api/v1
 @entrypoint=http://localhost:5000/api/v1
 
-@accessToken=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVhMjZkYWZhLTRjNzItNDMzZi1iYTdiLWNjMmQ4NDI3MTJjNiIsImVtYWlsIjoiem9yb0BnbWFpbC5jb20iLCJ1c2VybmFtZSI6IlJvcm9ubyIsImxvY2F0aW9uX2lkIjo4MiwiY2FyX2lkIjo5LCJjcmVhdGVkX2F0IjoiMjAyMi0wOC0wNlQxMjoxNToyOS4wODdaIiwidXBkYXRlZF9hdCI6bnVsbCwiaWF0IjoxNjU5Nzg4MTQ3LCJleHAiOjE2NTk3ODkzNDd9.fJTi-klJTpZNHmrC8o1j48FZLH-Q0oA3iMM_PrgYYzA
+@accessToken=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZiZjk2YWMxLTM1NTgtNDZkMS04YjM5LTRiYTI5Nzc5NDk1YiIsImVtYWlsIjoidGVzdDEwQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoiUm9ybzg3IiwibG9jYXRpb25faWQiOjg1LCJjYXJfaWQiOjksImNyZWF0ZWRfYXQiOiIyMDIyLTA4LTA3VDIwOjQ0OjQ5LjUzNFoiLCJ1cGRhdGVkX2F0IjpudWxsLCJpYXQiOjE2NTk5NDg5MTYsImV4cCI6MTY1OTk1MDExNn0.0e1LKSL71Ar6fF8-NQaGx5P6t3WUExDRVA2VB-L3bGc
 
 
 
@@ -15,31 +15,35 @@
 GET {{entrypoint}}/team
 
 ###
+GET {{entrypoint}}/roads
+{{accessToken}}
+
+
+###
 POST {{entrypoint}}/map
 Content-Type: application/json
+{{accessToken}}
 
 {
         "categories": [4,5,6],
         "car_id": 8,
         "location":{
-            "label": "25 rue de Fort Boyard, 17000 La Rochelle",
+            "label": "36 rue des sauniers, 17000 La Rochelle",
             "address": "Rue de Fort Boyard",
             "street_number": 15,
             "zipcode": 17000,
             "city": "La Rochelle",
-            "Lat": 46.33342424379,
-            "Long": -1.3047137072481991
+            "Lat": 42.33342424379,
+            "Long": -2.3047137072481991
     },
     "arrival": {
-            "label": "108 rue de bellevue, 33000 Bordeaux",
+            "label": "6 rue du pinard, 33000 Bordeaux",
             "address": "Rue de bellevue",
             "street_number": 108,
             "zipcode": 33000,
             "city": "Bordeaux",
-
-            "Lat": 44.9232823983815,
-            "Long": -0.23967107651036118
-
+            "Lat": 44.3232823983815,
+            "Long": -1.3967107651036118
     }
 }
 
@@ -55,18 +59,18 @@ POST {{entrypoint}}/user/register
 Content-Type: application/json
 
 {
-    "email": "zoro@gmail.com",
+    "email": "test10@gmail.com",
     "password": "Onepiece63!",
-    "username": "Rorono",
+    "username": "Roro87",
     "car_id": 9,
         "location":{
         "label": " 25 Grand line, 83100 South Blue",
         "address": "Grand Line Sea",
         "street_number": 2,
-        "zipcode": 83000,
+        "zipcode": 63000,
         "city": "East Blue",
-        "Lat": 41.94412898265,
-        "Long": -2.121549756121
+        "Lat": 40.14417887801,
+        "Long": -0.121549756120
     },
     "arrival":{
         "address": "Grand Line Sea",
@@ -76,7 +80,7 @@ Content-Type: application/json
         "Lat": 46.94412898265,
         "Long": -2.121549756121
     },
-    "categories": [4,5]
+    "categories": [1,2]
 }
 
 ###
@@ -84,7 +88,7 @@ POST {{entrypoint}}/user/login
 Content-Type: application/json
 
 {
-    "email": "zoro@gmail.com",
+    "email": "test10@gmail.com",
     "password": "Onepiece63!"
 }
 

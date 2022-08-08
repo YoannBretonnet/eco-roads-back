@@ -61,17 +61,15 @@ async function fetchOneUser(req, res) {
         const userId = req.user.id;
         if (!userId) return res.status(401).json({ error: "Autorisation refusée" });
         const user = await User.findOneProfile(userId, "id");
-        
+
         delete req.cookies.refreshToken;
-        
-        
+
         if (user) res.status(200).json(user.rows[0]);
         else throw new Error({ error: "L'utilisateur n'existe pas" });
-        
     } catch (err) {
         return _500(err, req, res);
     }
-    req.session.user = req.user
+    req.session.user = req.user;
     console.log("req.user dans user porfil", req.session.user);
 }
 
@@ -83,40 +81,37 @@ async function loginUser(req, res) {
         const { email, password } = req.body;
         // verify if the email exists
         if (!email)
-        return res.status(400).json({ error: "Merci de bien vouloir renseigner l'email" });
+            return res.status(400).json({ error: "Merci de bien vouloir renseigner l'email" });
         // verify if email is valid
         if (!emailValidator.validate(email))
-        return res.status(401).json({ error: "Le format de l'email est incorrect" });
-        
+            return res.status(401).json({ error: "Le format de l'email est incorrect" });
+
         const user = await User.findOneUser(email, "email");
-        
+
         if (user.rowCount === 0) return res.status(401).json({ error: "Aucun utilisateur trouvé" });
-        
+
         // verify if password is the same with user.password
         const validPassword = await bcrypt.compare(password, user.rows[0].password);
         if (!validPassword) return res.status(401).json({ error: "Mot de passe incorrect" });
-        
+
         // delete user.password;
         const { ["password"]: remove, ...userJwt } = user.rows[0];
 
         //~ Create token JWT
         let accessToken = generateAccessToken(userJwt);
         let refreshToken = generateRefreshToken(userJwt);
-        
-        req.session.refreshToken = refreshToken
-        
+        console.log("🚀 ~ file: userController.js ~ line 105 ~ loginUser ~ userJwt", userJwt);
+
+        req.session.refreshToken = refreshToken;
+
         res.cookie("refreshToken", refreshToken, {
-            ...(process.env.COOKIE_DOMAIN && {domain: process.env.COOKIE_DOMAIN}),
+            ...(process.env.COOKIE_DOMAIN && { domain: process.env.COOKIE_DOMAIN }),
             httpOnly: true,
             sameSite: "none",
-            // secure: true,
-            maxAge: 24 * 60 * 60 * 1000
+            maxAge: 24 * 60 * 60 * 1000,
         });
 
-        
-        console.log(req.cookies);
-        
-        res.status(200).send({ accessToken : accessToken});
+        res.status(200).send({ accessToken: accessToken });
     } catch (err) {
         return _500(err, req, res);
     }
@@ -201,24 +196,22 @@ async function updateUser(req, res) {
         }
 
         if (req.body.categories) await Category.updateCategories(req.body.categories, userId);
-        
-        if(email){  
-        if (!emailValidator.validate(email))
-            return res.status(500).json({ error: `${email} invalide !` });
+
+        if (email) {
+            if (!emailValidator.validate(email))
+                return res.status(500).json({ error: `${email} invalide !` });
         }
 
         if (password) {
             if (!schema.validate(password))
-                return res
-                    .status(500)
-                    .json({
-                        error: "Le mot de passe doit contenir au moins 6 caractères, une majuscule et un caractère spécial.",
-                    });
+                return res.status(500).json({
+                    error: "Le mot de passe doit contenir au moins 6 caractères, une majuscule et un caractère spécial.",
+                });
             req.body.password = await bcrypt.hash(password, 10);
         }
 
         if (username) validation.body(usernameSchema);
-        
+
         await User.updateUser(userId, req.body);
 
         res.status(200).json({ message: "L'utilisateur a bien été mis à jour" });
@@ -245,14 +238,14 @@ async function deleteUser(req, res) {
 // ----------------------------------------------------------------------
 
 async function refreshToken(req, res) {
-    const token = req.session.refreshToken
+    const token = req.session.refreshToken;
 
     if (!token) {
         return res.status(401);
     }
     jwt.verify(req.session.refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
         if (err) {
-            console.log("🚀 ~ file: userController.js ~ line 246 ~ jwt.verify ~ err", err)
+            console.log("🚀 ~ file: userController.js ~ line 246 ~ jwt.verify ~ err", err);
             return res.status(401).json(`L'utilisateur n'existe pas`);
         }
         delete user.iat;
