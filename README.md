@@ -27,7 +27,7 @@ const TEAM = {
         },},
         
         team_front : {
-        lead_developper: {
+        developper: {
             lastname : "El Bakkaly",
             firstname : "Aymen",
             github_account : "aymen-elbakkaly"
